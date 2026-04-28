@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NMAVERSE — Dare To Differ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --off-black: #111111;
+      --white: #f5f5f0;
+      --cream: #e8e0c2;
+      --accent: #661414;
+      --gray: #888880;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      overflow-x: hidden;
+    }
+    /* Header */
+    nav {
+      position: fixed;
+      top: 0; width: 100%;
+      padding: 20px;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      text-align: center;
+      border-bottom: 1px solid #222;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 4px;
+      color: var(--cream);
+      text-decoration: none;
+    }
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+      padding: 20px;
+    }
+    .hero h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(70px, 15vw, 180px);
+      line-height: 1;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    /* Ticker */
+    .ticker {
+      background: var(--accent);
+      padding: 12px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-top: 1px solid #8a1c1c;
+      border-bottom: 1px solid #8a1c1c;
+    }
+    .ticker-content {
+      display: inline-block;
+      animation: scroll 20s linear infinite;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+    }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    /* Grid Section */
+    .section-title {
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 45px;
+      color: var(--cream);
+      margin: 80px 0 40px;
+      letter-spacing: 2px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 0 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--off-black);
+      border: 1px solid #222;
+      padding: 20px;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+    .card:hover { border-color: var(--accent); }
+    
+    /* Image and Placeholder styling */
+    .card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      background: #1a1a1a;
+      margin-bottom: 15px;
+      border: 1px solid #333;
+    }
+    .image-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: #1a1a1a;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      border: 1px dashed #333;
+    }
+    .card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      margin: 10px 0;
+      color: var(--white);
+    }
+    .price { color: var(--cream); font-weight: 600; margin-bottom: 20px; font-size: 18px;}
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 2px;
+      font-size: 18px;
+      transition: background 0.3s;
+      width: 100%;
+    }
+    .btn:hover { background: #8a1c1c; }
+    /* Order Section */
+    .order-section { text-align: center; padding: 100px 20px; background: var(--off-black); margin-top: 80px;}
+    .whatsapp-btn {
+      background: #25D366;
+      color: #000;
+    }
+    .whatsapp-btn:hover { background: #20b858; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">NMAVERSE</a>
+</nav>
+
+<section class="hero">
+  <h1>DARE TO<br>DIFFER</h1>
+</section>
+
+<div class="ticker">
+  <div class="ticker-content">
+    NMAVERSE • PREMIUM KITS • NO COMPROMISE • NMAVERSE • PREMIUM KITS • NO COMPROMISE • NMAVERSE • PREMIUM KITS • NO COMPROMISE • NMAVERSE • PREMIUM KITS • NO COMPROMISE •
+  </div>
+</div>
+
+<h2 class="section-title">FEATURED JERSEYS</h2>
+
+<div class="grid">
+  <div class="card">
+    <img src="argentina home.png" alt="Argentina Kit">
+    <h3>Argentina Player Edition</h3>
+    <p class="price">৳1150 BDT</p>
+    <a href="https://wa.me/8801609461644" class="btn">ORDER ON WHATSAPP</a>
+  </div>
+  
+  <div class="card">
+    <img src="brazil home.png" alt="Brazil Kit">
+    <h3>Brazil Player Edition</h3>
+    <p class="price">৳1150 BDT</p>
+    <a href="https://wa.me/8801609461644" class="btn">ORDER ON WHATSAPP</a>
+  </div>
+
+  <div class="card">
+    <img src="potugal home.png" alt="Portugal Kit">
+    <h3>Portugal Player Edition</h3>
+    <p class="price">৳1150 BDT</p>
+    <a href="https://wa.me/8801609461644" class="btn">ORDER ON WHATSAPP</a>
+  </div>
+
+  <div class="card">
+    <div class="image-placeholder">GERMANY KIT</div>
+    <h3>Germany Player Edition</h3>
+    <p class="price">৳1150 BDT</p>
+    <a href="https://wa.me/8801609461644" class="btn">ORDER ON WHATSAPP</a>
+  </div>
+
+  <div class="card">
+    <div class="image-placeholder">SPAIN KIT</div>
+    <h3>Spain Player Edition</h3>
+    <p class="price">৳1150 BDT</p>
+    <a href="https://wa.me/8801609461644" class="btn">ORDER ON WHATSAPP</a>
+  </div>
+
+  <div class="card">
+    <div class="image-placeholder">FRANCE KIT</div>
+    <h3>France Player Edition</h3>
+    <p class="price">৳1150 BDT</p>
+    <a href="https://wa.me/8801609461644" class="btn">ORDER ON WHATSAPP</a>
+  </div>
+
+  <div class="card">
+    <div class="image-placeholder">ENGLAND KIT</div>
+    <h3>England Player Edition</h3>
+    <p class="price">৳1150 BDT</p>
+    <a href="https://wa.me/8801609461644" class="btn">ORDER ON WHATSAPP</a>
+  </div>
+</div>
+
+<section class="order-section">
+  <h2 style="font-family:'Bebas Neue'; font-size: 50px; color: var(--cream);">GET YOUR JERSEY</h2>
+  <p style="color: var(--gray); margin-bottom: 30px;">Premium Quality • Swift Delivery • Free Customization</p>
+  <a href="https://wa.me/8801609461644" class="btn whatsapp-btn" style="width: auto;">CONTACT WHATSAPP</a>
+</section>
+
+</body>
+</html>
