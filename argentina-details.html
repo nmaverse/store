@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Argentina Home Kit 2026 - NMAVERSE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* বেসিক স্টাইল */
+    body { background: #0a0a0a; color: #f5f5f0; font-family: 'Barlow', sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+    
+    /* নেভিগেশন বার */
+    .nav-bar { padding: 20px 40px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.92); }
+    .back-btn { color: #e8e0c2; text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; transition: 0.3s; }
+    .back-btn:hover { color: #fff; }
+    .brand { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #e8e0c2; letter-spacing: 3px; }
+
+    /* প্রোডাক্ট লেআউট */
+    .product-layout { display: flex; gap: 50px; margin-top: 40px; flex-wrap: wrap; }
+    .product-image { flex: 1.2; min-width: 300px; }
+    .product-image img { width: 100%; border-radius: 8px; border: 1px solid #222; }
+    .product-info { flex: 1; min-width: 300px; }
+
+    /* টেক্সট স্টাইল */
+    .title { font-family: 'Anton', sans-serif; font-size: clamp(30px, 5vw, 50px); color: #e8e0c2; margin: 0 0 10px 0; letter-spacing: 2px; }
+    .price { font-size: 24px; color: #cc0000; font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; margin-bottom: 20px; }
+    .desc { color: #aaa; line-height: 1.6; font-size: 16px; margin-bottom: 30px; }
+
+    /* অর্ডার বাটন */
+    .order-btn { display: inline-block; width: 100%; text-align: center; background: #661414; color: #e8e0c2; padding: 18px 0; font-family: 'Bebas Neue', sans-serif; font-size: 22px; text-decoration: none; letter-spacing: 2px; transition: 0.3s; border: 1px solid #661414; margin-bottom: 30px; }
+    .order-btn:hover { background: transparent; border-color: #e8e0c2; color: #fff; }
+
+    /* অ্যাকর্ডিয়ন (ড্রপডাউন মেনু) */
+    .accordion { border-top: 1px solid #333; }
+    .acc-btn { width: 100%; padding: 20px 0; background: none; border: none; border-bottom: 1px solid #333; color: #e8e0c2; text-align: left; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; cursor: pointer; display: flex; justify-content: space-between; }
+    .acc-content { display: none; padding: 15px 0; color: #888; font-size: 15px; line-height: 1.6; }
+    
+    /* সাইজ টেবিল */
+    .size-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .size-table th, .size-table td { border: 1px solid #333; padding: 10px; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <div class="nav-bar">
+    <a href="index.html" class="back-btn">← BACK TO STORE</a>
+    <div class="brand">NMAVERSE</div>
+  </div>
+
+  <div class="container">
+    <div class="product-layout">
+      
+      <div class="product-image"> 
+        <img src="1.png">';" alt="Argentina Home Kit 2026">
+      </div>
+
+      <div class="product-info">
+        <h1 class="title">ARGENTINA HOME KIT 2026</h1>
+        <div class="price">৳1,100</div>
+        <p class="desc">A tribute to the spirit of football, this premium player edition jersey captures passion and artistry. Designed with bold patterns for maximum comfort throughout your game.</p>
+
+        <a href="https://wa.me/8801609461644?text=Hi,%20I%20want%20to%20order%20Argentina%20Home%20Kit" class="order-btn" target="_blank">ORDER ON WHATSAPP</a>
+
+        <div class="accordion">
+          
+          <button class="acc-btn" onclick="toggleAcc('fabric', this)">FABRIC DETAILS <span>+</span></button>
+          <div id="fabric" class="acc-content">
+            • Premium Player Edition<br>
+            • 100% Recycled Polyester<br>
+            • Sweat-wicking & Quick drying
+          </div>
+
+          <button class="acc-btn" onclick="toggleAcc('size', this)">SIZE CHART <span>+</span></button>
+          <div id="size" class="acc-content">
+            <table class="size-table">
+              <tr><th>Size</th><th>Chest</th><th>Length</th></tr>
+              <tr><td>M</td><td>38"</td><td>27"</td></tr>
+              <tr><td>L</td><td>40"</td><td>28"</td></tr>
+              <tr><td>XL</td><td>42"</td><td>29"</td></tr>
+            </table>
+          </div>
+
+          <button class="acc-btn" onclick="toggleAcc('care', this)">CARE INSTRUCTIONS <span>+</span></button>
+          <div id="care" class="acc-content">
+            • Machine wash cold<br>
+            • Do not iron on prints<br>
+            • Wash inside out
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleAcc(id, btn) {
+      var content = document.getElementById(id);
+      var icon = btn.querySelector('span');
+      
+      if (content.style.display === "block") {
+        content.style.display = "none";
+        icon.innerText = "+";
+      } else {
+        content.style.display = "block";
+        icon.innerText = "-";
+      }
+    }
+  </script>
+
+</body>
+</html>
