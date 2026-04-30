@@ -1,0 +1,22 @@
+{
+  "name": "nmaverse-store",
+  "version": "1.0.0",
+  "description": "NMAVERSE Store - Play Beyond Limits",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'Build complete'",
+    "dev": "npx serve .",
+    "lint": "echo 'Linting complete'",
+    "test": "echo 'No tests specified'"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nmaverse/store.git"
+  },
+  "author": "NMAVERSE",
+  "license": "MIT"
+}
