@@ -1,47 +1,465 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NMAVERSE — Place Your Order</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --burgundy: #800020;
-      --burgundy-light: #a0002a;
-      --burgundy-dark: #5a0016;
-      --cream: #e8e0c2;
-      --cream-muted: #c8bfa0;
-      --bg: #0c0c0c;
-      --bg2: #141414;
-      --bg3: #1c1c1c;
-      --border: rgba(232,224,194,0.1);
-    }
-    body { background: var(--bg); color: var(--cream); font-family: 'Barlow', sans-serif; min-height: 100vh; overflow-x: hidden; }
-    .header { background: var(--bg); border-bottom: 1px solid var(--border); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-    .logo-mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .logo-circle { width: 40px; height: 40px; border: 2px solid var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--burgundy); }
-    .logo-circle span { font-family: 'Anton', sans-serif; font-size: 18px; color: var(--cream); }
-    .brand-name { font-family: 'Anton', sans-serif; font-size: 20px; color: var(--cream); letter-spacing: 2px; }
-    .order-hero { background: var(--burgundy); padding: 3.5rem 2rem 3rem; text-align: center; position: relative; }
-    .order-hero h1 { font-family: 'Anton', sans-serif; font-size: clamp(28px, 6vw, 48px); letter-spacing: 3px; text-transform: uppercase; }
-    .form-wrap { max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem; }
-    .form-section { margin-bottom: 2.5rem; }
-    .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--burgundy-light); border-bottom: 1px solid var(--border); margin-bottom: 1.5rem; padding-bottom: 0.5rem; }
-    .field { margin-bottom: 1.25rem; }
-    label { display: block; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--cream-muted); margin-bottom: 0.5rem; }
-    input, textarea, select { width: 100%; background: var(--bg2); border: 1px solid var(--border); color: var(--cream); padding: 0.85rem; outline: none; border-radius: 2px; }
-    input:focus, textarea:focus { border-color: var(--burgundy-light); }
-    .choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; }
-    .choice-item input { display: none; }
-    .choice-item label { display: block; padding: 0.7rem; background: var(--bg2); border: 1px solid var(--border); text-align: center; cursor: pointer; }
-    .choice-item input:checked + label { background: var(--burgundy-dark); border-color: var(--burgundy); }
-    .submit-btn { width: 100%; background: var(--burgundy); color: var(--cream); border: none; font-family: 'Anton', sans-serif; font-size: 18px; padding: 1.1rem; cursor: pointer; letter-spacing: 4px; }
-    .success-box { display: none; text-align: center; padding: 4rem 2rem; }
-    .invalid { border-color: #a03030 !important; }
-    .error-msg { font-size: 11px; color: #e05555; display: none; margin-top: 4px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NMAVERSE — Place Your Order</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --burgundy: #800020;
+    --burgundy-light: #a0002a;
+    --burgundy-dark: #5a0016;
+    --cream: #e8e0c2;
+    --cream-muted: #c8bfa0;
+    --bg: #0c0c0c;
+    --bg2: #141414;
+    --bg3: #1c1c1c;
+    --border: rgba(232,224,194,0.1);
+    --border-hover: rgba(128,0,32,0.6);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-circle {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--burgundy);
+  }
+
+  .logo-circle span {
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    color: var(--cream);
+    letter-spacing: -1px;
+  }
+
+  .brand-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    color: var(--cream);
+    letter-spacing: 2px;
+  }
+
+  .header-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--burgundy-light);
+    font-weight: 600;
+  }
+
+  /* ── HERO STRIP ── */
+  .order-hero {
+    background: var(--burgundy);
+    padding: 3.5rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .order-hero::before {
+    content: 'ORDER';
+    position: absolute;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(80px, 18vw, 160px);
+    color: rgba(255,255,255,0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 8px;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .order-hero h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(28px, 6vw, 48px);
+    letter-spacing: 3px;
+    color: var(--cream);
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  .order-hero p {
+    margin-top: 0.75rem;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(232,224,194,0.6);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    position: relative;
+  }
+
+  /* ── FORM CONTAINER ── */
+  .form-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--burgundy-light);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: var(--burgundy);
+  }
+
+  .form-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .field {
+    margin-bottom: 1.25rem;
+  }
+
+  label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  label .req {
+    color: var(--burgundy-light);
+    margin-left: 2px;
+  }
+
+  label .hint {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    color: rgba(200,191,160,0.5);
+    margin-top: 3px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="number"],
+  textarea,
+  select {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--cream);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 0.85rem 1rem;
+    outline: none;
+    border-radius: 2px;
+    transition: border-color 0.2s, background 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: rgba(200,191,160,0.25);
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--burgundy-light);
+    background: var(--bg3);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.6;
+  }
+
+  .select-wrap {
+    position: relative;
+  }
+
+  .select-wrap::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--cream-muted);
+    pointer-events: none;
+  }
+
+  select option {
+    background: #1a0008;
+    color: var(--cream);
+  }
+
+  /* ── RADIO / CHOICE GRID ── */
+  .choice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .choice-grid.two { grid-template-columns: 1fr 1fr; }
+  .choice-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+  .choice-grid.five { grid-template-columns: repeat(5, 1fr); }
+
+  .choice-item input[type="radio"] {
+    display: none;
+  }
+
+  .choice-item label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.7rem 0.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    transition: all 0.15s;
+    font-weight: 400;
+  }
+
+  .choice-item input[type="radio"]:checked + label {
+    background: var(--burgundy-dark);
+    border-color: var(--burgundy);
+    color: var(--cream);
+  }
+
+  .choice-item label:hover {
+    border-color: rgba(128,0,32,0.4);
+    color: var(--cream);
+  }
+
+  /* ── TWO COL ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 500px) {
+    .two-col { grid-template-columns: 1fr; }
+    .choice-grid.five { grid-template-columns: repeat(3, 1fr); }
+    .choice-grid.three { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── SUBMIT BUTTON ── */
+  .submit-btn {
+    width: 100%;
+    background: var(--burgundy);
+    color: var(--cream);
+    border: none;
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 1.1rem 2rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .submit-btn:hover { background: var(--burgundy-light); }
+  .submit-btn:active { transform: scale(0.99); }
+
+  .submit-btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 2.5rem 0;
+  }
+
+  /* ── CONTACT STRIP ── */
+  .contact-strip {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+
+  .contact-strip .left p:first-child {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    margin-bottom: 4px;
+  }
+
+  .contact-strip .left p:last-child {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--cream);
+  }
+
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--burgundy);
+    color: var(--cream);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.65rem 1.2rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.15s;
+    font-weight: 600;
+  }
+
+  .wa-btn:hover { background: var(--burgundy-dark); }
+
+  .wa-icon {
+    width: 16px;
+    height: 16px;
+    fill: #25D366;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(200,191,160,0.3);
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  /* ── SUCCESS STATE ── */
+  .success-box {
+    display: none;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .success-box .check {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--burgundy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 24px;
+    color: var(--burgundy-light);
+  }
+
+  .success-box h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    letter-spacing: 3px;
+    color: var(--cream);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .success-box p {
+    color: var(--cream-muted);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .error-msg {
+    font-size: 12px;
+    color: #e05555;
+    margin-top: 4px;
+    display: none;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  input.invalid, textarea.invalid, select.invalid {
+    border-color: #a03030 !important;
+  }
+</style>
 </head>
 <body>
 
@@ -50,112 +468,308 @@
     <div class="logo-circle"><span>W</span></div>
     <span class="brand-name">NMAVERSE</span>
   </a>
+  <span class="header-tag">Order Form</span>
 </header>
 
 <div class="order-hero">
   <h1>Place Your Order</h1>
-  <p>Dare to Differ</p>
+  <p>Dare to Differ &nbsp;·&nbsp; World Cup 2026</p>
 </div>
 
 <div class="form-wrap">
+
   <form id="orderForm" novalidate>
+
     <div class="form-section">
       <div class="section-label">Personal Info</div>
+
       <div class="field">
-        <label>Full Name *</label>
-        <input type="text" id="name" required>
-        <div class="error-msg" id="err-name">নাম লিখুন</div>
+        <label>Full Name <span class="req">*</span></label>
+        <input type="text" id="name" placeholder="আপনার নাম লিখুন" required>
+        <div class="error-msg" id="err-name">নাম দেওয়া বাধ্যতামূলক।</div>
       </div>
+
       <div class="field">
-        <label>Phone Number *</label>
+        <label>Phone Number <span class="req">*</span>
+          <span class="hint">WhatsApp আছে এমন নম্বর দিলে সবচেয়ে ভালো।</span>
+        </label>
         <input type="tel" id="phone" placeholder="01XXXXXXXXX" required>
-        <div class="error-msg" id="err-phone">নম্বর লিখুন</div>
+        <div class="error-msg" id="err-phone">ফোন নম্বর দেওয়া বাধ্যতামূলক।</div>
       </div>
+
       <div class="field">
-        <label>Delivery Address *</label>
-        <textarea id="address" required></textarea>
-        <div class="error-msg" id="err-address">ঠিকানা লিখুন</div>
+        <label>Delivery Address <span class="req">*</span>
+          <span class="hint">বাড়ি/ফ্ল্যাট নম্বর, রাস্তা, এলাকা, জেলা সহ লিখুন।</span>
+        </label>
+        <textarea id="address" placeholder="পূর্ণ ঠিকানা লিখুন..." required></textarea>
+        <div class="error-msg" id="err-address">ঠিকানা দেওয়া বাধ্যতামূলক।</div>
       </div>
     </div>
 
     <div class="form-section">
       <div class="section-label">Jersey Details</div>
+
       <div class="field">
-        <label>Team *</label>
-        <select id="team" required>
-          <option value="">— Select Team —</option>
-          <option value="Argentina">Argentina</option>
-          <option value="Brazil">Brazil</option>
-          <option value="Germany">Germany</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Size *</label>
-        <div class="choice-grid">
-          <div class="choice-item"><input type="radio" name="size" id="s" value="S"><label for="s">S</label></div>
-          <div class="choice-item"><input type="radio" name="size" id="m" value="M"><label for="m">M</label></div>
-          <div class="choice-item"><input type="radio" name="size" id="l" value="L"><label for="l">L</label></div>
-          <div class="choice-item"><input type="radio" name="size" id="xl" value="XL"><label for="xl">XL</label></div>
+        <label>Team <span class="req">*</span></label>
+        <div class="select-wrap">
+          <select id="team" required>
+            <option value="">— Select Team —</option>
+            <option value="Argentina">🇦🇷 Argentina</option>
+            <option value="Brazil">🇧🇷 Brazil</option>
+            <option value="Portugal">🇵🇹 Portugal</option>
+            <option value="Germany">🇩🇪 Germany</option>
+            <option value="Spain">🇪🇸 Spain</option>
+            <option value="France">🇫🇷 France</option>
+          </select>
         </div>
+        <div class="error-msg" id="err-team">দল সিলেক্ট করুন।</div>
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label>Kit <span class="req">*</span></label>
+          <div class="choice-grid two">
+            <div class="choice-item"><input type="radio" name="kit" id="kit-home" value="Home"><label for="kit-home">Home</label></div>
+            <div class="choice-item"><input type="radio" name="kit" id="kit-away" value="Away"><label for="kit-away">Away</label></div>
+          </div>
+          <div class="error-msg" id="err-kit">Kit সিলেক্ট করুন।</div>
+        </div>
+
+        <div class="field">
+          <label>Size <span class="req">*</span></label>
+          <div class="choice-grid five">
+            <div class="choice-item"><input type="radio" name="size" id="sz-s" value="S"><label for="sz-s">S</label></div>
+            <div class="choice-item"><input type="radio" name="size" id="sz-m" value="M"><label for="sz-m">M</label></div>
+            <div class="choice-item"><input type="radio" name="size" id="sz-l" value="L"><label for="sz-l">L</label></div>
+            <div class="choice-item"><input type="radio" name="size" id="sz-xl" value="XL"><label for="sz-xl">XL</label></div>
+            <div class="choice-item"><input type="radio" name="size" id="sz-xxl" value="XXL"><label for="sz-xxl">XXL</label></div>
+          </div>
+          <div class="error-msg" id="err-size">সাইজ সিলেক্ট করুন।</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Edition / Quality <span class="req">*</span></label>
+        <div class="choice-grid two">
+          <div class="choice-item"><input type="radio" name="edition" id="ed-player" value="Player Edition"><label for="ed-player">Player Edition</label></div>
+          <div class="choice-item"><input type="radio" name="edition" id="ed-fan" value="Fan Edition"><label for="ed-fan">Fan Edition</label></div>
+        </div>
+        <div class="error-msg" id="err-edition">Edition সিলেক্ট করুন।</div>
       </div>
     </div>
 
     <div class="form-section">
       <div class="section-label">Payment</div>
+
       <div class="field">
-        <label>Advance Amount *</label>
-        <input type="number" id="advance" placeholder="0" required>
+        <label>Payment Method <span class="req">*</span></label>
+        <div class="choice-grid three">
+          <div class="choice-item"><input type="radio" name="payment" id="pay-bkash" value="bKash"><label for="pay-bkash">bKash</label></div>
+          <div class="choice-item"><input type="radio" name="payment" id="pay-nagad" value="Nagad"><label for="pay-nagad">Nagad</label></div>
+          <div class="choice-item"><input type="radio" name="payment" id="pay-cod" value="Cash on Delivery"><label for="pay-cod">COD</label></div>
+        </div>
+        <div class="error-msg" id="err-payment">Payment method সিলেক্ট করুন।</div>
       </div>
-      <div class="field">
-        <label>Transaction ID *</label>
-        <input type="text" id="txnid" placeholder="TXN ID" required>
+
+      <div class="two-col">
+        <div class="field">
+          <label>Advance Amount (BDT) <span class="req">*</span>
+            <span class="hint">COD হলে 0 লিখুন।</span>
+          </label>
+          <input type="number" id="advance" placeholder="0" min="0" required>
+          <div class="error-msg" id="err-advance">পরিমাণ লিখুন।</div>
+        </div>
+
+        <div class="field">
+          <label>Transaction ID / Payment No. <span class="req">*</span>
+            <span class="hint">COD হলে N/A লিখুন।</span>
+          </label>
+          <input type="text" id="txnid" placeholder="TXN ID বা N/A" required>
+          <div class="error-msg" id="err-txnid">Transaction ID লিখুন।</div>
+        </div>
       </div>
     </div>
 
-    <button type="submit" class="submit-btn" id="submitBtn">Confirm Order</button>
+    <div class="form-section">
+      <div class="section-label">Extra Note (Optional)</div>
+      <div class="field">
+        <label>অতিরিক্ত কিছু জানাতে চাইলে
+          <span class="hint">যেমন: নাম/নম্বর প্রিন্ট করতে চাইলে এখানে লিখুন।</span>
+        </label>
+        <textarea id="note" placeholder="(ঐচ্ছিক)"></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">
+      Confirm Order
+    </button>
+
   </form>
 
   <div class="success-box" id="successBox">
-    <h2>✓ Order Sent!</h2>
-    <p>আপনার অর্ডার টেলিগ্রামে পাঠানো হয়েছে।</p>
-    <button onclick="location.reload()" style="background:none; border:1px solid; color:white; padding:10px 20px; cursor:pointer;">আরেকটি অর্ডার দিন</button>
+    <div class="check">✓</div>
+    <h2>Order Sent!</h2>
+    <p>আপনার অর্ডার টেলিগ্রামে পাঠানো হয়েছে।<br>আমরা শীঘ্রই confirm করব। ধন্যবাদ! 🖤</p>
+    <a href="#" onclick="resetForm()" class="wa-btn">আরেকটি অর্ডার দিন</a>
   </div>
+
+  <div class="divider"></div>
+
+  <div class="contact-strip">
+    <div class="left">
+      <p>সরাসরি কথা বলতে চাইলে</p>
+      <p>Chat or Call Us on WhatsApp</p>
+    </div>
+    <a href="https://wa.me/8801609461644" target="_blank" class="wa-btn">
+      <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.533 5.859L.057 23.886a.5.5 0 0 0 .611.612l6.102-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 0 1-5.002-1.371l-.36-.214-3.718.904.922-3.629-.235-.374A9.794 9.794 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+
 </div>
 
+<footer class="footer">
+  NMAVERSE &nbsp;·&nbsp; Dare to Differ &nbsp;·&nbsp; @nmaverse.apparel
+</footer>
+
 <script>
+  // ── Telegram Configuration ──
   const token = '8612024982:AAHm706uMTSlHQbA7kvia0XSFto5Qk8kwgM';
   const chatId = '5378066873';
 
+  function getRadio(name) {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : '';
+  }
+
+  function showError(id, show) {
+    document.getElementById(id).style.display = show ? 'block' : 'none';
+  }
+
+  function setInvalid(id, invalid) {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('invalid', invalid);
+  }
+
+  function validate() {
+    let ok = true;
+
+    const name = document.getElementById('name').value.trim();
+    showError('err-name', !name); setInvalid('name', !name);
+    if (!name) ok = false;
+
+    const phone = document.getElementById('phone').value.trim();
+    showError('err-phone', !phone); setInvalid('phone', !phone);
+    if (!phone) ok = false;
+
+    const address = document.getElementById('address').value.trim();
+    showError('err-address', !address); setInvalid('address', !address);
+    if (!address) ok = false;
+
+    const team = document.getElementById('team').value;
+    showError('err-team', !team); setInvalid('team', !team);
+    if (!team) ok = false;
+
+    const kit = getRadio('kit');
+    showError('err-kit', !kit);
+    if (!kit) ok = false;
+
+    const size = getRadio('size');
+    showError('err-size', !size);
+    if (!size) ok = false;
+
+    const edition = getRadio('edition');
+    showError('err-edition', !edition);
+    if (!edition) ok = false;
+
+    const payment = getRadio('payment');
+    showError('err-payment', !payment);
+    if (!payment) ok = false;
+
+    const advance = document.getElementById('advance').value.trim();
+    showError('err-advance', !advance); setInvalid('advance', !advance);
+    if (!advance) ok = false;
+
+    const txnid = document.getElementById('txnid').value.trim();
+    showError('err-txnid', !txnid); setInvalid('txnid', !txnid);
+    if (!txnid) ok = false;
+
+    return ok;
+  }
+
   document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+    if (!validate()) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+    }
+
     const btn = document.getElementById('submitBtn');
-    btn.innerText = "Sending...";
+    btn.innerText = "Sending Order...";
     btn.disabled = true;
 
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const address = document.getElementById('address').value;
-    const team = document.getElementById('team').value;
-    const size = document.querySelector('input[name="size"]:checked')?.value || 'N/A';
-    const advance = document.getElementById('advance').value;
-    const txnid = document.getElementById('txnid').value;
+    const name    = document.getElementById('name').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const team    = document.getElementById('team').value;
+    const kit     = getRadio('kit');
+    const size    = getRadio('size');
+    const edition = getRadio('edition');
+    const payment = getRadio('payment');
+    const advance = document.getElementById('advance').value.trim();
+    const txnid   = document.getElementById('txnid').value.trim();
+    const note    = document.getElementById('note').value.trim();
 
-    const msg = `🖤 *NEW ORDER*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nTeam: ${team}\nSize: ${size}\nAdvance: ${advance}\nTXN: ${txnid}`;
+    const msg = 
+`🖤 *NMAVERSE ORDER*
+──────────────────
+👤 *Name:* ${name}
+📞 *Phone:* ${phone}
+📍 *Address:* ${address}
 
-    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(msg)}&parse_mode=Markdown`;
+🎽 *Team:* ${team}
+🏠 *Kit:* ${kit}
+📐 *Size:* ${size}
+⭐ *Edition:* ${edition}
 
-    fetch(url).then(res => {
-      if(res.ok) {
-        document.getElementById('orderForm').style.display = 'none';
-        document.getElementById('successBox').style.display = 'block';
-      } else {
-        alert("Error! Please start the bot first.");
-        btn.disabled = false;
+💳 *Payment:* ${payment}
+💰 *Advance:* ${advance} BDT
+🔖 *TXN ID:* ${txnid}
+${note ? `\n📝 *Note:* ${note}` : ''}`;
+
+    const encoded = encodeURIComponent(msg);
+    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encoded}&parse_mode=Markdown`;
+
+    fetch(url)
+      .then(res => {
+        if (res.ok) {
+          document.getElementById('orderForm').style.display = 'none';
+          document.getElementById('successBox').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          alert("Error! Please start the bot first.");
+          btn.innerText = "Confirm Order";
+          btn.disabled = false;
+        }
+      })
+      .catch(err => {
+        alert("Network error. Please try again.");
         btn.innerText = "Confirm Order";
-      }
-    });
+        btn.disabled = false;
+      });
   });
+
+  function resetForm() {
+    document.getElementById('orderForm').reset();
+    document.getElementById('orderForm').style.display = 'block';
+    document.getElementById('successBox').style.display = 'none';
+    document.querySelectorAll('.error-msg').forEach(e => e.style.display = 'none');
+    document.querySelectorAll('.invalid').forEach(e => e.classList.remove('invalid'));
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = false;
+    btn.innerText = "Confirm Order";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 </script>
 </body>
 </html>
