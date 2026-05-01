@@ -12,8 +12,25 @@
     
     /* নেভিগেশন বার */
     .nav-bar { padding: 8px 20px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; background:#661414; }
-    .back-btn { color: #e8e0c2; text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 2px; transition: 0.3s; }
-    .back-btn:hover { color: #fff; }
+    .back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(232, 224, 194, 0.1);
+    color: #e8e0c2;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(232, 224, 194, 0.2);
+}
+
+.back-btn:hover {
+    background: #e8e0c2;
+    color: #661414;
+    transform: translateX(-5px);
+}
     .brand { font-family: 'Bebas Neue', sans-serif; font-size: 35px; color: #e8e0c2; letter-spacing: 3px; }
 
     /* প্রোডাক্ট লেআউট */
