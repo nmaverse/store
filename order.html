@@ -761,23 +761,36 @@
     const txnid   = document.getElementById('txnid').value.trim();
     const note    = document.getElementById('note').value.trim();
 
-    const msg = 
-`🖤 *NMAVERSE ORDER*
+// সব জার্সির ডাটা একসাথে করার জন্য Loop
+        let allProductsInfo = '';
+        const items = document.querySelectorAll('.jersey-item');
+        
+        items.forEach((item, index) => {
+            const orderNum = index + 1;
+            const team = item.querySelector('select').value;
+            
+            const kitEl = item.querySelector('input[name^="kit"]:checked');
+            const kit = kitEl ? kitEl.value : 'Not Selected';
+            
+            const sizeEl = item.querySelector('input[name^="size"]:checked');
+            const size = sizeEl ? sizeEl.value : 'Not Selected';
+            
+            const editionEl = item.querySelector('input[name^="edition"]:checked');
+            const edition = editionEl ? editionEl.value : 'Not Selected';
+
+            allProductsInfo += `\n📦 *ORDER #${orderNum}*\n🎽 Team: ${team}\n🏠 Kit: ${kit}\n📐 Size: ${size}\n⭐ Edition: ${edition}\n`;
+        });
+
+        const msg = `🖤 *NMAVERSE MULTIPLE ORDER*
 ──────────────────
 👤 *Name:* ${name}
 📞 *Phone:* ${phone}
 📍 *Address:* ${address}
-
-🎽 *Team:* ${team}
-🏠 *Kit:* ${kit}
-📐 *Size:* ${size}
-⭐ *Edition:* ${edition}
-
+──────────────────${allProductsInfo}──────────────────
 💳 *Payment:* ${payment}
 💰 *Advance:* ${advance} BDT
 🔖 *TXN ID:* ${txnid}
 ${note ? `\n📝 *Note:* ${note}` : ''}`;
-
     const encoded = encodeURIComponent(msg);
     const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encoded}&parse_mode=Markdown`;
 
