@@ -671,6 +671,33 @@
       </div>
     </div>
 
+<div class="form-section" style="background: rgba(232, 224, 194, 0.05); padding: 20px; border-radius: 8px; border: 1px dashed var(--border); margin-bottom: 20px;">
+    <div class="section-label" style="margin-bottom: 15px;">Price Summary</div>
+    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; font-family: 'Barlow Condensed'; letter-spacing: 1px;">
+        <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--cream-muted);">Sub-total (Products):</span>
+            <span id="summary-subtotal" style="font-weight: 600;">0৳</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--cream-muted);">Delivery Charge:</span>
+            <span id="summary-delivery" style="font-weight: 600;">0৳</span>
+        </div>
+        <div style="height: 1px; background: var(--border); margin: 5px 0;"></div>
+        <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--cream); font-size: 1.1rem;">
+            <span>Total:</span>
+            <span id="summary-total">0৳</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; color: var(--burgundy-light); margin-top: 10px;">
+            <span>Required Advance:</span>
+            <span id="summary-advance" style="font-weight: 700;">0৳</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; color: #4CAF50;">
+            <span>Cash on Delivery:</span>
+            <span id="summary-cod" style="font-weight: 700;">0৳</span>
+        </div>
+    </div>
+</div>
+   
     <button type="submit" class="submit-btn" id="submitBtn">
       Confirm Order
     </button>
@@ -820,18 +847,29 @@ function toggleDelivery() {
 
             allProductsInfo += `\n📦 *ORDER #${orderNum}*\n🎽 Team: ${team}\n🏠 Kit: ${kit}\n📐 Size: ${size}\n⭐ Edition: ${edition}\n`;
         });
+// হিসাবগুলো স্ক্রিন থেকে নেওয়া
+        const subtotalText = document.getElementById('summary-subtotal').innerText;
+        const deliveryText = document.getElementById('summary-delivery').innerText;
+        const totalText = document.getElementById('summary-total').innerText;
+        const advanceText = document.getElementById('summary-advance').innerText;
+        const codText = document.getElementById('summary-cod').innerText;
 
-const msg = `🖤 *NMAVERSE MULTIPLE ORDER*
+        const msg = `🖤 *NMAVERSE MULTIPLE ORDER*
 ──────────────────
 👤 *Name:* ${name}
 📞 *Phone:* ${phone}
 📍 *Address:* ${address}
 🚚 *Delivery:* ${deliveryMethod} (${deliveryLoc})
 ──────────────────${allProductsInfo}──────────────────
+💰 *Sub-total:* ${subtotalText}
+🚚 *Delivery Fee:* ${deliveryText}
+💵 *Total Amount:* ${totalText}
+──────────────────
 💳 *Payment:* ${payment}
-💰 *Advance:* ${advance} BDT
+💰 *Advance:* ${advanceText}
+🔖 *Cash on Delivery:* ${codText}
 🔖 *TXN ID:* ${txnid}
-${note ? `\n📝 *Note:* ${note}` : ''}`; 
+${note ? `\n📝 *Note:* ${note}` : ''}`;
     const encoded = encodeURIComponent(msg);
     const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encoded}&parse_mode=Markdown`;
 
@@ -923,6 +961,64 @@ ${note ? `\n📝 *Note:* ${note}` : ''}`;
             }
         });
     }
+const PRICES = {
+    'Player Edition': 1100,
+    'Fan Edition': 850
+};
+
+function calculateTotal() {
+    let subtotal = 0;
+    
+    // ১. সবগুলো প্রোডাক্টের দাম যোগ করা
+    const items = document.querySelectorAll('.jersey-item');
+    items.forEach(item => {
+        const editionEl = item.querySelector('input[name^="edition"]:checked');
+        if (editionEl && PRICES[editionEl.value]) {
+            subtotal += PRICES[editionEl.value];
+        }
+    });
+
+    // ২. ডেলিভারি চার্জ হিসাব করা
+    const deliveryMethod = getRadio('delivery_method');
+    const location = getRadio('location');
+    let deliveryCharge = 0;
+    
+    if (deliveryMethod === 'Home Delivery') {
+        deliveryCharge = (location === 'Inside CTG (60৳)') ? 60 : 130;
+    }
+
+    const total = subtotal + deliveryCharge;
+    const paymentMethod = getRadio('payment');
+    
+    let advanceRequired = 0;
+    let codAmount = 0;
+
+    // ৩. পেমেন্ট মেথড অনুযায়ী Advance এবং COD ঠিক করা
+    if (paymentMethod === 'Cash on Delivery') {
+        // যদি COD হয়, তবে শুধু ডেলিভারি চার্জ অ্যাডভান্স দিতে হবে
+        advanceRequired = deliveryCharge;
+        codAmount = subtotal;
+    } else {
+        // bKash/Nagad হলে পুরো টাকাটাই অ্যাডভান্স
+        advanceRequired = total;
+        codAmount = 0;
+    }
+
+    // স্ক্রিনে ভ্যালুগুলো দেখানো
+    document.getElementById('summary-subtotal').innerText = subtotal + '৳';
+    document.getElementById('summary-delivery').innerText = deliveryCharge + '৳';
+    document.getElementById('summary-total').innerText = total + '৳';
+    document.getElementById('summary-advance').innerText = advanceRequired + '৳';
+    document.getElementById('summary-cod').innerText = codAmount + '৳';
+    
+    // অটোমেটিক ইনপুট ফিল্ড আপডেট করা
+    const advanceInput = document.getElementById('advance');
+    if(advanceInput) advanceInput.value = advanceRequired;
+}
+
+// যখনই ফর্মে কোনো পরিবর্তন হবে তখনই হিসাব আপডেট হবে
+document.getElementById('orderForm').addEventListener('change', calculateTotal);
+ 
 </script>
 </body>
 </html>
