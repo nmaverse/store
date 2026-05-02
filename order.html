@@ -678,6 +678,7 @@
             <span style="color: var(--cream-muted);">Sub-total (Products):</span>
             <span id="summary-subtotal" style="font-weight: 600;">0৳</span>
         </div>
+      <div id="product-breakdown" style="font-size: 0.75rem; color: rgba(200,191,160,0.5); margin: -5px 0 10px 15px; line-height: 1.5; font-family: 'Barlow';"></div>
         <div style="display: flex; justify-content: space-between;">
             <span style="color: var(--cream-muted);">Delivery Charge:</span>
             <span id="summary-delivery" style="font-weight: 600;">0৳</span>
@@ -688,7 +689,7 @@
             <span id="summary-total">0৳</span>
         </div>
         <div style="display: flex; justify-content: space-between; color: var(--burgundy-light); margin-top: 10px;">
-            <span>Required Advance:</span>
+            <span>Required Advance <small style="font-size: 10px; color: var(--cream-muted); opacity: 0.8;">(bKash/Nagad Send Money: 01850547796)</small>:</span>
             <span id="summary-advance" style="font-weight: 700;">0৳</span>
         </div>
         <div style="display: flex; justify-content: space-between; color: #4CAF50;">
@@ -968,15 +969,29 @@ const PRICES = {
 
 function calculateTotal() {
     let subtotal = 0;
+    let breakdownHTML = '';
     
-    // ১. সবগুলো প্রোডাক্টের দাম যোগ করা
+    // ১. সবগুলো প্রোডাক্টের দাম যোগ করা এবং ব্রেকডাউন তৈরি করা
     const items = document.querySelectorAll('.jersey-item');
-    items.forEach(item => {
+    items.forEach((item, index) => {
+        const orderNum = index + 1;
+        const team = item.querySelector('select').value || 'Unknown Team';
         const editionEl = item.querySelector('input[name^="edition"]:checked');
-        if (editionEl && PRICES[editionEl.value]) {
-            subtotal += PRICES[editionEl.value];
+        const edition = editionEl ? editionEl.value : '';
+        
+        if (edition && PRICES[edition]) {
+            const price = PRICES[edition];
+            subtotal += price;
+            // ব্রেকডাউন লিস্টে যোগ করা
+            breakdownHTML += `• Order #${orderNum}: ${team} (${edition}) - ${price}৳<br>`;
         }
     });
+
+    // ব্রেকডাউন বক্সে ডাটা দেখানো
+    const breakdownBox = document.getElementById('product-breakdown');
+    if (breakdownBox) {
+        breakdownBox.innerHTML = breakdownHTML;
+    }
 
     // ২. ডেলিভারি চার্জ হিসাব করা
     const deliveryMethod = getRadio('delivery_method');
@@ -995,11 +1010,9 @@ function calculateTotal() {
 
     // ৩. পেমেন্ট মেথড অনুযায়ী Advance এবং COD ঠিক করা
     if (paymentMethod === 'Cash on Delivery') {
-        // যদি COD হয়, তবে শুধু ডেলিভারি চার্জ অ্যাডভান্স দিতে হবে
         advanceRequired = deliveryCharge;
         codAmount = subtotal;
     } else {
-        // bKash/Nagad হলে পুরো টাকাটাই অ্যাডভান্স
         advanceRequired = total;
         codAmount = 0;
     }
@@ -1011,13 +1024,11 @@ function calculateTotal() {
     document.getElementById('summary-advance').innerText = advanceRequired + '৳';
     document.getElementById('summary-cod').innerText = codAmount + '৳';
     
-    // অটোমেটিক ইনপুট ফিল্ড আপডেট করা
     const advanceInput = document.getElementById('advance');
-    if(advanceInput) advanceInput.value = advanceRequired;
+    if (advanceInput) advanceInput.value = advanceRequired;
 }
 
-// যখনই ফর্মে কোনো পরিবর্তন হবে তখনই হিসাব আপডেট হবে
-document.getElementById('orderForm').addEventListener('change', calculateTotal);
+
  
 </script>
 </body>
