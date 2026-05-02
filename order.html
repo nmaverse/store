@@ -818,8 +818,15 @@ function toggleDelivery() {
  
   document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    if (!validate()) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+   if (!validate()) {
+        // বাদ পড়া বা ভুল হওয়া প্রথম ফিল্ডটি খুঁজে বের করা
+        const firstError = document.querySelector('.error-msg[style*="display: block"]');
+        if (firstError) {
+            // ঠিক সেই ফিল্ডটি স্ক্রিনের মাঝখানে এনে দেখানো
+            firstError.closest('.field').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
         return;
     }
 
