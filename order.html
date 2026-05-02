@@ -534,20 +534,12 @@
         <div class="error-msg" id="err-address">ঠিকানা দেওয়া বাধ্যতামূলক।</div>
       </div>
     </div>
-
-
-<div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-bottom: 25px; background: rgba(232, 224, 194, 0.05); padding: 15px; border-radius: 8px; border: 1px dashed var(--border);">
-    <input type="checkbox" id="multiple-jerseys" style="width: 20px; height: 20px; accent-color: var(--burgundy);" onclick="toggleMultipleJerseys()">
-    <label for="multiple-jerseys" style="font-weight: 600; cursor: pointer; font-size: 0.9rem;">I want to order more than one jersey</label>
-</div>
-
-   
-    <div class="form-section">
+   <div class="form-section">
       <div class="section-label">Jersey Details</div>
 
 <div id="jersey-container">
     <div class="jersey-item" style="border-bottom: 1px solid var(--border); margin-bottom: 25px; padding-bottom: 10px;">
-        <h3 style="color: var(--cream-muted); font-size: 0.7rem; margin-bottom: 15px; letter-spacing: 2px;">JERSEY #1</h3>
+        <h3 style="color: var(--cream-muted); font-size: 0.7rem; margin-bottom: 15px; letter-spacing: 2px;">ORDER  #1</h3>
      
       <div class="field">
         <label>Team <span class="req">*</span></label>
@@ -598,9 +590,11 @@
       </div>
     </div>
 
-</div> </div> <div id="add-more-section" style="display: none; margin-top: 10px; margin-bottom: 30px;">
-    <button type="button" onclick="addJersey()" style="width: 100%; padding: 12px; background: rgba(232, 224, 194, 0.05); border: 1px dashed var(--border); color: var(--cream); border-radius: 8px; cursor: pointer; font-family: 'Barlow Condensed'; font-weight: 600; letter-spacing: 1px;">
-        + ADD ANOTHER JERSEY
+</div> 
+</div> 
+<div id="add-more-section" style="margin-top: 10px; margin-bottom: 30px;">
+    <button type="button" onclick="addProduct()" style="width: 100%; padding: 12px; background: rgba(232, 224, 194, 0.05); border: 1px dashed var(--border); color: var(--cream); border-radius: 8px; cursor: pointer; font-family: 'Barlow Condensed'; font-weight: 600; letter-spacing: 1px;">
+        + ADD ANOTHER PRODUCT
     </button>
 </div>
  
@@ -819,52 +813,61 @@ ${note ? `\n📝 *Note:* ${note}` : ''}`;
   }
 </script>
 
- <script>
-    let jerseyCount = 1;
+<script>
+    let productCount = 1;
 
-    function toggleMultipleJerseys() {
-        const isChecked = document.getElementById('multiple-jerseys').checked;
-        document.getElementById('add-more-section').style.display = isChecked ? 'block' : 'none';
-    }
-
-    function addJersey() {
-        jerseyCount++;
+    function addProduct() {
+        productCount++;
         const container = document.getElementById('jersey-container');
         const firstItem = container.querySelector('.jersey-item');
         
-        // প্রথম জার্সির ঘরটি কপি করা
+        // নতুন সেকশন কপি করা
         const newItem = firstItem.cloneNode(true);
+        newItem.id = `order-item-${productCount}`;
         
-        // নতুন ঘরের শিরোনাম পরিবর্তন করা (Jersey #2, #3...)
-        newItem.querySelector('h3').innerText = `JERSEY #${jerseyCount}`;
+        // নতুন টাইটেল এবং রিমুভ বাটন যোগ করা
+        newItem.querySelector('h3').innerHTML = `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
         
-        // Team সিলেকশন রিসেট করা
+        // সিলেকশন রিসেট করা
         const selects = newItem.querySelectorAll('select');
         selects.forEach(s => s.selectedIndex = 0);
         
-        // নতুন জার্সির রেডিও বাটনগুলো (Kit, Size) আলাদা করা যেন একটার সাথে আরেকটা মিলে না যায়
+        // রেডিও বাটনগুলো আলাদা করা (যাতে কনফ্লিক্ট না হয়)
         const radios = newItem.querySelectorAll('input[type="radio"]');
         radios.forEach(r => {
-            r.checked = false; // সিলেকশন ক্লিয়ার করা
-            
-            // নাম পরিবর্তন (যেমন: kit এর জায়গায় kit_2 হবে)
+            r.checked = false;
             const originalName = r.name.replace(/_\d+$/, ''); 
-            r.name = originalName + '_' + jerseyCount;
-            
-            // আইডি পরিবর্তন যেন ক্লিক করলে ঠিকঠাক কাজ করে
+            r.name = originalName + '_' + productCount;
             const originalId = r.id.replace(/_\d+$/, '');
-            const newId = originalId + '_' + jerseyCount;
+            const newId = originalId + '_' + productCount;
             r.id = newId;
-            
-            // লেবেল আপডেট করা
             const label = r.nextElementSibling;
             if (label && label.tagName === 'LABEL') {
                 label.setAttribute('for', newId);
             }
         });
         
-        // নতুন ঘরটি যোগ করা
         container.appendChild(newItem);
+    }
+
+    // প্রোডাক্ট রিমুভ করার ফাংশন
+    function removeProduct(element) {
+        const itemToRemove = element.closest('.jersey-item');
+        itemToRemove.remove();
+        
+        // টাইটেলগুলো আবার ঠিক করা
+        const items = document.querySelectorAll('.jersey-item');
+        productCount = 0;
+        items.forEach((item) => {
+            productCount++;
+            const h3 = item.querySelector('h3');
+            // যদি রিমুভ বাটন থাকে
+            if (productCount === 1) {
+                h3.innerHTML = `ORDER #${productCount}`;
+            } else {
+                h3.innerHTML = `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
+            }
+        });
     }
 </script>
 </body>
