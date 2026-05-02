@@ -535,9 +535,20 @@
       </div>
     </div>
 
+
+<div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-bottom: 25px; background: rgba(232, 224, 194, 0.05); padding: 15px; border-radius: 8px; border: 1px dashed var(--border);">
+    <input type="checkbox" id="multiple-jerseys" style="width: 20px; height: 20px; accent-color: var(--burgundy);" onclick="toggleMultipleJerseys()">
+    <label for="multiple-jerseys" style="font-weight: 600; cursor: pointer; font-size: 0.9rem;">I want to order more than one jersey</label>
+</div>
+
+   
     <div class="form-section">
       <div class="section-label">Jersey Details</div>
 
+<div id="jersey-container">
+    <div class="jersey-item" style="border-bottom: 1px solid var(--border); margin-bottom: 25px; padding-bottom: 10px;">
+        <h3 style="color: var(--cream-muted); font-size: 0.7rem; margin-bottom: 15px; letter-spacing: 2px;">JERSEY #1</h3>
+     
       <div class="field">
         <label>Team <span class="req">*</span></label>
         <div class="select-wrap">
@@ -587,6 +598,12 @@
       </div>
     </div>
 
+</div> </div> <div id="add-more-section" style="display: none; margin-top: 10px; margin-bottom: 30px;">
+    <button type="button" onclick="addJersey()" style="width: 100%; padding: 12px; background: rgba(232, 224, 194, 0.05); border: 1px dashed var(--border); color: var(--cream); border-radius: 8px; cursor: pointer; font-family: 'Barlow Condensed'; font-weight: 600; letter-spacing: 1px;">
+        + ADD ANOTHER JERSEY
+    </button>
+</div>
+ 
     <div class="form-section">
       <div class="section-label">Payment</div>
 
@@ -800,6 +817,55 @@ ${note ? `\n📝 *Note:* ${note}` : ''}`;
     btn.innerText = "Confirm Order";
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+</script>
+
+ <script>
+    let jerseyCount = 1;
+
+    function toggleMultipleJerseys() {
+        const isChecked = document.getElementById('multiple-jerseys').checked;
+        document.getElementById('add-more-section').style.display = isChecked ? 'block' : 'none';
+    }
+
+    function addJersey() {
+        jerseyCount++;
+        const container = document.getElementById('jersey-container');
+        const firstItem = container.querySelector('.jersey-item');
+        
+        // প্রথম জার্সির ঘরটি কপি করা
+        const newItem = firstItem.cloneNode(true);
+        
+        // নতুন ঘরের শিরোনাম পরিবর্তন করা (Jersey #2, #3...)
+        newItem.querySelector('h3').innerText = `JERSEY #${jerseyCount}`;
+        
+        // Team সিলেকশন রিসেট করা
+        const selects = newItem.querySelectorAll('select');
+        selects.forEach(s => s.selectedIndex = 0);
+        
+        // নতুন জার্সির রেডিও বাটনগুলো (Kit, Size) আলাদা করা যেন একটার সাথে আরেকটা মিলে না যায়
+        const radios = newItem.querySelectorAll('input[type="radio"]');
+        radios.forEach(r => {
+            r.checked = false; // সিলেকশন ক্লিয়ার করা
+            
+            // নাম পরিবর্তন (যেমন: kit এর জায়গায় kit_2 হবে)
+            const originalName = r.name.replace(/_\d+$/, ''); 
+            r.name = originalName + '_' + jerseyCount;
+            
+            // আইডি পরিবর্তন যেন ক্লিক করলে ঠিকঠাক কাজ করে
+            const originalId = r.id.replace(/_\d+$/, '');
+            const newId = originalId + '_' + jerseyCount;
+            r.id = newId;
+            
+            // লেবেল আপডেট করা
+            const label = r.nextElementSibling;
+            if (label && label.tagName === 'LABEL') {
+                label.setAttribute('for', newId);
+            }
+        });
+        
+        // নতুন ঘরটি যোগ করা
+        container.appendChild(newItem);
+    }
 </script>
 </body>
 </html>
