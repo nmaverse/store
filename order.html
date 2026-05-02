@@ -597,7 +597,38 @@
         + ADD ANOTHER PRODUCT
     </button>
 </div>
- 
+
+<div class="form-section">
+    <div class="section-label">Delivery Info</div>
+    <div class="field">
+        <label>Delivery Method <span class="req">*</span></label>
+        <div class="choice-grid two">
+            <div class="choice-item">
+                <input type="radio" name="delivery_method" id="method-home" value="Home Delivery" checked onclick="toggleDelivery()">
+                <label for="method-home">Home Delivery</label>
+            </div>
+            <div class="choice-item">
+                <input type="radio" name="delivery_method" id="method-pickup" value="Pickup" onclick="toggleDelivery()">
+                <label for="method-pickup">Pickup (Inside CTG)</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="field" id="location-section">
+        <label>Delivery Location <span class="req">*</span></label>
+        <div class="choice-grid two">
+            <div class="choice-item">
+                <input type="radio" name="location" id="loc-inside" value="Inside CTG (60৳)" checked>
+                <label for="loc-inside">Inside CTG (60৳)</label>
+            </div>
+            <div class="choice-item">
+                <input type="radio" name="location" id="loc-outside" value="Outside CTG (130৳)">
+                <label for="loc-outside">Outside CTG (130৳)</label>
+            </div>
+        </div>
+    </div>
+</div>
+   
     <div class="form-section">
       <div class="section-label">Payment</div>
 
@@ -737,7 +768,14 @@
 
     return ok;
   }
-
+function toggleDelivery() {
+    const method = getRadio('delivery_method');
+    const locSection = document.getElementById('location-section');
+    if (locSection) {
+        locSection.style.display = (method === 'Pickup') ? 'none' : 'block';
+    }
+}
+ 
   document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
     if (!validate()) {
@@ -760,7 +798,9 @@
     const advance = document.getElementById('advance').value.trim();
     const txnid   = document.getElementById('txnid').value.trim();
     const note    = document.getElementById('note').value.trim();
-
+    const deliveryMethod = getRadio('delivery_method');
+    const deliveryLoc = (deliveryMethod === 'Pickup') ? 'Chattogram Pickup' : getRadio('location');
+   
 // সব জার্সির ডাটা একসাথে করার জন্য Loop
         let allProductsInfo = '';
         const items = document.querySelectorAll('.jersey-item');
@@ -781,16 +821,17 @@
             allProductsInfo += `\n📦 *ORDER #${orderNum}*\n🎽 Team: ${team}\n🏠 Kit: ${kit}\n📐 Size: ${size}\n⭐ Edition: ${edition}\n`;
         });
 
-        const msg = `🖤 *NMAVERSE MULTIPLE ORDER*
+const msg = `🖤 *NMAVERSE MULTIPLE ORDER*
 ──────────────────
 👤 *Name:* ${name}
 📞 *Phone:* ${phone}
 📍 *Address:* ${address}
+🚚 *Delivery:* ${deliveryMethod} (${deliveryLoc})
 ──────────────────${allProductsInfo}──────────────────
 💳 *Payment:* ${payment}
 💰 *Advance:* ${advance} BDT
 🔖 *TXN ID:* ${txnid}
-${note ? `\n📝 *Note:* ${note}` : ''}`;
+${note ? `\n📝 *Note:* ${note}` : ''}`; 
     const encoded = encodeURIComponent(msg);
     const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encoded}&parse_mode=Markdown`;
 
