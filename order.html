@@ -671,6 +671,17 @@
       </div>
     </div>
 
+<div class="form-section" style="margin-bottom: 20px; background: rgba(128, 0, 32, 0.05); border: 1px dashed var(--burgundy); padding: 15px; border-radius: 8px;">
+    <label style="display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--cream); font-weight: 600; font-family: 'Barlow Condensed'; letter-spacing: 1px;">
+        <span>PROMO CODE (OPTIONAL)</span>
+        <span id="promo-msg" style="font-size: 13px; font-weight: 600; display: none;"></span>
+    </label>
+    <div style="display: flex; gap: 10px;">
+        <input type="text" id="promo-code" placeholder="Enter code here..." style="margin-bottom: 0; text-transform: uppercase; flex: 1;">
+        <button type="button" onclick="applyPromo()" style="background: var(--burgundy); color: white; border: none; padding: 0 20px; border-radius: 4px; font-family: 'Barlow Condensed'; font-weight: 600; letter-spacing: 1px; cursor: pointer;">APPLY</button>
+    </div>
+</div>
+   
 <div class="form-section" style="background: rgba(232, 224, 194, 0.05); padding: 20px; border-radius: 8px; border: 1px dashed var(--border); margin-bottom: 20px;">
     <div class="section-label" style="margin-bottom: 15px;">Price Summary</div>
     <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; font-family: 'Barlow Condensed'; letter-spacing: 1px;">
@@ -683,6 +694,11 @@
             <span style="color: var(--cream-muted);">Delivery Charge:</span>
             <span id="summary-delivery" style="font-weight: 600;">0৳</span>
         </div>
+<div id="discount-row" style="display: none; justify-content: space-between; color: #4CAF50; margin-top: 5px;">
+    <span>Discount (Promo):</span>
+    <span id="summary-discount" style="font-weight: 600;">-0৳</span>
+</div>
+     
         <div style="height: 1px; background: var(--border); margin: 5px 0;"></div>
         <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--cream); font-size: 1.1rem;">
             <span>Total:</span>
@@ -891,7 +907,7 @@ function toggleDelivery() {
         const advanceText = document.getElementById('summary-advance').innerText;
         const codText = document.getElementById('summary-cod').innerText;
 
-        const msg = `🆔 *ORDER ID: #${orderId}*
+const msg = `🆔 *ORDER ID: #${orderId}*
 🖤 *NMAVERSE MULTIPLE ORDER*
 ──────────────────
 👤 *Name:* ${name}
@@ -899,7 +915,7 @@ function toggleDelivery() {
 📍 *Address:* ${address}
 🚚 *Delivery:* ${deliveryMethod} (${deliveryLoc})
 ──────────────────${allProductsInfo}──────────────────
-💰 *Sub-total:* ${subtotalText}
+${appliedPromoCode ? `🎟️ *Promo Code:* ${appliedPromoCode} (-${currentDiscount}৳)\n──────────────────\n` : ''}💰 *Sub-total:* ${subtotalText}
 🚚 *Delivery Fee:* ${deliveryText}
 💵 *Total Amount:* ${totalText}
 ──────────────────
@@ -1004,66 +1020,96 @@ const PRICES = {
     'Fan Edition': 850
 };
 
-function calculateTotal() {
-    let subtotal = 0;
-    let breakdownHTML = '';
-    
-    // ১. সবগুলো প্রোডাক্টের দাম যোগ করা এবং ব্রেকডাউন তৈরি করা
-    const items = document.querySelectorAll('.jersey-item');
-    items.forEach((item, index) => {
-        const orderNum = index + 1;
-        const team = item.querySelector('select').value || 'Unknown Team';
-        const editionEl = item.querySelector('input[name^="edition"]:checked');
-        const edition = editionEl ? editionEl.value : '';
-        
-        if (edition && PRICES[edition]) {
-            const price = PRICES[edition];
-            subtotal += price;
-            // ব্রেকডাউন লিস্টে যোগ করা
-            breakdownHTML += `• Order #${orderNum}: ${team} (${edition}) - ${price}৳<br>`;
+let currentDiscount = 0;
+    let appliedPromoCode = '';
+
+    // কুপন অ্যাপ্লাই করার ফাংশন
+    function applyPromo() {
+        const inputCode = document.getElementById('promo-code').value.trim().toUpperCase();
+        const msgEl = document.getElementById('promo-msg');
+        const rowEl = document.getElementById('discount-row');
+        const amtEl = document.getElementById('summary-discount');
+
+        if (inputCode === 'ILYADIL50') {
+            currentDiscount = 50;
+            appliedPromoCode = inputCode;
+            msgEl.innerText = '✓ 50৳ Discount Applied!';
+            msgEl.style.color = '#4caf50';
+            msgEl.style.display = 'block';
+            if (rowEl) rowEl.style.display = 'flex';
+            if (amtEl) amtEl.innerText = '-50৳';
+        } else if (inputCode === '') {
+            currentDiscount = 0;
+            appliedPromoCode = '';
+            msgEl.style.display = 'none';
+            if (rowEl) rowEl.style.display = 'none';
+        } else {
+            currentDiscount = 0;
+            appliedPromoCode = '';
+            msgEl.innerText = '❌ Invalid Code';
+            msgEl.style.color = '#ff5252';
+            msgEl.style.display = 'block';
+            if (rowEl) rowEl.style.display = 'none';
         }
-    });
-
-    // ব্রেকডাউন বক্সে ডাটা দেখানো
-    const breakdownBox = document.getElementById('product-breakdown');
-    if (breakdownBox) {
-        breakdownBox.innerHTML = breakdownHTML;
+        calculateTotal();
     }
 
-    // ২. ডেলিভারি চার্জ হিসাব করা
-    const deliveryMethod = getRadio('delivery_method');
-    const location = getRadio('location');
-    let deliveryCharge = 0;
-    
-    if (deliveryMethod === 'Home Delivery') {
-        deliveryCharge = (location === 'Inside CTG (60৳)') ? 60 : 130;
+    // টোটাল হিসাব করার ফাংশন
+    function calculateTotal() {
+        let subtotal = 0;
+        let breakdownHTML = '';
+        
+        const items = document.querySelectorAll('.jersey-item');
+        items.forEach((item, index) => {
+            const orderNum = index + 1;
+            const team = item.querySelector('select').value || 'Unknown Team';
+            const editionEl = item.querySelector('input[name^="edition"]:checked');
+            const edition = editionEl ? editionEl.value : '';
+            
+            if (edition && PRICES[edition]) {
+                const price = PRICES[edition];
+                subtotal += price;
+                breakdownHTML += `• Order #${orderNum}: ${team} (${edition}) - ${price}৳<br>`;
+            }
+        });
+
+        const breakdownBox = document.getElementById('product-breakdown');
+        if (breakdownBox) breakdownBox.innerHTML = breakdownHTML;
+
+        const deliveryMethod = getRadio('delivery_method');
+        const location = getRadio('location');
+        let deliveryCharge = 0;
+        
+        if (deliveryMethod === 'Home Delivery') {
+            deliveryCharge = (location === 'Inside CTG (60৳)') ? 60 : 130;
+        }
+
+        // ডিসকাউন্ট বাদ দিয়ে টোটাল হিসাব
+        let total = (subtotal + deliveryCharge) - currentDiscount;
+        if (total < 0) total = 0;
+
+        const paymentMethod = getRadio('payment');
+        let advanceRequired = 0;
+        let codAmount = 0;
+
+        if (paymentMethod === 'Cash on Delivery') {
+            advanceRequired = deliveryCharge;
+            codAmount = subtotal - currentDiscount;
+            if (codAmount < 0) codAmount = 0;
+        } else {
+            advanceRequired = total;
+            codAmount = 0;
+        }
+
+        document.getElementById('summary-subtotal').innerText = subtotal + '৳';
+        document.getElementById('summary-delivery').innerText = deliveryCharge + '৳';
+        document.getElementById('summary-total').innerText = total + '৳';
+        document.getElementById('summary-advance').innerText = advanceRequired + '৳';
+        document.getElementById('summary-cod').innerText = codAmount + '৳';
+        
+        const advanceInput = document.getElementById('advance');
+        if (advanceInput) advanceInput.value = advanceRequired;
     }
-
-    const total = subtotal + deliveryCharge;
-    const paymentMethod = getRadio('payment');
-    
-    let advanceRequired = 0;
-    let codAmount = 0;
-
-    // ৩. পেমেন্ট মেথড অনুযায়ী Advance এবং COD ঠিক করা
-    if (paymentMethod === 'Cash on Delivery') {
-        advanceRequired = deliveryCharge;
-        codAmount = subtotal;
-    } else {
-        advanceRequired = total;
-        codAmount = 0;
-    }
-
-    // স্ক্রিনে ভ্যালুগুলো দেখানো
-    document.getElementById('summary-subtotal').innerText = subtotal + '৳';
-    document.getElementById('summary-delivery').innerText = deliveryCharge + '৳';
-    document.getElementById('summary-total').innerText = total + '৳';
-    document.getElementById('summary-advance').innerText = advanceRequired + '৳';
-    document.getElementById('summary-cod').innerText = codAmount + '৳';
-    
-    const advanceInput = document.getElementById('advance');
-    if (advanceInput) advanceInput.value = advanceRequired;
-}
 
 // যখনই ফর্মে কোনো পরিবর্তন হবে তখনই হিসাব আপডেট হবে
 document.getElementById('orderForm').addEventListener('change', calculateTotal);
