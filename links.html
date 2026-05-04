@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NMAVERSE | DARE TO DIFFER</title>
+    <style>
+        /* মূল ব্যাকগ্রাউন্ড - লিংকট্রির ডার্ক মেরুন থিম অনুযায়ী */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #5b0606; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* কন্টেইনার */
+        .container {
+            width: 100%;
+            max-width: 680px;
+            padding: 40px 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* প্রোফাইল ছবি / লোগো */
+        .profile-img {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+            background-color: #ffffff;
+        }
+
+        /* ব্র্যান্ডের নাম */
+        .title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        /* স্লোগান */
+        .bio {
+            font-size: 15px;
+            font-weight: 400;
+            margin: 8px 0 32px;
+            letter-spacing: 0px;
+        }
+
+        /* বাটন কন্টেইনার */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* বাটনের ডিজাইন */
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #7b0808; /* বাটনের জন্য হালকা মেরুন রঙ */
+            color: #ffffff;
+            text-decoration: none;
+            padding: 16px 20px;
+            border-radius: 30px; /* লিংকট্রির মতো গোলাকার বাটন */
+            font-size: 15px;
+            font-weight: 600;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* হোভার ইফেক্ট */
+        .link-btn:hover {
+            background-color: #9c0a0a;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="nmaverse logo.png" alt="NMAVERSE" class="profile-img">
+        
+        <h1 class="title">NMAVERSE</h1>
+        <p class="bio">DARE TO DIFFER</p>
+        
+        <div class="links-container">
+            <a href="https://www.facebook.com/nmaverse.apparel" class="link-btn" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/nmaverse.apparel/" class="link-btn" target="_blank">Instagram</a>
+            <a href="https://nmaverse.com" class="link-btn" target="_blank">Visit us</a>
+        </div>
+    </div>
+
+</body>
+</html>
