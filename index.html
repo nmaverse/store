@@ -607,7 +607,11 @@ src="https://www.facebook.com/tr?id=3288990567954386&ev=PageView&noscript=1"
       .hero-title { font-size: 60px; }
     }
 
-   .main-link::after {
+.main-link {
+    position: static !important;
+}
+
+.main-link::after {
     content: "";
     position: absolute;
     top: 0;
@@ -620,7 +624,7 @@ src="https://www.facebook.com/tr?id=3288990567954386&ev=PageView&noscript=1"
 .product-btn {
     position: relative; 
     z-index: 2;
-} 
+}
   </style>
   <!-- Vercel Web Analytics -->
   <script>
