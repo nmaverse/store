@@ -622,8 +622,8 @@
                 <label for="loc-inside">Inside CTG (60৳)</label>
             </div>
             <div class="choice-item">
-                <input type="radio" name="location" id="loc-outside" value="Outside CTG (130৳)">
-                <label for="loc-outside">Outside CTG (130৳)</label>
+                <input type="radio" name="location" id="loc-outside" value="Outside CTG (135৳)">
+                <label for="loc-outside">Outside CTG (135৳)</label>
             </div>
         </div>
     </div>
@@ -1081,7 +1081,7 @@ let currentDiscount = 0;
         let deliveryCharge = 0;
         
         if (deliveryMethod === 'Home Delivery') {
-            deliveryCharge = (location === 'Inside CTG (60৳)') ? 60 : 130;
+            deliveryCharge = (location === 'Inside CTG (60৳)') ? 60 : 135;
         }
 
         // ডিসকাউন্ট বাদ দিয়ে টোটাল হিসাব
