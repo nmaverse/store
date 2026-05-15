@@ -544,15 +544,17 @@
       <div class="field">
         <label>Team <span class="req">*</span></label>
         <div class="select-wrap">
-          <select id="team" required>
-            <option value="">— Select Team —</option>
-            <option value="Argentina">🇦🇷 Argentina</option>
-            <option value="Brazil">🇧🇷 Brazil</option>
-            <option value="Portugal">🇵🇹 Portugal</option>
-            <option value="Germany">🇩🇪 Germany</option>
-            <option value="Spain">🇪🇸 Spain</option>
-            <option value="France">🇫🇷 France</option>
-          </select>
+        <select id="team" class="team-dropdown" required onchange="toggleOtherTeam(this)">
+    <option value="">— Select Team —</option>
+    <option value="Argentina">🇦🇷 Argentina</option>
+    <option value="Brazil">🇧🇷 Brazil</option>
+    <option value="Portugal">🇵🇹 Portugal</option>
+    <option value="Germany">🇩🇪 Germany</option>
+    <option value="Spain">🇪🇸 Spain</option>
+    <option value="France">🇫🇷 France</option>
+    <option value="Other">🌍 Other (Type Manually)</option>
+</select>
+<input type="text" class="other-team-input" placeholder="Type your team name here..." style="display: none; margin-top: 10px; width: 100%; box-sizing: border-box; padding: 10px 15px; background: rgba(0, 0, 0, 0.2); border: 1px dashed var(--burgundy); color: white; border-radius: 4px;">
         </div>
         <div class="error-msg" id="err-team">দল সিলেক্ট করুন।</div>
       </div>
@@ -960,6 +962,19 @@ ${note ? `\n📝 *Note:* ${note}` : ''}`;
 </script>
 
 <script>
+
+function toggleOtherTeam(selectElement) {
+        const otherInput = selectElement.nextElementSibling;
+        if (selectElement.value === 'Other') {
+            otherInput.style.display = 'block';
+            otherInput.required = true;
+        } else {
+            otherInput.style.display = 'none';
+            otherInput.required = false;
+            otherInput.value = '';
+        }
+    }
+ 
     let productCount = 1;
 
     function addProduct() {
