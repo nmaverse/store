@@ -160,7 +160,10 @@ This adidas jersey carries the spirit of champions into every moment—whether y
     </div>
   </div>
 
+<script src="products.js"></script>
+
   <script>
+    // আগের অ্যাকর্ডিয়ন এবং ছবি পাল্টানোর ফাংশন
     function toggleAcc(id, btn) {
       var content = document.getElementById(id);
       var icon = btn.querySelector('span');
@@ -173,11 +176,47 @@ This adidas jersey carries the spirit of champions into every moment—whether y
         icon.innerText = "-";
       }
     }
-  // ছবি পাল্টানোর ফাংশন
+
     function changeImage(src) {
       document.getElementById('mainImage').src = src;
     }
-  </script>
 
+    // 🌟 DYNAMIC MAGIC SCRIPT 🌟
+    document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        if (productId && typeof products !== 'undefined') {
+          // products.js থেকে নির্দিষ্ট জার্সির তথ্য খুঁজে বের করা
+          const product = products.find(p => p.id === productId);
+
+          if (product) {
+            // ১. ব্রাউজারের ট্যাবের নাম (Title) পরিবর্তন
+            document.title = product.team + " " + product.kitType + " - NMAVERSE";
+
+            // ২. জার্সির নাম পরিবর্তন
+            document.querySelector('.title').innerText = product.team + " " + product.kitType;
+
+            // ৩. মূল ছবি পরিবর্তন
+            document.getElementById('mainImage').src = product.image;
+            document.getElementById('mainImage').alt = product.team + " " + product.kitType;
+
+            // ৪. দাম পরিবর্তন
+            const prices = document.querySelectorAll('.price');
+            if(prices.length >= 2) {
+              let oldPriceHTML = product.playerOldPrice ? `<del style="color: #888; font-size: 15px; margin-left: 8px; font-weight: normal;">৳${product.playerOldPrice}</del>` : '';
+              prices[0].innerHTML = `৳${product.playerPrice} ${oldPriceHTML}`;
+              prices[1].innerText = `৳${product.fanPrice}`;
+            }
+
+            // ৫. ছোট ছবি (Thumbnails) লজিক: যেহেতু products.js-এ অন্য জার্সির ছোট ছবি দেওয়া নেই, তাই আপাতত সেগুলো হাইড রাখা
+            if(productId !== 'argentina-home') {
+               const gallery = document.querySelector('.thumbnail-gallery');
+               if(gallery) gallery.style.display = 'none';
+            }
+          }
+        }
+    });
+  </script>
 </body>
 </html>
