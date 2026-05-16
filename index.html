@@ -903,6 +903,22 @@ src="https://www.facebook.com/tr?id=3288990567954386&ev=PageView&noscript=1"
   <p class="stock-note">✦ Limited Stock Available</p>
 </section>
 
+<div style="text-align: center; margin: 50px 0;">
+    <button id="see-more-btn" onclick="toggleSeeMoreSection()" class="product-btn outline" style="cursor: pointer; padding: 12px 40px; font-size: 16px; border: 1px solid #c8102e; background: transparent; color: white; transition: 0.3s;">SEE MORE</button>
+</div>
+
+<div id="hidden-products-section" style="display: none; padding-top: 20px;">
+    
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 24px; color: #fff;">CLASSIC & OTHER TEAMS</h2>
+        <p style="color: #888; font-size: 14px; margin-top: 10px;">Discover our retro collections and other popular teams.</p>
+    </div>
+
+    <div class="product-grid">
+        </div>
+</div>
+
+  
 <!-- STATS -->
 <div class="stats">
  <div class="stat-item">
@@ -986,6 +1002,21 @@ src="https://www.facebook.com/tr?id=3288990567954386&ev=PageView&noscript=1"
     by
     NOSAIB MAHMOD ADIL.</p>
 </footer>
-
+<script>
+    function toggleSeeMoreSection() {
+        var hiddenSection = document.getElementById('hidden-products-section');
+        var seeMoreBtn = document.getElementById('see-more-btn');
+        
+        if (hiddenSection.style.display === 'none' || hiddenSection.style.display === '') {
+            hiddenSection.style.display = 'block';
+            seeMoreBtn.innerText = 'SEE LESS';
+            // অপশনাল: ক্লিক করার পর স্ক্রিনটি একটু নিচে নামিয়ে দেওয়ার জন্য
+            hiddenSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            hiddenSection.style.display = 'none';
+            seeMoreBtn.innerText = 'SEE MORE';
+        }
+    }
+</script>
 </body>
 </html>
