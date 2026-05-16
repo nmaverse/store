@@ -254,7 +254,7 @@ src="https://www.facebook.com/tr?id=3288990567954386&ev=PageView&noscript=1"
     }
 
     /* PRODUCTS */
-  .products {padding: 80px 0px; max-width: 100%; margin: 0; overflow-x: hidden; }
+.products {width: 100%; padding: 80px 0px; margin: 0; overflow-x: hidden; display: block; }
     .section-label {
       font-family: 'Anton', sans-serif;
       font-size: 11px;
@@ -272,7 +272,7 @@ src="https://www.facebook.com/tr?id=3288990567954386&ev=PageView&noscript=1"
       margin-bottom: 50px;
     }
 
-  .products-grid {display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 0 2px; }
+ .products-grid {width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; padding: 0 2px; }
 
   .product-card {
             background: transparent;
@@ -616,7 +616,7 @@ src="https://www.facebook.com/tr?id=3288990567954386&ev=PageView&noscript=1"
         right: 0;
     }
     .nav-links a { font-size: 16px; }
-    .products-grid { grid-template-columns: repeat(2, 1fr); }
+   .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .product-card { padding: 20px 10px; }
         .product-btn { padding: 8px 2px; font-size: 9px; letter-spacing: 1px; }
         .product-country { font-size: 15px; letter-spacing: 2px; }
