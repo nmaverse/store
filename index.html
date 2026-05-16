@@ -865,28 +865,65 @@ src="https://www.facebook.com/tr?id=3288990567954386&ev=PageView&noscript=1"
 
     if (productGrid && typeof products !== 'undefined') {
         products.forEach(product => {
-        const cardHTML = `
-            <a href="product-details.html?id=${product.id}" class="product-card">
-                <div class="product-badge">${product.badge}</div>
-                <div class="product-img">
-                    <img src="${product.image}" alt="${product.team}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+       const cardHTML = `
+            <div class="product-card-wrapper" style="position: relative; padding-bottom: 15px;">
+                <div class="wishlist-icon" style="position: absolute; top: 15px; right: 15px; color: #1a1a1a; font-size: 18px; z-index: 5;"><i class="fa-regular fa-heart"></i></div>
+                
+                <a href="product-details.html?id=${product.id}" class="product-card" style="text-decoration: none; display: block;">
+                    <div class="product-img" style="width: 100%; aspect-ratio: 1 / 1.2; background: #f6f6f6; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; margin-bottom: 12px;">
+                        <img src="${product.image}" alt="${product.team}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="product-badge" style="position: absolute; bottom: 10px; left: 10px; background: white; color: black; font-size: 10px; padding: 3px 7px; text-transform: uppercase; font-weight: 600;">
+                            ${product.badge}
+                        </div>
+                    </div>
+                </a>
+                
+                <div class="product-info" style="text-align: left; padding: 0 5px;">
+                    <a href="product-details.html?id=${product.id}" style="text-decoration: none; color: inherit;">
+                        <div class="team-name" style="font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 500; color: #1a1a1a; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">
+                            ${product.team} ${product.kitType}
+                        </div>
+                    </a>
+                    
+                    <div id="price-${product.id}" class="price-tag" style="font-family: 'Jost', sans-serif; font-size: 15px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">
+                        ৳${product.playerPrice}
+                    </div>
+                    
+                    <div class="edition-toggle" style="display: flex; gap: 6px;">
+                        <button id="btn-player-${product.id}" onclick="changeCardPrice('${product.id}', '${product.playerPrice}', 'player')" style="flex: 1; padding: 8px 0; background: #1a1a1a; color: #fff; border: 1px solid #1a1a1a; font-family: 'Jost', sans-serif; font-size: 11px; cursor: pointer; transition: 0.3s; text-transform: uppercase;">PLAYER</button>
+                        <button id="btn-fan-${product.id}" onclick="changeCardPrice('${product.id}', '${product.fanPrice}', 'fan')" style="flex: 1; padding: 8px 0; background: transparent; color: #1a1a1a; border: 1px solid #ccc; font-family: 'Jost', sans-serif; font-size: 11px; cursor: pointer; transition: 0.3s; text-transform: uppercase;">FAN</button>
+                    </div>
                 </div>
-                <div style="font-family: 'Barlow', sans-serif; font-size: 15px; font-weight: 500; color: var(--white); margin-bottom: 4px; letter-spacing: 1px;">
-                    ${product.team}
-                </div>
-                <div style="font-family: 'Barlow', sans-serif; font-size: 13px; color: var(--gray); font-weight: 400; margin-bottom: 6px;">
-                    ${product.kitType}
-                </div>
-                <div style="font-family: 'Barlow', sans-serif; font-size: 13px; color: var(--white); font-weight: 400;">
-                    ৳${product.playerPrice} <span style="color: var(--gray); font-size: 10px; margin-left: 3px;">PLAYER</span>
-                    <span style="color: var(--gray); margin: 0 5px;">|</span>
-                    ৳${product.fanPrice} <span style="color: var(--gray); font-size: 10px; margin-left: 3px;">FAN</span>
-                </div>
-            </a>
+            </div>
             `;
             productGrid.innerHTML += cardHTML;
         });
     }
+  // হোমপেজের কার্ডে ক্লিক করে দাম পরিবর্তন করার ম্যাজিক লজিক
+        function changeCardPrice(id, price, edition) {
+            document.getElementById(`price-${id}`).innerText = '৳' + price;
+            
+            const playerBtn = document.getElementById(`btn-player-${id}`);
+            const fanBtn = document.getElementById(`btn-fan-${id}`);
+            
+            if (edition === 'player') {
+                playerBtn.style.background = '#1a1a1a';
+                playerBtn.style.color = '#fff';
+                playerBtn.style.borderColor = '#1a1a1a';
+                
+                fanBtn.style.background = 'transparent';
+                fanBtn.style.color = '#1a1a1a';
+                fanBtn.style.borderColor = '#ccc';
+            } else {
+                fanBtn.style.background = '#1a1a1a';
+                fanBtn.style.color = '#fff';
+                fanBtn.style.borderColor = '#1a1a1a';
+                
+                playerBtn.style.background = 'transparent';
+                playerBtn.style.color = '#1a1a1a';
+                playerBtn.style.borderColor = '#ccc';
+            }
+        }
 </script> 
 </body>
 </html>
