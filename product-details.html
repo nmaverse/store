@@ -208,11 +208,19 @@ This adidas jersey carries the spirit of champions into every moment—whether y
               prices[0].innerHTML = `৳${product.playerPrice} ${oldPriceHTML}`;
               prices[1].innerText = `৳${product.fanPrice}`;
             }
-
-            // ৫. ছোট ছবি (Thumbnails) লজিক: যেহেতু products.js-এ অন্য জার্সির ছোট ছবি দেওয়া নেই, তাই আপাতত সেগুলো হাইড রাখা
-            if(productId !== 'argentina-home') {
-               const gallery = document.querySelector('.thumbnail-gallery');
-               if(gallery) gallery.style.display = 'none';
+// ৫. ডাইনামিক থাম্বনেইল গ্যালারি জেনারেটর
+            const gallery = document.querySelector('.thumbnail-gallery');
+            if (gallery) {
+              if (product.thumbnails && product.thumbnails.length > 0) {
+                gallery.style.display = 'flex';
+                gallery.innerHTML = ''; // আগের সব থাম্বনেইল মুছে ফেলবে
+                
+                product.thumbnails.forEach(thumb => {
+                  gallery.innerHTML += `<img src="${thumb}" onclick="changeImage('${thumb}')">`;
+                });
+              } else {
+                gallery.style.display = 'none';
+              }
             }
           }
         }
