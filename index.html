@@ -666,6 +666,15 @@ src="https://www.facebook.com/tr?id=3288990567954386&ev=PageView&noscript=1"
       <div class="nav-brand">NMAVERSE</div>
     </div>
   </div>
+
+<div class="hamburger" onclick="toggleMenu()">
+    <svg viewBox="0 0 100 80" width="24" height="24" fill="var(--cream)">
+        <rect width="100" height="12"></rect>
+        <rect y="30" width="100" height="12"></rect>
+        <rect y="60" width="100" height="12"></rect>
+    </svg>
+</div>
+  
   <ul class="nav-links">
     <li><a href="#products">Collection</a></li>
     <li><a href="#why">Why Us</a></li>
@@ -1053,11 +1062,16 @@ src="https://www.facebook.com/tr?id=3288990567954386&ev=PageView&noscript=1"
     function scrollToTop() {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
-  
+// Hamburger Menu Logic
+    function toggleMenu() {
+        var nav = document.querySelector('.nav-links');
+        nav.classList.toggle('active');
+    }  
 </script>
 <button id="backToTopBtn" onclick="scrollToTop()" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 999; font-size: 24px; border: none; outline: none; background-color: #c8102e; color: white; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: 0.3s;">
     ↑
 </button>
+
   
 </body>
 </html>
