@@ -7,7 +7,8 @@ const products = [
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["argentina%20home%20front.webp", "argentina%20home%20back.webp", "argentina%20home%20emblem.webp", "argentina%20home%20detail.webp"]
     },
     {
         id: "argentina-away",
@@ -17,7 +18,8 @@ const products = [
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["argentina%20away%20front.jpg", "Argentina%20away%20back.png", "argentina%20away%20detail.png"]
     },
     {
         id: "brazil-home",
@@ -27,7 +29,8 @@ const products = [
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["brazil%20home%20front.png", "brazil%20home%20back.png", "brazil%20home%20emblem.jpg", "brazil%20home%20detail.jpg"]
     },
     {
         id: "brazil-away",
@@ -37,7 +40,8 @@ const products = [
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["brazil%20away%20front.jpg", "brazil%20away%20back.jpg", "brazil%20away%20emblem.png", "brazil%20away%20detail.png"]
     },
     {
         id: "portugal-home",
@@ -47,7 +51,8 @@ const products = [
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["portugal%20home%20front.png", "portugal%20home%20back.png", "portugal%20home%20emblem.jpg", "portugal%20home%20detail.png"]
     },
     {
         id: "portugal-away",
@@ -57,7 +62,8 @@ const products = [
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["portugal%20away%20front.jpeg", "portugal%20away%20back.jpeg", "portugal%20away%20details%201.jpg"]
     },
     {
         id: "germany-home",
@@ -67,7 +73,8 @@ const products = [
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["germany%20home%20front.png", "germany%20home%20back.png", "germany%20home%20emblem.png", "germany%20home%20detail.png"]
     },
     {
         id: "germany-away",
@@ -77,7 +84,8 @@ const products = [
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["germany%20away%20front.png", "germany%20away%20back.png", "germany%20away%20emblem.png", "germany%20away%20deatil.png"]
     },
     {
         id: "spain-home",
@@ -87,7 +95,8 @@ const products = [
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["spain%20home%20front%20(1).png", "spain%20home%20back%20(1).png", "spain%20home%20emblem%20(1).png", "spain%20home%20detail%20(1).png"]
     },
     {
         id: "spain-away",
@@ -97,7 +106,8 @@ const products = [
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["spain%20away%20front.png", "spain%20away%20back.png", "spain%20away%20emblem.jpg", "spain%20away%20detail.jpg"]
     },
     {
         id: "france-home",
@@ -107,7 +117,8 @@ const products = [
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["france%20home%20front.webp", "france%20home%20back.webp", "france%20home%20emblem.webp", "france%20home%20detail.webp"]
     },
     {
         id: "france-away",
@@ -117,6 +128,7 @@ const products = [
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
         playerOldPrice: "1,200",
-        fanPrice: "850"
+        fanPrice: "850",
+        thumbnails: ["france%20away%20front.webp", "france%20away%20back.webp", "france%20away%20emblem.jpg", "france%20away%20detail.webp"]
     }
 ];
