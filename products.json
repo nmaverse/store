@@ -1,3 +1,20 @@
 {
-  "products": []
+  "products": [
+    {
+      "id": "ENGLAND HOME",
+      "badge": "New Arrival",
+      "image": "/210525_Basictee_1cda7764-ad4a-4f5c-867f-66d2949d0ee5.png",
+      "team": "ENGLAND",
+      "kitType": "HOME KIT 2026",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "580",
+      "description": "ENGLAND soccer jersey with Climacool+ technology for a cool and focused performance.\n\nThe ARGENTINA AWAY KIT 2026 unites soccer heritage with forward-thinking design. Crafted in knit jacquard with a slim, performance fit, it’s built to move with precision. Climacool+ materials wick and manage sweat quickly, helping you stay cool, dry, and comfortable.",
+      "fabricDetails": "• Premium Imported Player Edition\n• Main Material: 100% Polyester (100% Recycled)\n• CLIMACOOL+ technology\n• Sweat-wicking & Quick drying",
+      "thumbnails": [
+        "/profile.png",
+        "/download.png"
+      ]
+    }
+  ]
 }
