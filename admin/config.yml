@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: nmaverse/store
+  branch: main
+
+media_folder: "/" # ছবিগুলো মেইন ডিরেক্টরিতে সেভ হবে
+public_folder: "/"
+
+collections:
+  - name: "store_data"
+    label: "Store Management"
+    files:
+      - label: "Product List"
+        name: "products"
+        file: "products.json"
+        fields:
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            fields:
+              - {label: "Product ID (eg: germany-home)", name: "id", widget: "string"}
+              - {label: "Badge (eg: 🔥 LIMITED)", name: "badge", widget: "string"}
+              - {label: "Main Image", name: "image", widget: "image"}
+              - {label: "Team Name (eg: GERMANY)", name: "team", widget: "string"}
+              - {label: "Kit Type (eg: AWAY KIT 2026)", name: "kitType", widget: "string"}
+              - {label: "Player Edition Price", name: "playerPrice", widget: "string"}
+              - {label: "Player Old Price (Optional)", name: "playerOldPrice", widget: "string", required: false}
+              - {label: "Fan Edition Price", name: "fanPrice", widget: "string"}
+              - {label: "Product Description", name: "description", widget: "markdown"}
+              - {label: "Fabric Details", name: "fabricDetails", widget: "markdown"}
+              - label: "Thumbnails"
+                name: "thumbnails"
+                widget: "list"
+                required: false
+                field: {label: "Image", name: "image", widget: "image"}
