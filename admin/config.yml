@@ -3,9 +3,8 @@ backend:
   repo: nmaverse/store
   branch: main
 
-media_folder: "/" # ছবিগুলো মেইন ডিরেক্টরিতে সেভ হবে
-public_folder: "/"
-
+media_folder: "images"
+public_folder: "images"
 collections:
   - name: "store_data"
     label: "Store Management"
