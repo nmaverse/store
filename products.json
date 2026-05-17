@@ -17,6 +17,19 @@
         "/images/argentina home emblem.webp",
         "/images/argentina home detail.webp"
       ]
+    },
+    {
+      "id": "argentina-away",
+      "badge": "Hot Pick 🔥",
+      "image": "/images/IMG_7578.JPG",
+      "team": "ARGENTINA",
+      "kitType": "AWAY KIT 2026",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "850",
+      "description": "Authentic jersey with sweat-wicking, quick-drying fabric for comfort. A tribute to the spirit of Argentina, the Argentina 26 Away Authentic Jersey captures the passion and artistry of Argentine culture. With its bold swirling design, the jersey is inspired by popular artistic expressions. Designed for those who live and breathe soccer, it combines style with performance. Climacool+ technology helps you stay fresh, cool, and comfortable throughout your game. Crafted with a higher crew neck, this adidas jersey offers a tailored fit that feels locked-in, thanks to body mapping technology. A heat-applied label and UV-print serve as a seal of authenticity",
+      "fabricDetails": "-  Premium Imported Player Edition\n- Main Material: 100% Polyester(100% Recycled)\n-  CLIMACOOL+ technology\n- Sweat-wicking & Quick drying\n- Jacquard knit fabric\n- Product color: Black / Lucid Blue / Blue Burst",
+      "thumbnails": []
     }
   ]
 }
