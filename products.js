@@ -13,7 +13,7 @@ const products = [
     {
         id: "argentina-away",
         badge: "🔥 NEW ARRIVAL",
-        image: "argentina%20away%20poster.webp",
+        image: "Argentina away front.jpg",
         team: "ARGENTINA",
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
@@ -24,7 +24,7 @@ const products = [
     {
         id: "brazil-home",
         badge: "⚽ BEST SELLER",
-        image: "2.webp",
+        image: "brazil home front.png",
         team: "BRAZIL",
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
@@ -35,7 +35,7 @@ const products = [
     {
         id: "brazil-away",
         badge: "🔥 NEW ARRIVAL",
-        image: "brazil%20away%20poster.webp",
+        image: "brazil%20away%20front.jpg",
         team: "BRAZIL",
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
@@ -46,7 +46,7 @@ const products = [
     {
         id: "portugal-home",
         badge: "⚡ THE GOAT'S KIT",
-        image: "3.webp",
+        image: "portugal home front.png",
         team: "PORTUGAL",
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
@@ -68,7 +68,7 @@ const products = [
     {
         id: "germany-home",
         badge: "⭐ BEST DESIGN",
-        image: "4.webp",
+        image: "germany home front.png",
         team: "GERMANY",
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
@@ -79,7 +79,7 @@ const products = [
     {
         id: "germany-away",
         badge: "🔥 NEW ARRIVAL",
-        image: "germany%20away%20poster.webp",
+        image: "germany%20away%20away.png",
         team: "GERMANY",
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
@@ -90,7 +90,7 @@ const products = [
     {
         id: "spain-home",
         badge: "🔥 LIMITED",
-        image: "5.webp",
+        image: "spain home front(1).png",
         team: "SPAIN",
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
@@ -101,7 +101,7 @@ const products = [
     {
         id: "spain-away",
         badge: "🔥 LIMITED",
-        image: "spain%20away%20poster.webp",
+        image: "spain%20away%20front.png",
         team: "SPAIN",
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
@@ -123,7 +123,7 @@ const products = [
     {
         id: "france-away",
         badge: "🔥 LIMITED",
-        image: "france%20away%20poster.webp",
+        image: "france%20away%20front.webp",
         team: "FRANCE",
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
