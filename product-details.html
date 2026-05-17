@@ -217,8 +217,11 @@ This adidas jersey carries the spirit of champions into every moment—whether y
                     document.getElementById('mainImage').alt = currentProduct.team + " " + currentProduct.kitType;
 
                     const priceContainer = document.getElementById('dynamic-price');
-                    let oldPriceHTML = currentProduct.playerOldPrice ? `<del style="color: #888; font-size: 15px; margin-left: 8px; font-weight: normal;">৳${currentProduct.playerOldPrice}</del>` : '';
-                    priceContainer.innerHTML = `৳${currentProduct.playerPrice} ${oldPriceHTML}`;
+if (priceContainer) {
+    let oldPriceHTML = currentProduct.playerOldPrice ? `<del style="color: #888; font-size: 15px; margin-left: 8px; font-weight: normal;">৳${currentProduct.playerOldPrice}</del>` : '';
+    priceContainer.innerHTML = `৳${currentProduct.playerPrice} ${oldPriceHTML}`;
+}
+           
 
                     // ডাইনামিক ডেসক্রিপশন সেটআপ
                     const descBox = document.getElementById('fabric');
