@@ -1,19 +1,21 @@
 {
   "products": [
     {
-      "id": "ENGLAND HOME",
-      "badge": "New Arrival",
-      "image": "/210525_Basictee_1cda7764-ad4a-4f5c-867f-66d2949d0ee5.png",
-      "team": "ENGLAND",
+      "id": "ARGENTINA HOME",
+      "badge": "HOT PICK 🔥",
+      "image": "/images/argentina home front.png",
+      "team": "ARGENTINA",
       "kitType": "HOME KIT 2026",
       "playerPrice": "1100",
       "playerOldPrice": "1200",
-      "fanPrice": "580",
-      "description": "ENGLAND soccer jersey with Climacool+ technology for a cool and focused performance.\n\nThe ARGENTINA AWAY KIT 2026 unites soccer heritage with forward-thinking design. Crafted in knit jacquard with a slim, performance fit, it’s built to move with precision. Climacool+ materials wick and manage sweat quickly, helping you stay cool, dry, and comfortable.",
+      "fanPrice": "850",
+      "description": "Argentina soccer jersey with Climacool+ technology for a cool and focused performance. The Argentina 26 Home Messi Authentic Jersey unites soccer heritage with forward-thinking design. Marking the first appearance of Argentina’s third World Cup winners’ star, it honors the team’s legacy and fearless identity. Crafted in knit jacquard with a slim, performance fit, it’s built to move with precision.",
       "fabricDetails": "• Premium Imported Player Edition\n• Main Material: 100% Polyester (100% Recycled)\n• CLIMACOOL+ technology\n• Sweat-wicking & Quick drying",
       "thumbnails": [
-        "/profile.png",
-        "/download.png"
+        "/images/argentina home front.png",
+        "/images/argentina home back.png",
+        "/images/argentina home emblem.png",
+        "/images/argentina home detail.png"
       ]
     }
   ]
