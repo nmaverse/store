@@ -159,7 +159,7 @@ This adidas jersey carries the spirit of champions into every moment—whether y
 
     </div>
   </div>
-
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="products.js"></script>
 
   <script>
@@ -223,25 +223,25 @@ if (priceContainer) {
 }
            
 
-                    // ডাইনামিক ডেসক্রিপশন সেটআপ
-                    const descBox = document.getElementById('fabric');
-                    if (descBox) {
-                        descBox.innerHTML = currentProduct.description ? currentProduct.description : `
-                        ${currentProduct.team} soccer jersey with Climacool+ technology for a cool and focused performance.<br><br>
-                        The ${currentProduct.team} ${currentProduct.kitType} unites soccer heritage with forward-thinking design. Crafted in knit jacquard with a slim, performance fit, it’s built to move with precision. Climacool+ materials wick and manage sweat quickly, helping you stay cool, dry, and comfortable.
-                        `;
-                    }
+                  // ডাইনামিক ডেসক্রিপশন সেটআপ
+        const descBox = document.getElementById('fabric');
+        if (descBox) {
+            descBox.innerHTML = currentProduct.description ? marked.parse(currentProduct.description) : `
+            ${currentProduct.team} soccer jersey with Climacool+ technology for a cool and focused performance.<br><br>
+            The ${currentProduct.team} ${currentProduct.kitType} unites soccer heritage with forward-thinking design. Crafted in knit jacquard with a slim, performance fit, it’s built to move with precision. Climacool+ materials wick and manage sweat quickly, helping you stay cool, dry, and comfortable.
+            `;
+        }
 
-                    const fabricDetailsBox = document.getElementById('fabric-details');
-                    if (fabricDetailsBox) {
-                        fabricDetailsBox.innerHTML = currentProduct.fabricDetails ? currentProduct.fabricDetails : `
-                        • Premium Imported Player Edition<br>
-                        • Main Material: 100% Polyester (100% Recycled)<br>
-                        • CLIMACOOL+ technology<br>
-                        • Sweat-wicking & Quick drying<br>
-                        • Product color: Official ${currentProduct.team} Colors
-                        `;
-                    }
+        const fabricDetailsBox = document.getElementById('fabric-details');
+        if (fabricDetailsBox) {
+            fabricDetailsBox.innerHTML = currentProduct.fabricDetails ? marked.parse(currentProduct.fabricDetails) : `
+            • Premium Imported Player Edition<br>
+            • Main Material: 100% Polyester (100% Recycled)<br>
+            • CLIMACOOL+ technology<br>
+            • Sweat-wicking & Quick drying<br>
+            • Product color: Official ${currentProduct.team} Colors
+            `;
+        }
 
                     const gallery = document.querySelector('.thumbnail-gallery');
                     if (gallery) {
