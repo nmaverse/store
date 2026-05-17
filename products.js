@@ -79,7 +79,7 @@ const products = [
     {
         id: "germany-away",
         badge: "🔥 NEW ARRIVAL",
-        image: "germany%20away%20away front.png",
+        image: "germany%20away%20front.png",
         team: "GERMANY",
         kitType: "AWAY KIT 2026",
         playerPrice: "1,100",
@@ -90,7 +90,7 @@ const products = [
     {
         id: "spain-home",
         badge: "🔥 LIMITED",
-        image: "spain home front(1).png",
+        image: "spain%20home%20front%20(1).png",
         team: "SPAIN",
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
