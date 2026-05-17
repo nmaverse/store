@@ -181,50 +181,79 @@ This adidas jersey carries the spirit of champions into every moment—whether y
       document.getElementById('mainImage').src = src;
     }
 
-    // 🌟 DYNAMIC MAGIC SCRIPT 🌟
-    document.addEventListener("DOMContentLoaded", () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get('id');
+ // 🌟 DYNAMIC MAGIC SCRIPT 🌟
+ document.addEventListener("DOMContentLoaded", () => {
+     const urlParams = new URLSearchParams(window.location.search);
+     const productId = urlParams.get('id');
 
-        if (productId && typeof products !== 'undefined') {
-          // products.js থেকে নির্দিষ্ট জার্সির তথ্য খুঁজে বের করা
-          const product = products.find(p => p.id === productId);
+     if (productId) {
+         // নতুন এবং পুরোনো ডেটা একসাথে লোড করা হচ্ছে
+         fetch('products.json')
+            .then(response => {
+                if (!response.ok) return { products: [] };
+                return response.json();
+            })
+            .then(data => {
+                const newProducts = data.products || [];
+                const oldProducts = typeof products !== 'undefined' ? products : [];
+                const allProducts = [...oldProducts, ...newProducts];
 
-          if (product) {
-            // ১. ব্রাউজারের ট্যাবের নাম (Title) পরিবর্তন
-            document.title = product.team + " " + product.kitType + " - NMAVERSE";
+                // আইডি মিলিয়ে সঠিক জার্সিটি খুঁজে বের করা
+                currentProduct = allProducts.find(p => p.id === productId);
 
-            // ২. জার্সির নাম পরিবর্তন
-            document.querySelector('.title').innerText = product.team + " " + product.kitType;
+                if (currentProduct) {
+                    document.title = currentProduct.team + " " + currentProduct.kitType + " - NMAVERSE";
+                    document.querySelector('.title').innerText = currentProduct.team + " " + currentProduct.kitType;
+                    document.getElementById('mainImage').src = currentProduct.image;
+                    document.getElementById('mainImage').alt = currentProduct.team + " " + currentProduct.kitType;
 
-            // ৩. মূল ছবি পরিবর্তন
-            document.getElementById('mainImage').src = product.image;
-            document.getElementById('mainImage').alt = product.team + " " + product.kitType;
+                    const priceContainer = document.getElementById('dynamic-price');
+                    let oldPriceHTML = currentProduct.playerOldPrice ? `<del style="color: #888; font-size: 15px; margin-left: 8px; font-weight: normal;">৳${currentProduct.playerOldPrice}</del>` : '';
+                    priceContainer.innerHTML = `৳${currentProduct.playerPrice} ${oldPriceHTML}`;
 
-            // ৪. দাম পরিবর্তন
-            const prices = document.querySelectorAll('.price');
-            if(prices.length >= 2) {
-              let oldPriceHTML = product.playerOldPrice ? `<del style="color: #888; font-size: 15px; margin-left: 8px; font-weight: normal;">৳${product.playerOldPrice}</del>` : '';
-              prices[0].innerHTML = `৳${product.playerPrice} ${oldPriceHTML}`;
-              prices[1].innerText = `৳${product.fanPrice}`;
-            }
-// ৫. ডাইনামিক থাম্বনেইল গ্যালারি জেনারেটর
-            const gallery = document.querySelector('.thumbnail-gallery');
-            if (gallery) {
-              if (product.thumbnails && product.thumbnails.length > 0) {
-                gallery.style.display = 'flex';
-                gallery.innerHTML = ''; // আগের সব থাম্বনেইল মুছে ফেলবে
-                
-                product.thumbnails.forEach(thumb => {
-                  gallery.innerHTML += `<img src="${thumb}" onclick="changeImage('${thumb}')">`;
-                });
-              } else {
-                gallery.style.display = 'none';
-              }
-            }
-          }
-        }
-    });
+                    // ডাইনামিক ডেসক্রিপশন সেটআপ (ড্যাশবোর্ডের ডেটা থাকলে সেটা দেখাবে, না থাকলে ডিফল্টটা)
+                    const descBox = document.getElementById('fabric');
+                    if (descBox) {
+                        descBox.innerHTML = currentProduct.description ? currentProduct.description : `
+                        ${currentProduct.team} soccer jersey with Climacool+ technology for a cool and focused performance.<br><br>
+                        The ${currentProduct.team} ${currentProduct.kitType} unites soccer heritage with forward-thinking design. Crafted in knit jacquard with a slim, performance fit, it’s built to move with precision. Climacool+ materials wick and manage sweat quickly, helping you stay cool, dry, and comfortable.
+                        `;
+                    }
+
+                    const fabricDetailsBox = document.getElementById('fabric-details');
+                    if (fabricDetailsBox) {
+                        fabricDetailsBox.innerHTML = currentProduct.fabricDetails ? currentProduct.fabricDetails : `
+                        • Premium Imported Player Edition<br>
+                        • Main Material: 100% Polyester (100% Recycled)<br>
+                        • CLIMACOOL+ technology<br>
+                        • Sweat-wicking & Quick drying<br>
+                        • Product color: Official ${currentProduct.team} Colors
+                        `;
+                    }
+
+                    const gallery = document.querySelector('.thumbnail-gallery');
+                    if (gallery) {
+                        // থাম্বনেইল হ্যান্ডেলিং
+                        let thumbs = currentProduct.thumbnails || [];
+                        if (thumbs.length > 0 && typeof thumbs[0] === 'object') {
+                            thumbs = thumbs.map(t => t.image); // ড্যাশবোর্ড থেকে আসলে
+                        }
+                        
+                        if (thumbs.length > 0) {
+                            gallery.style.display = 'flex';
+                            gallery.innerHTML = '';
+                            thumbs.forEach(thumb => {
+                                gallery.innerHTML += `<img src="${thumb}" onclick="changeImage('${thumb}')">`;
+                            });
+                        } else {
+                            gallery.style.display = 'none';
+                        }
+                    }
+                }
+            })
+            .catch(error => console.error("Error loading product details:", error));
+     }
+ });
   </script>
 </body>
 </html>
