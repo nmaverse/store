@@ -181,17 +181,23 @@ This adidas jersey carries the spirit of champions into every moment—whether y
       document.getElementById('mainImage').src = src;
     }
 
- // 🌟 DYNAMIC MAGIC SCRIPT 🌟
+// 🌟 DYNAMIC MAGIC SCRIPT 🌟
  document.addEventListener("DOMContentLoaded", () => {
      const urlParams = new URLSearchParams(window.location.search);
      const productId = urlParams.get('id');
 
      if (productId) {
-         // নতুন এবং পুরোনো ডেটা একসাথে লোড করা হচ্ছে
+         // products.json খালি বা ইনভ্যালিড হলেও যেন ক্র্যাশ না করে সেজন্য সেফ টেক্সট ফেচিং
          fetch('products.json')
             .then(response => {
                 if (!response.ok) return { products: [] };
-                return response.json();
+                return response.text().then(text => {
+                    try {
+                        return text ? JSON.parse(text) : { products: [] };
+                    } catch (e) {
+                        return { products: [] }; // ক্র্যাশ না করে খালি অ্যারে রিটার্ন করবে
+                    }
+                });
             })
             .then(data => {
                 const newProducts = data.products || [];
@@ -204,14 +210,17 @@ This adidas jersey carries the spirit of champions into every moment—whether y
                 if (currentProduct) {
                     document.title = currentProduct.team + " " + currentProduct.kitType + " - NMAVERSE";
                     document.querySelector('.title').innerText = currentProduct.team + " " + currentProduct.kitType;
-                    document.getElementById('mainImage').src = currentProduct.image;
+                    
+                    // মূল ছবি সেট করা (%20 ক্লিন করে স্পেসে রূপান্তর করা হচ্ছে)
+                    const mainImgUrl = decodeURIComponent(currentProduct.image);
+                    document.getElementById('mainImage').src = mainImgUrl;
                     document.getElementById('mainImage').alt = currentProduct.team + " " + currentProduct.kitType;
 
                     const priceContainer = document.getElementById('dynamic-price');
                     let oldPriceHTML = currentProduct.playerOldPrice ? `<del style="color: #888; font-size: 15px; margin-left: 8px; font-weight: normal;">৳${currentProduct.playerOldPrice}</del>` : '';
                     priceContainer.innerHTML = `৳${currentProduct.playerPrice} ${oldPriceHTML}`;
 
-                    // ডাইনামিক ডেসক্রিপশন সেটআপ (ড্যাশবোর্ডের ডেটা থাকলে সেটা দেখাবে, না থাকলে ডিফল্টটা)
+                    // ডাইনামিক ডেসক্রিপশন সেটআপ
                     const descBox = document.getElementById('fabric');
                     if (descBox) {
                         descBox.innerHTML = currentProduct.description ? currentProduct.description : `
@@ -236,14 +245,16 @@ This adidas jersey carries the spirit of champions into every moment—whether y
                         // থাম্বনেইল হ্যান্ডেলিং
                         let thumbs = currentProduct.thumbnails || [];
                         if (thumbs.length > 0 && typeof thumbs[0] === 'object') {
-                            thumbs = thumbs.map(t => t.image); // ড্যাশবোর্ড থেকে আসলে
+                            thumbs = thumbs.map(t => t.image);
                         }
                         
                         if (thumbs.length > 0) {
                             gallery.style.display = 'flex';
                             gallery.innerHTML = '';
                             thumbs.forEach(thumb => {
-                                gallery.innerHTML += `<img src="${thumb}" onclick="changeImage('${thumb}')">`;
+                                // 🌟 %20 কে আসল স্পেসে রূপান্তর করার ট্রিক যেন ইমেজ ১০০% লোড হয় 🌟
+                                const cleanThumb = decodeURIComponent(thumb);
+                                gallery.innerHTML += `<img src="${cleanThumb}" onclick="changeImage('${cleanThumb}')">`;
                             });
                         } else {
                             gallery.style.display = 'none';
