@@ -2,7 +2,7 @@ const products = [
     {
         id: "argentina-home",
         badge: "🔥 HOT PICK",
-        image: "1.webp",
+        image: "argentina home front.webp",
         team: "ARGENTINA",
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
@@ -112,7 +112,7 @@ const products = [
     {
         id: "france-home",
         badge: "🔥 LIMITED",
-        image: "6.webp",
+        image: "france home front.webp",
         team: "FRANCE",
         kitType: "HOME KIT 2026",
         playerPrice: "1,100",
