@@ -33,6 +33,41 @@
         "/images/Argentina away front.webp",
         "/images/Argentina away back.webp"
       ]
+    },
+    {
+      "id": "brazil-home",
+      "badge": "Best Seller ⚽",
+      "image": "/images/brazil home front.png",
+      "team": "BRAZIL",
+      "kitType": "HOME KIT 2026",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "850",
+      "description": "**Nike presents**: Brazil's 2026 Home jersey. One of the most recognizable uniforms in soccer, this kit embodies the country's natural beauty and the squad's energetic style of play.",
+      "fabricDetails": "- Premium Imported Player Edition\n-  Main Material: 100% Polyester(100% Recycled)\n-  Nike Dri-FIT Technology\n- Sweat-wicking & Quick drying\n-  Jacquard knit fabric\n- Product color: Canary/Light Menta/Geode Teal",
+      "thumbnails": [
+        "/images/brazil home front.png",
+        "/images/brazil home back.png",
+        "/images/brazil home detail.jpg",
+        "/images/brazil home detail 2.jpg"
+      ]
+    },
+    {
+      "id": "brazil-away",
+      "badge": "New Arrival",
+      "image": "/images/brazil away front.jpg",
+      "team": "BRAZIL",
+      "kitType": "AWAY KIT 2026",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "850",
+      "description": "This brightly coloured shirt is as beautiful as it is threatening. Like a poison dart frog warning their predators, this Replica Jordan Shirt reminds the other nations that they take on Brazil at their own risk.",
+      "fabricDetails": "-  Premium Imported Player Edition\n-  Main Material: 100% Polyester(100% Recycled)\n-  Nike Dri-FIT technology\n-  Sweat-wicking & Quick drying\n-  Jacquard knit fabric\n-  Product color: Old Royal/Black",
+      "thumbnails": [
+        "/images/brazil away emblem.png",
+        "/images/brazil away deatil2.png",
+        "/images/brazil away detail.png"
+      ]
     }
   ]
 }
