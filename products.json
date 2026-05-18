@@ -126,6 +126,43 @@
         "/images/spain home back.webp",
         "/images/spain home emblem.webp"
       ]
+    },
+    {
+      "id": "spain-away",
+      "badge": "The Hot Cake",
+      "image": "/images/spain away front.webp",
+      "team": "SPAIN",
+      "kitType": "AWAY KIT 2026",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "850",
+      "description": "The Spain 26 Away Authentic Jersey showcases Spain’s rich literary heritage with intricate manuscript-inspired graphics, symbolizing the cultural depth of the Spanish language, uniting culture and soccer. Designed for game-day performance, it blends tradition with modern function, incorporating Climacool+ technology to help keep you dry and cool. A slim fit and crew neck deliver a timeless, athletic look. A herringbone tape 3-Stripes provides a clean, sharp finish. Combining heritage with performance, this adidas jersey is a must-have choice for those who value style, comfort and innovation on the field.",
+      "fabricDetails": "- Premium Imported Player Edition\n-  Main Material: 100% Polyester(100% Recycled)\n- Crew neck\n- CLIMACOOL+ technology\n- Sweat-wicking & Quick drying\n- Transfer knit jacquard construction\n-  Product color: Off White",
+      "thumbnails": [
+        "/images/spain away front.webp",
+        "/images/spain away back.webp",
+        "/images/spain away emblem.webp",
+        "/images/spain away detail 1.webp"
+      ]
+    },
+    {
+      "id": "germany-home",
+      "badge": "New Arrival",
+      "image": "/images/germany home front.png",
+      "team": "GERMANY",
+      "kitType": "HOME KIT 2026",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "850",
+      "description": "The Germany 26 Home Authentic Jersey is a symbol of heritage and innovation. Drawing inspiration from iconic moments, this jersey is designed to be the icon of tomorrow. This jersey is crafted with Climacool+ technology. Advanced cooling. With Climacool+ technology, superior engineering and advanced materials unite for a cool, dry, and distraction-free performance. Crafted with precision, the jersey features a contrast color collar and EQT collar with tape, adding a touch of style to your game. The sweat-wicking materials are strategically placed in high sweat zones, helping you feel comfortable throughout the match. adidas branding is subtly integrated with lenticular heat transfer logos and perforated 3-Stripes tape, showcasing the brand's commitment to quality and design. Get ready to make a statement with this cool piece.",
+      "fabricDetails": "- Premium Imported Player Edition\n- Main Material: 100% Polyester(100% Recycled)\n- CLIMACOOL+ technology\n- Sweat-wicking & Quick drying\n- Knit construction\n-  Product color: White",
+      "thumbnails": [
+        "/images/germany home front.png",
+        "/images/germany home back.webp",
+        "/images/germany home emblem.webp",
+        "/images/germany home detail 2.webp",
+        "/images/germany home detail.webp"
+      ]
     }
   ]
 }
