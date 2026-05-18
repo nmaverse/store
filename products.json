@@ -109,6 +109,23 @@
         "/images/portugal away.webp",
         "/images/rn-image_picker_lib_temp_bee329a6-6bb6-4df0-9b0f-5d7ee6bcff05.jpg"
       ]
+    },
+    {
+      "id": "spain-home",
+      "badge": "LIMITED",
+      "image": "/images/spain home front.webp",
+      "team": "SPAIN",
+      "kitType": "HOME KIT 2026",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "850",
+      "description": "The Spain 26 Home Authentic Jersey is a tribute to the elegance and passion of Spanish soccer. Inspired by the vibrant colors of the Spanish flag, this jersey is designed to make a statement both on and off the field. It incorporates adidas’ Climacool+ technology. Advanced cooling. With Climacool+, superior engineering and advanced materials unite for a cool, dry, and distraction-free performance.",
+      "fabricDetails": "- Premium Imported Player Edition\n- Main Material: 100% Polyester(100% Recycled)\n- CLIMACOOL+ technology\n- Sweat-wicking & Quick drying\n- Transfer knit jacquard construction\n- Product color: Club Red-Green Lagoon",
+      "thumbnails": [
+        "/images/spain home front.webp",
+        "/images/spain home back.webp",
+        "/images/spain home emblem.webp"
+      ]
     }
   ]
 }
