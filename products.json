@@ -68,6 +68,46 @@
         "/images/brazil away deatil2.webp",
         "/images/brazil away detail.webp"
       ]
+    },
+    {
+      "id": "portugal-home",
+      "badge": "The GOAT's Kit",
+      "image": "/images/portugal home front.webp",
+      "team": "PORTUGAL",
+      "kitType": "HOME KIT 2026",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "850",
+      "description": "Portugal’s Home Kit channels the energy of the ocean and the intensity of a team ready to make waves on the biggest stage. The iconic red base is layered with a wavy pattern and green accents, a nod to the country’s maritime roots and fearless spirit. It’s a design that speaks to those who were born to explore and live to play por amor à camisola. The match-ready, Authentic version of the jersey is made with PUMA’s ULTRAWEAVE fabric and features an athletic fit for elite-level performance.",
+      "fabricDetails": "• Premium Imported Player Edition\n• Main Material: Rib: 97% Polyester, 3% Elastane Inserts: 100% Polyester Shell: 50% Elastomultiester, 50% Polyester\n• LIGHT:ULTRAWEAVE technology COMFORT: dryCELL and ThermoAdapt technologies\n• Sweat-wicking & Quick drying\n• Jacquard knit fabric\n• Product color: Club Red-Green Lagoon",
+      "thumbnails": [
+        "/images/portugal home front.webp",
+        "/images/portugal home back.webp",
+        "/images/3.webp",
+        "/images/2.webp",
+        "/images/4.webp",
+        "/images/5.webp"
+      ]
+    },
+    {
+      "id": "portugal-away",
+      "badge": "The Ocean's Theme",
+      "image": "/images/portugal away front.webp",
+      "team": "PORTUGAL",
+      "kitType": "AWAY KIT 2026",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "850",
+      "description": "Inspired by the nation’s iconic players, Portugal’s Away Kit arrives in white and lagoon green that tie back to the ocean-inspired Home Kit. Designed for the world’s biggest stage, it connects generations who’ve given everything for the badge. The match-ready, Authentic version of the jersey is made with PUMA’s ULTRAWEAVE fabric and features an athletic fit for elite-level performance",
+      "fabricDetails": "• Premium Imported Player Edition\n• Neck: Crew neck\n• LIGHT:ULTRAWEAVE technology COMFORT: dryCELL and ThermoAdapt technologies\n• Sweat-wicking & Quick drying\n• Main material type: Dobby\n• Product color: PUMA White-Green Lagoon",
+      "thumbnails": [
+        "/images/portugal away front.webp",
+        "/images/portugal away back.webp",
+        "/images/portugal away (3).webp",
+        "/images/portugal away (4).webp",
+        "/images/portugal away (5).webp",
+        "/images/portugal away.webp"
+      ]
     }
   ]
 }
