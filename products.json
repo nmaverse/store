@@ -202,6 +202,27 @@
         "/images/Italy_26_Home_Authentic_Jersey_Blue_JL6934_HM13.webp",
         "/images/Italy_26_Home_Authentic_Jersey_Blue_JL6934_HM9.webp"
       ]
+    },
+    {
+      "id": "portugal-special",
+      "badge": "Black Panther",
+      "image": "/images/captura-de-tela-2025-11-10-135137-75afe48257ca51c67717627936031249-1024-1024.webp",
+      "team": "PORTUGAL",
+      "kitType": "EUSEBIO SPECIAL KIT",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "850",
+      "description": "Panthera Nega, Tribute to The legend",
+      "fabricDetails": "Drycell Fabric",
+      "thumbnails": [
+        "/images/portugal-eusebio-kit (10).jpg",
+        "/images/B76FBC14-48E3-44AA-A882-0992E055B860.webp",
+        "/images/26B4D38D-951C-4A9C-B345-C8A4C3D0052D.webp",
+        "/images/9D4225B0-68F7-45A6-AC66-4088AC671DBF.webp",
+        "/images/2CD419ED-04EE-4B0B-AE65-144A4E7B6C02.webp",
+        "/images/D94F1CFD-CD4A-494C-BEEA-E0E3FFF30F55.webp",
+        "/images/captura-de-tela-2025-11-10-135129-1601750cdc909610d817627936027880-1024-1024.webp"
+      ]
     }
   ]
 }
