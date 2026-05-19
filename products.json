@@ -163,6 +163,25 @@
         "/images/germany home detail 2.webp",
         "/images/germany home detail.webp"
       ]
+    },
+    {
+      "id": "germany-away",
+      "badge": "Limited",
+      "image": "/images/germany away front.png",
+      "team": "GERMANy",
+      "kitType": "AWAT KIT 2026",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "850",
+      "description": "The Germany 26 Away Authentic Jersey blends heritage and cutting-edge technology, inspired by iconic moments in soccer history. Engineered with Climacool+ technology, this jersey wicks and disperses sweat, helping you keep cool, dry and focused during intense games. The slim fit hugs your body allowing unrestricted movement. Featuring adidas branding, club crest and a flag label sign-off, this jersey showcases authenticity and style. Play with confidence in the official game jersey the players wear on the field",
+      "fabricDetails": "- Premium Imported Player Edition\n-  Main Material: 100% Polyester(100% Recycled)\n- CLIMACOOL+ technology\n- V-neck • Sweat-wicking & Quick drying\n-  Jacquard fabric\n-  Product color: Collegiate Navy",
+      "thumbnails": [
+        "/images/germany away front.png",
+        "/images/germany away back.png",
+        "/images/germany away emblem.png",
+        "/images/germany away deatil 2.png",
+        "/images/germany away deatil.png"
+      ]
     }
   ]
 }
