@@ -182,6 +182,26 @@
         "/images/germany away deatil 2.png",
         "/images/germany away deatil.png"
       ]
+    },
+    {
+      "id": "italy-home",
+      "badge": "Rare Beauty",
+      "image": "/images/Italy home.webp",
+      "team": "ITALY",
+      "kitType": "HOME KIT 2026",
+      "playerPrice": "1100",
+      "playerOldPrice": "1200",
+      "fanPrice": "850",
+      "description": "When it comes to soccer, heritage and innovation go hand in hand. The Italy 26 Home Authentic Jersey celebrates the rich cultural legacy of Italian soccer, drawing inspiration from its core foundation to global soccer. This jersey leans into the celebration of the history of the FIGC.",
+      "fabricDetails": "- Slim fit\n- Collar\n- Main Material: 100% Polyester(100% Recycled)\n- Knit fabric\n- CLIMACOOL+ technology\n- adidas branding elements\n- Lenticular heat-transfer club crest\n- Imported\n- Product color: Bold Blue\n- Product code: JL6934",
+      "thumbnails": [
+        "/images/Italy home.webp",
+        "/images/Italy_26_Home_Authentic_Jersey_Blue_JL6934_HM6.webp",
+        "/images/Italy_26_Home_Authentic_Jersey_Blue_JL6934_HM7.webp",
+        "/images/Italy_26_Home_Authentic_Jersey_Blue_JL6934_HM10.webp",
+        "/images/Italy_26_Home_Authentic_Jersey_Blue_JL6934_HM13.webp",
+        "/images/Italy_26_Home_Authentic_Jersey_Blue_JL6934_HM9.webp"
+      ]
     }
   ]
 }
