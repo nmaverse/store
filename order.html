@@ -872,7 +872,7 @@ function toggleDelivery() {
         
         items.forEach((item, index) => {
             const orderNum = index + 1;
-            const team = item.querySelector('select').value;
+            let team = item.querySelector('select').value; if (team === 'Other') {     const manualTeam = item.querySelector('.other-team-input').value;     if (manualTeam.trim() !== '') {         team = manualTeam;     } }
             
             const kitEl = item.querySelector('input[name^="kit"]:checked');
             const kit = kitEl ? kitEl.value : 'Not Selected';
