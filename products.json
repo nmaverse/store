@@ -35,6 +35,27 @@
       ]
     },
     {
+      "id": "argentina-travel",
+      "badge": "POPULAR",
+      "image": "/images/Argentina Travel.png",
+      "team": "ARGENTINA",
+      "kitType": "TRAVEL KIT",
+      "playerPrice": "1150",
+      "playerOldPrice": "1300",
+      "fanPrice": "Not Available",
+      "description": "Impoted Travel kit aka terrace kit of Argentina",
+      "fabricDetails": "Premium Player edition fabrics.",
+      "thumbnails": [
+        "/images/Argentina Travel.webp",
+        "/images/Argentina Travel (3).webp",
+        "/images/Argentina Travel (4).webp",
+        "/images/Argentina Travel (5).webp",
+        "/images/Argentina Travel (2).webp",
+        "/images/Argentina Travel (8).webp",
+        "/images/Argentina Travel (7).webp"
+      ]
+    },
+    {
       "id": "brazil-home",
       "badge": "Best Seller ⚽",
       "image": "/images/brazil home front.webp",
@@ -222,27 +243,6 @@
         "/images/2CD419ED-04EE-4B0B-AE65-144A4E7B6C02.webp",
         "/images/D94F1CFD-CD4A-494C-BEEA-E0E3FFF30F55.webp",
         "/images/captura-de-tela-2025-11-10-135129-1601750cdc909610d817627936027880-1024-1024.webp"
-      ]
-    },
-    {
-      "id": "argentina-travel",
-      "badge": "POPULAR",
-      "image": "/images/Argentina Travel.png",
-      "team": "ARGENTINA",
-      "kitType": "TRAVEL KIT",
-      "playerPrice": "1150",
-      "playerOldPrice": "1300",
-      "fanPrice": "Not Available",
-      "description": "Impoted Travel kit aka terrace kit of Argentina",
-      "fabricDetails": "Premium Player edition fabrics.",
-      "thumbnails": [
-        "/images/Argentina Travel.webp",
-        "/images/Argentina Travel (3).webp",
-        "/images/Argentina Travel (4).webp",
-        "/images/Argentina Travel (5).webp",
-        "/images/Argentina Travel (2).webp",
-        "/images/Argentina Travel (8).webp",
-        "/images/Argentina Travel (7).webp"
       ]
     }
   ]
