@@ -598,7 +598,7 @@
    <div class="customization-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #333;">
     <label style="display: flex; align-items: center; cursor: pointer; font-size: 0.8rem; color: #aaa; letter-spacing: 1px;">
         <input type="checkbox" name="need_customization_1" class="custom-check" onchange="toggleCustomFields(this)" style="margin-right: 10px; width: 16px; height: 16px; accent-color: #ff4444;">
-        ADD CUSTOM NAME & NUMBER
+        ADD CUSTOM NAME & NUMBER (+200৳)
     </label>
     <div class="custom-fields" style="display: none; margin-top: 10px; gap: 10px;">
         <input type="text" name="custom_name_1" class="custom-name-input" placeholder="NAME (e.g. MESSI)" style="flex: 2; padding: 12px; background: transparent; border: 1px solid #333; color: white; text-transform: uppercase; font-family: inherit;">
@@ -678,7 +678,7 @@
       <div class="section-label">Extra Note (Optional)</div>
       <div class="field">
         <label>অতিরিক্ত কিছু জানাতে চাইলে 
-          <span class="hint">ডেলিভারি লোকেশন Hints অথবা অর্ডারের সাথে কোন মেসেজ কার্ড প্রয়োজন হলে</span>
+          <span class="hint">ডেলিভারি লোকেশন Hints অথবা অর্ডারের সাথে কোন মেসেজ কার্ড প্রয়োজন হলে</span>
         </label>
         <textarea id="note" placeholder="(ঐচ্ছিক)"></textarea>
       </div>
@@ -730,7 +730,7 @@
  
    <div style="background: rgba(128, 0, 32, 0.1); border: 1px solid var(--burgundy); padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; color: var(--cream-muted); font-family: 'Barlow';">
     <strong style="color: var(--burgundy-light); display: block; margin-bottom: 5px; font-family: 'Barlow Condensed'; letter-spacing: 1px;">📢 ঘোষণা / ANNOUNCEMENT:</strong>
-    হোম ডেলিভারির ক্ষেত্রে অর্ডার কনফার্ম করার জন্য 01850547796 এই নাম্বারে অগ্রিম ডেলিভারি চার্জ পাঠিয়ে  ট্রানজ্যাকশন আইডি অথবা যে নম্বর থেকে টাকা পাঠানো হয়েছে সেই নম্বরটি উপরের **'Transaction ID'** এর ঘরে দিন অথবা আমাদের হোয়াটসঅ্যাপ বা ফেসবুক পেজে মেসেজ করে পাঠিয়ে দিন।
+    হোম ডেলিভারির ক্ষেত্রে অর্ডার কনফার্ম করার জন্য 01850547796 এই নাম্বারে অগ্রিম ডেলিভারি চার্জ পাঠিয়ে  ট্রানজ্যাকশন আইডি অথবা যে নম্বর থেকে টাকা পাঠানো হয়েছে সেই নম্বরটি উপরের **'Transaction ID'** এর ঘরে দিন অথবা আমাদের হোয়াটসঅ্যাপ বা ফেসবুক পেজে মেসেজ করে পাঠিয়ে দিন।
 </div>
    
     <button type="submit" class="submit-btn" id="submitBtn">
@@ -778,17 +778,19 @@
   const token = '8612024982:AAHm706uMTSlHQbA7kvia0XSFto5Qk8kwgM';
   const chatId = '5378066873';
 
- // কাস্টমাইজেশন বক্স শো/হাইড করার ফাংশন
-function toggleCustomFields(checkbox) {
-    const fieldsContainer = checkbox.closest('.customization-section').querySelector('.custom-fields');
-    if (checkbox.checked) {
-        fieldsContainer.style.display = 'flex';
-    } else {
-        fieldsContainer.style.display = 'none';
-        fieldsContainer.querySelector('.custom-name-input').value = '';
-        fieldsContainer.querySelector('.custom-num-input').value = '';
-    }
-}
+  // কাস্টমাইজেশন বক্স শো/হাইড করার ফাংশন
+  function toggleCustomFields(checkbox) {
+      const fieldsContainer = checkbox.closest('.customization-section').querySelector('.custom-fields');
+      if (checkbox.checked) {
+          fieldsContainer.style.display = 'flex';
+      } else {
+          fieldsContainer.style.display = 'none';
+          fieldsContainer.querySelector('.custom-name-input').value = '';
+          fieldsContainer.querySelector('.custom-num-input').value = '';
+      }
+      calculateTotal();
+  }
+
   function getRadio(name) {
     const el = document.querySelector(`input[name="${name}"]:checked`);
     return el ? el.value : '';
@@ -848,21 +850,21 @@ function toggleCustomFields(checkbox) {
 
     return ok;
   }
-function toggleDelivery() {
-    const method = getRadio('delivery_method');
-    const locSection = document.getElementById('location-section');
-    if (locSection) {
-        locSection.style.display = (method === 'Pickup') ? 'none' : 'block';
-    }
-}
+
+  function toggleDelivery() {
+      const method = getRadio('delivery_method');
+      const locSection = document.getElementById('location-section');
+      if (locSection) {
+          locSection.style.display = (method === 'Pickup') ? 'none' : 'block';
+      }
+      calculateTotal();
+  }
  
   document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
-   if (!validate()) {
-        // বাদ পড়া বা ভুল হওয়া প্রথম ফিল্ডটি খুঁজে বের করা
+    if (!validate()) {
         const firstError = document.querySelector('.error-msg[style*="display: block"]');
         if (firstError) {
-            // ঠিক সেই ফিল্ডটি স্ক্রিনের মাঝখানে এনে দেখানো
             firstError.closest('.field').scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -877,10 +879,6 @@ function toggleDelivery() {
     const name    = document.getElementById('name').value.trim();
     const phone   = document.getElementById('phone').value.trim();
     const address = document.getElementById('address').value.trim();
-    const team    = document.getElementById('team').value;
-    const kit     = getRadio('kit');
-    const size    = getRadio('size');
-    const edition = getRadio('edition');
     const payment = getRadio('payment');
     const advance = document.getElementById('advance').value.trim();
     const txnid   = document.getElementById('txnid').value.trim();
@@ -888,50 +886,60 @@ function toggleDelivery() {
     const deliveryMethod = getRadio('delivery_method');
     const deliveryLoc = (deliveryMethod === 'Pickup') ? 'Chattogram Pickup' : getRadio('location');
    
-// সব জার্সির ডাটা একসাথে করার জন্য Loop
-        let allProductsInfo = '';
-        const items = document.querySelectorAll('.jersey-item');
-        
-        items.forEach((item, index) => {
-            const orderNum = index + 1;
-            let team = item.querySelector('select').value; if (team === 'Other') {     const manualTeam = item.querySelector('.other-team-input').value;     if (manualTeam.trim() !== '') {         team = manualTeam;     } }
-            
-            const kitEl = item.querySelector('input[name^="kit"]:checked');
-            const kit = kitEl ? kitEl.value : 'Not Selected';
-            
-            const sizeEl = item.querySelector('input[name^="size"]:checked');
-            const size = sizeEl ? sizeEl.value : 'Not Selected';
-            
-            const editionEl = item.querySelector('input[name^="edition"]:checked');
-            const edition = editionEl ? editionEl.value : 'Not Selected';
-
-            allProductsInfo += `\n📦 *ORDER #${orderNum}*\n🎽 Team: ${team}\n🏠 Kit: ${kit}\n📐 Size: ${size}\n⭐ Edition: ${edition}\n`;
-        });
-// --- ORDER ID তৈরি (ফোন নম্বরের শেষ ৪ ডিজিট দিয়ে) ---
-        const date = new Date();
-        const dd = String(date.getDate()).padStart(2, '0');
-        const mm = String(date.getMonth() + 1).padStart(2, '0');
-        const yy = String(date.getFullYear()).slice(-2);
-        
-        const phoneInput = document.getElementById('phone').value.trim();
-        const phoneSuffix = phoneInput.length >= 4 ? phoneInput.slice(-4) : Math.floor(Math.random() * 9000 + 1000);
-        
-        const orderId = `${dd}${mm}${yy}-${phoneSuffix}`;
-        
-        // Success বক্সে Order ID দেখানো
-        const displayIdEl = document.getElementById('display-order-id');
-        if (displayIdEl) {
-            displayIdEl.innerText = '#' + orderId;
+    // সব জার্সির ডাটা একসাথে করার জন্য Loop
+    let allProductsInfo = '';
+    const items = document.querySelectorAll('.jersey-item');
+    
+    items.forEach((item, index) => {
+        const orderNum = index + 1;
+        let team = item.querySelector('select').value;
+        if (team === 'Other') {
+            const manualTeam = item.querySelector('.other-team-input').value;
+            if (manualTeam.trim() !== '') { team = manualTeam; }
         }
+        
+        const kitEl = item.querySelector('input[name^="kit"]:checked');
+        const kit = kitEl ? kitEl.value : 'Not Selected';
+        
+        const sizeEl = item.querySelector('input[name^="size"]:checked');
+        const size = sizeEl ? sizeEl.value : 'Not Selected';
+        
+        const editionEl = item.querySelector('input[name^="edition"]:checked');
+        const edition = editionEl ? editionEl.value : 'Not Selected';
 
-        // হিসাবগুলো স্ক্রিন থেকে নেওয়া
-        const subtotalText = document.getElementById('summary-subtotal').innerText;
-        const deliveryText = document.getElementById('summary-delivery').innerText;
-        const totalText = document.getElementById('summary-total').innerText;
-        const advanceText = document.getElementById('summary-advance').innerText;
-        const codText = document.getElementById('summary-cod').innerText;
+        const customCheck = item.querySelector('.custom-check');
+        const hasCustom = customCheck && customCheck.checked;
+        const customNameEl = item.querySelector('.custom-name-input');
+        const customNumEl = item.querySelector('.custom-num-input');
+        const customName = hasCustom && customNameEl ? customNameEl.value.trim() : '';
+        const customNum = hasCustom && customNumEl ? customNumEl.value.trim() : '';
 
-const msg = `🆔 *ORDER ID: #${orderId}*
+        allProductsInfo += `\n📦 *ORDER #${orderNum}*\n🎽 Team: ${team}\n🏠 Kit: ${kit}\n📐 Size: ${size}\n⭐ Edition: ${edition}`;
+        if (hasCustom) {
+            allProductsInfo += `\n✏️ Custom: ${customName || 'N/A'} #${customNum || 'N/A'} (+200৳)`;
+        }
+        allProductsInfo += '\n';
+    });
+
+    // ORDER ID তৈরি
+    const date = new Date();
+    const dd = String(date.getDate()).padStart(2, '0');
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const yy = String(date.getFullYear()).slice(-2);
+    const phoneInput = document.getElementById('phone').value.trim();
+    const phoneSuffix = phoneInput.length >= 4 ? phoneInput.slice(-4) : Math.floor(Math.random() * 9000 + 1000);
+    const orderId = `${dd}${mm}${yy}-${phoneSuffix}`;
+    
+    const displayIdEl = document.getElementById('display-order-id');
+    if (displayIdEl) { displayIdEl.innerText = '#' + orderId; }
+
+    const subtotalText = document.getElementById('summary-subtotal').innerText;
+    const deliveryText = document.getElementById('summary-delivery').innerText;
+    const totalText = document.getElementById('summary-total').innerText;
+    const advanceText = document.getElementById('summary-advance').innerText;
+    const codText = document.getElementById('summary-cod').innerText;
+
+    const msg = `🆔 *ORDER ID: #${orderId}*
 🖤 *NMAVERSE MULTIPLE ORDER*
 ──────────────────
 👤 *Name:* ${name}
@@ -948,6 +956,7 @@ ${appliedPromoCode ? `🎟️ *Promo Code:* ${appliedPromoCode} (-${currentDisco
 🔖 *Cash on Delivery:* ${codText}
 🔖 *TXN ID:* ${txnid}
 ${note ? `\n📝 *Note:* ${note}` : ''}`;
+
     const encoded = encodeURIComponent(msg);
     const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encoded}&parse_mode=Markdown`;
 
@@ -985,228 +994,196 @@ ${note ? `\n📝 *Note:* ${note}` : ''}`;
 
 <script>
 
-function toggleOtherTeam(selectElement) {
-        const otherInput = selectElement.nextElementSibling;
-        if (selectElement.value === 'Other') {
-            otherInput.style.display = 'block';
-            otherInput.required = true;
-        } else {
-            otherInput.style.display = 'none';
-            otherInput.required = false;
-            otherInput.value = '';
-        }
-    }
- 
-  // কাস্টমাইজেশন বক্স শো/হাইড করার ফাংশন
-function toggleCustomFields(checkbox) {
-    const fieldsContainer = checkbox.closest('.customization-section').querySelector('.custom-fields');
-    if (checkbox.checked) {
-        fieldsContainer.style.display = 'flex';
-    } else {
-        fieldsContainer.style.display = 'none';
-        fieldsContainer.querySelector('.custom-name-input').value = '';
-        fieldsContainer.querySelector('.custom-num-input').value = '';
-    }
-} 
- 
- let productCount = 1;
+  function toggleOtherTeam(selectElement) {
+      const otherInput = selectElement.nextElementSibling;
+      if (selectElement.value === 'Other') {
+          otherInput.style.display = 'block';
+          otherInput.required = true;
+      } else {
+          otherInput.style.display = 'none';
+          otherInput.required = false;
+          otherInput.value = '';
+      }
+  }
 
-    function addProduct() {
-        productCount++;
-        const container = document.getElementById('jersey-container');
-        const firstItem = container.querySelector('.jersey-item');
-        
-        // নতুন সেকশন কপি করা
-        const newItem = firstItem.cloneNode(true);
-        newItem.id = `order-item-${productCount}`;
-        
-        // নতুন টাইটেল এবং রিমুভ বাটন যোগ করা
-        newItem.querySelector('h3').innerHTML = `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
-        
-        // সিলেকশন রিসেট করা
-        const selects = newItem.querySelectorAll('select');
-        selects.forEach(s => s.selectedIndex = 0);
-        
-        // রেডিও বাটনগুলো আলাদা করা (যাতে কনফ্লিক্ট না হয়)
-        const radios = newItem.querySelectorAll('input[type="radio"]');
-        radios.forEach(r => {
-            r.checked = false;
-            const originalName = r.name.replace(/_\d+$/, ''); 
-            r.name = originalName + '_' + productCount;
-            const originalId = r.id.replace(/_\d+$/, '');
-            const newId = originalId + '_' + productCount;
-            r.id = newId;
-            const label = r.nextElementSibling;
-            if (label && label.tagName === 'LABEL') {
-                label.setAttribute('for', newId);
-            }
-        });
+  let productCount = 1;
 
-// --- নতুন কাস্টমাইজেশন সেকশন রিসেট করা ---
-const customCheck = newItem.querySelector('.custom-check');
-if (customCheck) {
-    customCheck.checked = false;
-    customCheck.name = 'need_customization_' + productCount;
-}
-const customFields = newItem.querySelector('.custom-fields');
-if (customFields) {
-    customFields.style.display = 'none';
-    const textInput = customFields.querySelector('.custom-name-input');
-    const numInput = customFields.querySelector('.custom-num-input');
-    if (textInput) {
-        textInput.value = '';
-        textInput.name = 'custom_name_' + productCount;
-    }
-    if (numInput) {
-        numInput.value = '';
-        numInput.name = 'custom_number_' + productCount;
-    }
-}
-// ----------------------------------------
+  function addProduct() {
+      productCount++;
+      const container = document.getElementById('jersey-container');
+      const firstItem = container.querySelector('.jersey-item');
+      const newItem = firstItem.cloneNode(true);
+      newItem.id = `order-item-${productCount}`;
+      
+      newItem.querySelector('h3').innerHTML = `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
+      
+      const selects = newItem.querySelectorAll('select');
+      selects.forEach(s => s.selectedIndex = 0);
+      
+      const radios = newItem.querySelectorAll('input[type="radio"]');
+      radios.forEach(r => {
+          r.checked = false;
+          const originalName = r.name.replace(/_\d+$/, '');
+          r.name = originalName + '_' + productCount;
+          const originalId = r.id.replace(/_\d+$/, '');
+          const newId = originalId + '_' + productCount;
+          r.id = newId;
+          const label = r.nextElementSibling;
+          if (label && label.tagName === 'LABEL') {
+              label.setAttribute('for', newId);
+          }
+      });
 
-// --- নতুন কাস্টমাইজেশন সেকশন রিসেট করা ---
-const customCheck = newItem.querySelector('.custom-check');
-if (customCheck) {
-    customCheck.checked = false;
-    customCheck.name = 'need_customization_' + productCount;
-}
-const customFields = newItem.querySelector('.custom-fields');
-if (customFields) {
-    customFields.style.display = 'none';
-    const textInput = customFields.querySelector('.custom-name-input');
-    const numInput = customFields.querySelector('.custom-num-input');
-    if (textInput) {
-        textInput.value = '';
-        textInput.name = 'custom_name_' + productCount;
-    }
-    if (numInput) {
-        numInput.value = '';
-        numInput.name = 'custom_number_' + productCount;
-    }
-}
-// ----------------------------------------
-     
-        container.appendChild(newItem);
-    }
+      const customCheck = newItem.querySelector('.custom-check');
+      if (customCheck) {
+          customCheck.checked = false;
+          customCheck.name = 'need_customization_' + productCount;
+      }
+      const customFields = newItem.querySelector('.custom-fields');
+      if (customFields) {
+          customFields.style.display = 'none';
+          const textInput = customFields.querySelector('.custom-name-input');
+          const numInput = customFields.querySelector('.custom-num-input');
+          if (textInput) { textInput.value = ''; textInput.name = 'custom_name_' + productCount; }
+          if (numInput) { numInput.value = ''; numInput.name = 'custom_number_' + productCount; }
+      }
 
-    // প্রোডাক্ট রিমুভ করার ফাংশন
-    function removeProduct(element) {
-        const itemToRemove = element.closest('.jersey-item');
-        itemToRemove.remove();
-        
-        // টাইটেলগুলো আবার ঠিক করা
-        const items = document.querySelectorAll('.jersey-item');
-        productCount = 0;
-        items.forEach((item) => {
-            productCount++;
-            const h3 = item.querySelector('h3');
-            // যদি রিমুভ বাটন থাকে
-            if (productCount === 1) {
-                h3.innerHTML = `ORDER #${productCount}`;
-            } else {
-                h3.innerHTML = `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
-            }
-        });
-    }
-const PRICES = {
-    'Player Edition': 1199,
-    'Fan Edition': 850
-};
+      container.appendChild(newItem);
+      calculateTotal();
+  }
 
-let currentDiscount = 0;
-    let appliedPromoCode = '';
+  function removeProduct(element) {
+      const itemToRemove = element.closest('.jersey-item');
+      itemToRemove.remove();
+      
+      const items = document.querySelectorAll('.jersey-item');
+      productCount = 0;
+      items.forEach((item) => {
+          productCount++;
+          const h3 = item.querySelector('h3');
+          if (productCount === 1) {
+              h3.innerHTML = `ORDER #${productCount}`;
+          } else {
+              h3.innerHTML = `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
+          }
+      });
+      calculateTotal();
+  }
 
-    // কুপন অ্যাপ্লাই করার ফাংশন
-    function applyPromo() {
-        const inputCode = document.getElementById('promo-code').value.trim().toUpperCase();
-        const msgEl = document.getElementById('promo-msg');
-        const rowEl = document.getElementById('discount-row');
-        const amtEl = document.getElementById('summary-discount');
+  const PRICES = {
+      'Player Edition': 1199,
+      'Fan Edition': 850
+  };
 
-        if (inputCode === 'ILYADIL50') {
-            currentDiscount = 50;
-            appliedPromoCode = inputCode;
-            msgEl.innerText = '✓ 50৳ Discount Applied!';
-            msgEl.style.color = '#4caf50';
-            msgEl.style.display = 'block';
-            if (rowEl) rowEl.style.display = 'flex';
-            if (amtEl) amtEl.innerText = '-50৳';
-        } else if (inputCode === '') {
-            currentDiscount = 0;
-            appliedPromoCode = '';
-            msgEl.style.display = 'none';
-            if (rowEl) rowEl.style.display = 'none';
-        } else {
-            currentDiscount = 0;
-            appliedPromoCode = '';
-            msgEl.innerText = '❌ Invalid Code';
-            msgEl.style.color = '#ff5252';
-            msgEl.style.display = 'block';
-            if (rowEl) rowEl.style.display = 'none';
-        }
-        calculateTotal();
-    }
+  const CUSTOMIZATION_FEE = 200;
 
-    // টোটাল হিসাব করার ফাংশন
-    function calculateTotal() {
-        let subtotal = 0;
-        let breakdownHTML = '';
-        
-        const items = document.querySelectorAll('.jersey-item');
-        items.forEach((item, index) => {
-            const orderNum = index + 1;
-            const team = item.querySelector('select').value || 'Unknown Team';
-            const editionEl = item.querySelector('input[name^="edition"]:checked');
-            const edition = editionEl ? editionEl.value : '';
-            
-            if (edition && PRICES[edition]) {
-                const price = PRICES[edition];
-                subtotal += price;
-                breakdownHTML += `• Order #${orderNum}: ${team} (${edition}) - ${price}৳<br>`;
-            }
-        });
+  let currentDiscount = 0;
+  let appliedPromoCode = '';
 
-        const breakdownBox = document.getElementById('product-breakdown');
-        if (breakdownBox) breakdownBox.innerHTML = breakdownHTML;
+  // ── UPDATED: applyPromo with ILYADIL50 and ILYADIL100 ──
+  function applyPromo() {
+      const inputCode = document.getElementById('promo-code').value.trim().toUpperCase();
+      const msgEl = document.getElementById('promo-msg');
+      const rowEl = document.getElementById('discount-row');
+      const amtEl = document.getElementById('summary-discount');
 
-        const deliveryMethod = getRadio('delivery_method');
-        const location = getRadio('location');
-        let deliveryCharge = 0;
-        
-        if (deliveryMethod === 'Home Delivery') {
-            deliveryCharge = (location === 'Inside CTG (60৳)') ? 60 : 135;
-        }
+      if (inputCode === 'ILYADIL50') {
+          currentDiscount = 50;
+          appliedPromoCode = inputCode;
+          msgEl.innerText = '✓ 50৳ Discount Applied!';
+          msgEl.style.color = '#4caf50';
+          msgEl.style.display = 'block';
+          if (rowEl) rowEl.style.display = 'flex';
+          if (amtEl) amtEl.innerText = '-50৳';
+      } else if (inputCode === 'ILYADIL100') {
+          currentDiscount = 100;
+          appliedPromoCode = inputCode;
+          msgEl.innerText = '✓ 100৳ Discount Applied!';
+          msgEl.style.color = '#4caf50';
+          msgEl.style.display = 'block';
+          if (rowEl) rowEl.style.display = 'flex';
+          if (amtEl) amtEl.innerText = '-100৳';
+      } else if (inputCode === '') {
+          currentDiscount = 0;
+          appliedPromoCode = '';
+          msgEl.style.display = 'none';
+          if (rowEl) rowEl.style.display = 'none';
+      } else {
+          currentDiscount = 0;
+          appliedPromoCode = '';
+          msgEl.innerText = '❌ Invalid Code';
+          msgEl.style.color = '#ff5252';
+          msgEl.style.display = 'block';
+          if (rowEl) rowEl.style.display = 'none';
+      }
+      calculateTotal();
+  }
 
-        // ডিসকাউন্ট বাদ দিয়ে টোটাল হিসাব
-        let total = (subtotal + deliveryCharge) - currentDiscount;
-        if (total < 0) total = 0;
+  // ── UPDATED: calculateTotal with customization fee per jersey ──
+  function calculateTotal() {
+      let subtotal = 0;
+      let customizationTotal = 0;
+      let breakdownHTML = '';
 
-        const paymentMethod = getRadio('payment');
-        let advanceRequired = 0;
-        let codAmount = 0;
+      const items = document.querySelectorAll('.jersey-item');
+      items.forEach((item, index) => {
+          const orderNum = index + 1;
+          const team = item.querySelector('select').value || 'Unknown Team';
+          const editionEl = item.querySelector('input[name^="edition"]:checked');
+          const edition = editionEl ? editionEl.value : '';
+          const customCheck = item.querySelector('.custom-check');
+          const hasCustom = customCheck && customCheck.checked;
 
-        if (paymentMethod === 'Cash on Delivery') {
-            advanceRequired = deliveryCharge;
-            codAmount = subtotal - currentDiscount;
-            if (codAmount < 0) codAmount = 0;
-        } else {
-            advanceRequired = total;
-            codAmount = 0;
-        }
+          if (edition && PRICES[edition]) {
+              const price = PRICES[edition];
+              subtotal += price;
+              const customFee = hasCustom ? CUSTOMIZATION_FEE : 0;
+              customizationTotal += customFee;
+              breakdownHTML += `• Order #${orderNum}: ${team} (${edition}) - ${price}৳${hasCustom ? ` + Customization ${CUSTOMIZATION_FEE}৳` : ''}<br>`;
+          }
+      });
 
-        document.getElementById('summary-subtotal').innerText = subtotal + '৳';
-        document.getElementById('summary-delivery').innerText = deliveryCharge + '৳';
-        document.getElementById('summary-total').innerText = total + '৳';
-        document.getElementById('summary-advance').innerText = advanceRequired + '৳';
-        document.getElementById('summary-cod').innerText = codAmount + '৳';
-        
-        const advanceInput = document.getElementById('advance');
-        if (advanceInput) advanceInput.value = advanceRequired;
-    }
+      const breakdownBox = document.getElementById('product-breakdown');
+      if (breakdownBox) breakdownBox.innerHTML = breakdownHTML;
 
-// যখনই ফর্মে কোনো পরিবর্তন হবে তখনই হিসাব আপডেট হবে
-document.getElementById('orderForm').addEventListener('change', calculateTotal);
- 
+      const deliveryMethod = getRadio('delivery_method');
+      const location = getRadio('location');
+      let deliveryCharge = 0;
+
+      if (deliveryMethod === 'Home Delivery') {
+          deliveryCharge = (location === 'Inside CTG (60৳)') ? 60 : 135;
+      }
+
+      const grandSubtotal = subtotal + customizationTotal;
+      let total = (grandSubtotal + deliveryCharge) - currentDiscount;
+      if (total < 0) total = 0;
+
+      const paymentMethod = getRadio('payment');
+      let advanceRequired = 0;
+      let codAmount = 0;
+
+      if (paymentMethod === 'Cash on Delivery') {
+          advanceRequired = deliveryCharge;
+          codAmount = grandSubtotal - currentDiscount;
+          if (codAmount < 0) codAmount = 0;
+      } else {
+          advanceRequired = total;
+          codAmount = 0;
+      }
+
+      document.getElementById('summary-subtotal').innerText = grandSubtotal + '৳';
+      document.getElementById('summary-delivery').innerText = deliveryCharge + '৳';
+      document.getElementById('summary-total').innerText = total + '৳';
+      document.getElementById('summary-advance').innerText = advanceRequired + '৳';
+      document.getElementById('summary-cod').innerText = codAmount + '৳';
+
+      const advanceInput = document.getElementById('advance');
+      if (advanceInput) advanceInput.value = advanceRequired;
+  }
+
+  // যখনই ফর্মে কোনো পরিবর্তন হবে তখনই হিসাব আপডেট হবে
+  document.getElementById('orderForm').addEventListener('change', calculateTotal);
+
 </script>
 </body>
 </html>
