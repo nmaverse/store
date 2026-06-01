@@ -962,22 +962,23 @@ ${note ? `\n📝 <b>Note:</b> ${note}` : ''}`;
     const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encoded}&parse_mode=HTML`;
 
     fetch(url)
-      .then(res => {
-        if (res.ok) {
-          document.getElementById('orderForm').style.display = 'none';
-          document.getElementById('successBox').style.display = 'block';
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          alert("Error! Please start the bot first.");
-          btn.innerText = "Confirm Order";
-          btn.disabled = false;
-        }
-      })
-      .catch(err => {
-        alert("Network error. Please try again.");
-        btn.innerText = "Confirm Order";
-        btn.disabled = false;
-      });
+  .then(res => res.json())
+  .then(data => {
+    if (data.ok) {
+      document.getElementById('orderForm').style.display = 'none';
+      document.getElementById('successBox').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      alert("Error! Please start the bot first.");
+      btn.innerText = "Confirm Order";
+      btn.disabled = false;
+    }
+  })
+  .catch(err => {
+    alert("Network error. Please try again.");
+    btn.innerText = "Confirm Order";
+    btn.disabled = false;
+  });
   });
 
   function resetForm() {
