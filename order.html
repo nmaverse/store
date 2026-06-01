@@ -594,6 +594,17 @@
 
 </div> 
 </div> 
+
+   <div class="customization-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #333;">
+    <label style="display: flex; align-items: center; cursor: pointer; font-size: 0.8rem; color: #aaa; letter-spacing: 1px;">
+        <input type="checkbox" name="need_customization_1" class="custom-check" onchange="toggleCustomFields(this)" style="margin-right: 10px; width: 16px; height: 16px; accent-color: #ff4444;">
+        ADD CUSTOM NAME & NUMBER
+    </label>
+    <div class="custom-fields" style="display: none; margin-top: 10px; gap: 10px;">
+        <input type="text" name="custom_name_1" class="custom-name-input" placeholder="NAME (e.g. MESSI)" style="flex: 2; padding: 12px; background: transparent; border: 1px solid #333; color: white; text-transform: uppercase; font-family: inherit;">
+        <input type="number" name="custom_number_1" class="custom-num-input" placeholder="NUMBER (e.g. 10)" style="flex: 1; padding: 12px; background: transparent; border: 1px solid #333; color: white; font-family: inherit;">
+    </div>
+</div>
 <div id="add-more-section" style="margin-top: 10px; margin-bottom: 30px;">
     <button type="button" onclick="addProduct()" style="width: 100%; padding: 12px; background: rgba(232, 224, 194, 0.05); border: 1px dashed var(--border); color: var(--cream); border-radius: 8px; cursor: pointer; font-family: 'Barlow Condensed'; font-weight: 600; letter-spacing: 1px;">
         + ADD ANOTHER PRODUCT
@@ -767,6 +778,17 @@
   const token = '8612024982:AAHm706uMTSlHQbA7kvia0XSFto5Qk8kwgM';
   const chatId = '5378066873';
 
+ // কাস্টমাইজেশন বক্স শো/হাইড করার ফাংশন
+function toggleCustomFields(checkbox) {
+    const fieldsContainer = checkbox.closest('.customization-section').querySelector('.custom-fields');
+    if (checkbox.checked) {
+        fieldsContainer.style.display = 'flex';
+    } else {
+        fieldsContainer.style.display = 'none';
+        fieldsContainer.querySelector('.custom-name-input').value = '';
+        fieldsContainer.querySelector('.custom-num-input').value = '';
+    }
+}
   function getRadio(name) {
     const el = document.querySelector(`input[name="${name}"]:checked`);
     return el ? el.value : '';
@@ -975,7 +997,19 @@ function toggleOtherTeam(selectElement) {
         }
     }
  
-    let productCount = 1;
+  // কাস্টমাইজেশন বক্স শো/হাইড করার ফাংশন
+function toggleCustomFields(checkbox) {
+    const fieldsContainer = checkbox.closest('.customization-section').querySelector('.custom-fields');
+    if (checkbox.checked) {
+        fieldsContainer.style.display = 'flex';
+    } else {
+        fieldsContainer.style.display = 'none';
+        fieldsContainer.querySelector('.custom-name-input').value = '';
+        fieldsContainer.querySelector('.custom-num-input').value = '';
+    }
+} 
+ 
+ let productCount = 1;
 
     function addProduct() {
         productCount++;
@@ -1007,7 +1041,51 @@ function toggleOtherTeam(selectElement) {
                 label.setAttribute('for', newId);
             }
         });
-        
+
+// --- নতুন কাস্টমাইজেশন সেকশন রিসেট করা ---
+const customCheck = newItem.querySelector('.custom-check');
+if (customCheck) {
+    customCheck.checked = false;
+    customCheck.name = 'need_customization_' + productCount;
+}
+const customFields = newItem.querySelector('.custom-fields');
+if (customFields) {
+    customFields.style.display = 'none';
+    const textInput = customFields.querySelector('.custom-name-input');
+    const numInput = customFields.querySelector('.custom-num-input');
+    if (textInput) {
+        textInput.value = '';
+        textInput.name = 'custom_name_' + productCount;
+    }
+    if (numInput) {
+        numInput.value = '';
+        numInput.name = 'custom_number_' + productCount;
+    }
+}
+// ----------------------------------------
+
+// --- নতুন কাস্টমাইজেশন সেকশন রিসেট করা ---
+const customCheck = newItem.querySelector('.custom-check');
+if (customCheck) {
+    customCheck.checked = false;
+    customCheck.name = 'need_customization_' + productCount;
+}
+const customFields = newItem.querySelector('.custom-fields');
+if (customFields) {
+    customFields.style.display = 'none';
+    const textInput = customFields.querySelector('.custom-name-input');
+    const numInput = customFields.querySelector('.custom-num-input');
+    if (textInput) {
+        textInput.value = '';
+        textInput.name = 'custom_name_' + productCount;
+    }
+    if (numInput) {
+        numInput.value = '';
+        numInput.name = 'custom_number_' + productCount;
+    }
+}
+// ----------------------------------------
+     
         container.appendChild(newItem);
     }
 
@@ -1031,7 +1109,7 @@ function toggleOtherTeam(selectElement) {
         });
     }
 const PRICES = {
-    'Player Edition': 1100,
+    'Player Edition': 1199,
     'Fan Edition': 850
 };
 
