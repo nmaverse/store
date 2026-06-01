@@ -582,29 +582,28 @@
         </div>
       </div>
 
-      <div class="field">
-        <label>Edition / Quality <span class="req">*</span></label>
-        <div class="choice-grid two">
-          <div class="choice-item"><input type="radio" name="edition" id="ed-player" value="Player Edition"><label for="ed-player">Player Edition</label></div>
-          <div class="choice-item"><input type="radio" name="edition" id="ed-fan" value="Fan Edition"><label for="ed-fan">Fan Edition</label></div>
+<div class="field">
+                <label>Edition / Quality <span class="req">*</span></label>
+                <div class="choice-grid two">
+                  <div class="choice-item"><input type="radio" name="edition" id="ed-player" value="Player Edition"><label for="ed-player">Player Edition</label></div>
+                  <div class="choice-item"><input type="radio" name="edition" id="ed-fan" value="Fan Edition"><label for="ed-fan">Fan Edition</label></div>
+                </div>
+                <div class="error-msg" id="err-edition">Edition সিলেক্ট করুন।</div>
+              </div>
+
+              <div class="customization-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #333;">
+                  <label style="display: flex; align-items: center; cursor: pointer; font-size: 0.8rem; color: #aaa; letter-spacing: 1px;">
+                      <input type="checkbox" name="need_customization_1" class="custom-check" onchange="toggleCustomFields(this)" style="margin-right: 10px; width: 16px; height: 16px; accent-color: #ff4444;">
+                      ADD CUSTOM NAME & NUMBER (+200৳)
+                  </label>
+                  <div class="custom-fields" style="display: none; margin-top: 10px; gap: 10px;">
+                      <input type="text" name="custom_name_1" class="custom-name-input" placeholder="NAME (e.g. RONALDO)" style="flex: 2; padding: 12px; background: transparent; border: 1px solid #333; color: white; text-transform: uppercase; font-family: inherit;">
+                      <input type="number" name="custom_number_1" class="custom-num-input" placeholder="NUMBER (e.g. 7)" style="flex: 1; padding: 12px; background: transparent; border: 1px solid #333; color: white; font-family: inherit;">
+                  </div>
+              </div>
+
+            </div> 
         </div>
-        <div class="error-msg" id="err-edition">Edition সিলেক্ট করুন।</div>
-      </div>
-    </div>
-
-</div> 
-</div> 
-
-   <div class="customization-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #333;">
-    <label style="display: flex; align-items: center; cursor: pointer; font-size: 0.8rem; color: #aaa; letter-spacing: 1px;">
-        <input type="checkbox" name="need_customization_1" class="custom-check" onchange="toggleCustomFields(this)" style="margin-right: 10px; width: 16px; height: 16px; accent-color: #ff4444;">
-        ADD CUSTOM NAME & NUMBER (+200৳)
-    </label>
-    <div class="custom-fields" style="display: none; margin-top: 10px; gap: 10px;">
-        <input type="text" name="custom_name_1" class="custom-name-input" placeholder="NAME (e.g.RONALDO)" style="flex: 2; padding: 12px; background: transparent; border: 1px solid #333; color: white; text-transform: uppercase; font-family: inherit;">
-        <input type="number" name="custom_number_1" class="custom-num-input" placeholder="NUMBER (e.g. 7)" style="flex: 1; padding: 12px; background: transparent; border: 1px solid #333; color: white; font-family: inherit;">
-    </div>
-</div>
 <div id="add-more-section" style="margin-top: 10px; margin-bottom: 30px;">
     <button type="button" onclick="addProduct()" style="width: 100%; padding: 12px; background: rgba(232, 224, 194, 0.05); border: 1px dashed var(--border); color: var(--cream); border-radius: 8px; cursor: pointer; font-family: 'Barlow Condensed'; font-weight: 600; letter-spacing: 1px;">
         + ADD ANOTHER PRODUCT
