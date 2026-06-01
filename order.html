@@ -886,15 +886,15 @@
     const deliveryLoc = (deliveryMethod === 'Pickup') ? 'Chattogram Pickup' : getRadio('location');
    
     // সব জার্সির ডাটা একসাথে করার জন্য Loop
-    let allProductsInfo = '';
+let allProductsInfo = '';
     const items = document.querySelectorAll('.jersey-item');
     
     items.forEach((item, index) => {
         const orderNum = index + 1;
-        let team = item.querySelector('select').value;
-        if (team === 'Other') {
-            const manualTeam = item.querySelector('.other-team-input').value;
-            if (manualTeam.trim() !== '') { team = manualTeam; }
+        let team = item.querySelector('select').value; 
+        if (team === 'Other') {     
+            const manualTeam = item.querySelector('.other-team-input').value;     
+            if (manualTeam.trim() !== '') { team = manualTeam; } 
         }
         
         const kitEl = item.querySelector('input[name^="kit"]:checked');
@@ -906,31 +906,32 @@
         const editionEl = item.querySelector('input[name^="edition"]:checked');
         const edition = editionEl ? editionEl.value : 'Not Selected';
 
+        // Customization check for bot message
         const customCheck = item.querySelector('.custom-check');
-        const hasCustom = customCheck && customCheck.checked;
-        const customNameEl = item.querySelector('.custom-name-input');
-        const customNumEl = item.querySelector('.custom-num-input');
-        const customName = hasCustom && customNameEl ? customNameEl.value.trim() : '';
-        const customNum = hasCustom && customNumEl ? customNumEl.value.trim() : '';
-
-        allProductsInfo += `\n📦 *ORDER #${orderNum}*\n🎽 Team: ${team}\n🏠 Kit: ${kit}\n📐 Size: ${size}\n⭐ Edition: ${edition}`;
-        if (hasCustom) {
-            allProductsInfo += `\n✏️ Custom: ${customName || 'N/A'} #${customNum || 'N/A'} (+200৳)`;
+        let customText = '';
+        if (customCheck && customCheck.checked) {
+            const cName = item.querySelector('.custom-name-input').value.trim().toUpperCase() || 'N/A';
+            const cNum = item.querySelector('.custom-num-input').value.trim() || 'N/A';
+            customText = `\n✍️ <b>Custom:</b> ${cName} - ${cNum}`;
         }
-        allProductsInfo += '\n';
+
+        allProductsInfo += `\n📦 <b>ORDER #${orderNum}</b>\n🎽 Team: ${team}\n🏠 Kit: ${kit}\n📐 Size: ${size}\n⭐ Edition: ${edition}${customText}\n`;
     });
 
-    // ORDER ID তৈরি
     const date = new Date();
     const dd = String(date.getDate()).padStart(2, '0');
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const yy = String(date.getFullYear()).slice(-2);
+    
     const phoneInput = document.getElementById('phone').value.trim();
     const phoneSuffix = phoneInput.length >= 4 ? phoneInput.slice(-4) : Math.floor(Math.random() * 9000 + 1000);
+    
     const orderId = `${dd}${mm}${yy}-${phoneSuffix}`;
     
     const displayIdEl = document.getElementById('display-order-id');
-    if (displayIdEl) { displayIdEl.innerText = '#' + orderId; }
+    if (displayIdEl) {
+        displayIdEl.innerText = '#' + orderId;
+    }
 
     const subtotalText = document.getElementById('summary-subtotal').innerText;
     const deliveryText = document.getElementById('summary-delivery').innerText;
@@ -938,26 +939,27 @@
     const advanceText = document.getElementById('summary-advance').innerText;
     const codText = document.getElementById('summary-cod').innerText;
 
-    const msg = `🆔 *ORDER ID: #${orderId}*
-🖤 *NMAVERSE MULTIPLE ORDER*
+    const msg = `🆔 <b>ORDER ID: #${orderId}</b>
+🖤 <b>NMAVERSE MULTIPLE ORDER</b>
 ──────────────────
-👤 *Name:* ${name}
-📞 *Phone:* ${phone}
-📍 *Address:* ${address}
-🚚 *Delivery:* ${deliveryMethod} (${deliveryLoc})
+👤 <b>Name:</b> ${name}
+📞 <b>Phone:</b> ${phone}
+📍 <b>Address:</b> ${address}
+🚚 <b>Delivery:</b> ${deliveryMethod} (${deliveryLoc})
 ──────────────────${allProductsInfo}──────────────────
-${appliedPromoCode ? `🎟️ *Promo Code:* ${appliedPromoCode} (-${currentDiscount}৳)\n──────────────────\n` : ''}💰 *Sub-total:* ${subtotalText}
-🚚 *Delivery Fee:* ${deliveryText}
-💵 *Total Amount:* ${totalText}
+${appliedPromoCode ? `🎟️ <b>Promo Code:</b> ${appliedPromoCode} (-${currentDiscount}৳)\n──────────────────\n` : ''}💰 <b>Sub-total:</b> ${subtotalText}
+🚚 <b>Delivery Fee:</b> ${deliveryText}
+💵 <b>Total Amount:</b> ${totalText}
 ──────────────────
-💳 *Payment:* ${payment}
-💰 *Advance:* ${advanceText}
-🔖 *Cash on Delivery:* ${codText}
-🔖 *TXN ID:* ${txnid}
-${note ? `\n📝 *Note:* ${note}` : ''}`;
+💳 <b>Payment:</b> ${payment}
+💰 <b>Advance:</b> ${advanceText}
+🔖 <b>Cash on Delivery:</b> ${codText}
+🔖 <b>TXN ID:</b> ${txnid}
+${note ? `\n📝 <b>Note:</b> ${note}` : ''}`;
 
     const encoded = encodeURIComponent(msg);
-    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encoded}&parse_mode=Markdown`;
+    // এখানে parse_mode=HTML করে দেওয়া হয়েছে
+    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encoded}&parse_mode=HTML`;
 
     fetch(url)
       .then(res => {
