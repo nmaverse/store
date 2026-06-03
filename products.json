@@ -244,6 +244,29 @@
         "/images/Italy_26_Home_Authentic_Jersey_Blue_JL6934_HM13.webp",
         "/images/Italy_26_Home_Authentic_Jersey_Blue_JL6934_HM9.webp"
       ]
+    },
+    {
+      "id": "real-madrid-home",
+      "badge": "New In Stock",
+      "image": "/images/JZ7218_01.webp",
+      "team": "REAL MADRID",
+      "kitType": "HOME KIT 26/27",
+      "playerPrice": "1199",
+      "playerOldPrice": "1299",
+      "fanPrice": "850",
+      "description": "Step onto the pitch brimming with confidence in the official Real Madrid 26/27 home jersey. Inspired by the diamonds and pearls of the crown, this jersey features a dark green tone on the sleeves and collar, adding a sophisticated touch to your matchday look.\n\nThe slim fit, developed for elite performance, is crafted from engineered knit jacquard that moves with you. Quick-drying fabrics actively manage sweat, while technical materials promote airflow to keep you comfortable for longer.",
+      "fabricDetails": "- Slim fit\n- Crewneck\n- Main material: 100% polyester (100% recycled)\n- Engineered knit jacquard construction\n- CLIMACOOL+ technology\n- Embroidered Trefoil logo and club crest",
+      "thumbnails": [
+        "/images/JZ7218_01.webp",
+        "/images/JZ7218_02.webp",
+        "/images/JZ7218_11.webp",
+        "/images/JZ7218_10.webp",
+        "/images/JZ7218_12.webp",
+        "/images/JZ7218_17.webp",
+        "/images/JZ7218_10_APPAREL_Photography_HeroMrktngView6.jpg",
+        "/images/JZ7218_17_APPAREL_Photography_HeroMrktngView13.jpg",
+        "/images/JZ7218_13.webp"
+      ]
     }
   ]
 }
