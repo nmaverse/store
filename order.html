@@ -7,169 +7,99 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --burgundy: #800020;
-    --burgundy-light: #a0002a;
-    --burgundy-dark: #5a0016;
-    --cream: #e8e0c2;
-    --cream-muted: #c8bfa0;
-    --bg: #0c0c0c;
-    --bg2: #141414;
-    --bg3: #1c1c1c;
-    --border: rgba(232,224,194,0.1);
-    --border-hover: rgba(128,0,32,0.6);
+    --burgundy: #800020; --burgundy-light: #a0002a; --burgundy-dark: #5a0016;
+    --cream: #e8e0c2; --cream-muted: #c8bfa0;
+    --bg: #0c0c0c; --bg2: #141414; --bg3: #1c1c1c;
+    --border: rgba(232,224,194,0.1); --border-hover: rgba(128,0,32,0.6);
   }
-
   html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--cream);
-    font-family: 'Barlow', sans-serif;
-    font-weight: 400;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  .back-btn {
-    display: flex; align-items: center; justify-content: center;
-    width: 38px; height: 38px;
-    background: rgba(232, 224, 194, 0.05);
-    color: var(--cream); border-radius: 50%; text-decoration: none;
-    transition: all 0.3s ease; border: 1px solid var(--border); margin-right: 12px;
-  }
-  .back-btn:hover { background: var(--cream); color: var(--burgundy); transform: translateX(-3px); }
-
-  .header {
-    background: var(--bg); border-bottom: 1px solid var(--border);
-    padding: 1.25rem 2rem; display: flex; align-items: center;
-    justify-content: space-between; position: sticky; top: 0; z-index: 100;
-  }
-
+  body { background: var(--bg); color: var(--cream); font-family: 'Barlow', sans-serif; font-weight: 400; min-height: 100vh; overflow-x: hidden; }
+  .back-btn-arrow { display: flex; align-items: center; justify-content: center; color: var(--cream); transition: color 0.2s, transform 0.2s; }
+  .back-btn-arrow:hover { color: var(--burgundy-light); transform: translateX(-4px); }
+  .header { background: var(--bg); border-bottom: 1px solid var(--border); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
   .logo-mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
   .logo-img { width: 40px; height: 40px; object-fit: contain; border-radius: 50%; }
   .brand-name { font-family: 'Anton', sans-serif; font-size: 20px; color: var(--cream); letter-spacing: 2px; }
   .header-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--burgundy-light); font-weight: 600; }
-
-  .order-hero {
-    background: var(--burgundy); padding: 3.5rem 2rem 3rem;
-    text-align: center; position: relative; overflow: hidden;
-  }
-  .order-hero::before {
-    content: 'ORDER'; position: absolute; font-family: 'Anton', sans-serif;
-    font-size: clamp(80px, 18vw, 160px); color: rgba(255,255,255,0.04);
-    top: 50%; left: 50%; transform: translate(-50%, -50%);
-    letter-spacing: 8px; pointer-events: none; white-space: nowrap;
-  }
+  .order-hero { background: var(--burgundy); padding: 3.5rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
+  .order-hero::before { content: 'ORDER'; position: absolute; font-family: 'Anton', sans-serif; font-size: clamp(80px, 18vw, 160px); color: rgba(255,255,255,0.04); top: 50%; left: 50%; transform: translate(-50%, -50%); letter-spacing: 8px; pointer-events: none; white-space: nowrap; }
   .order-hero h1 { font-family: 'Anton', sans-serif; font-size: clamp(28px, 6vw, 48px); letter-spacing: 3px; color: var(--cream); text-transform: uppercase; position: relative; }
   .order-hero p { margin-top: 0.75rem; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: rgba(232,224,194,0.6); font-family: 'Barlow Condensed', sans-serif; font-weight: 400; position: relative; }
-
   .form-wrap { max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
-
-  .section-label {
-    font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 4px;
-    text-transform: uppercase; color: var(--burgundy-light); font-weight: 600;
-    margin-bottom: 1.5rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 10px;
-  }
+  .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--burgundy-light); font-weight: 600; margin-bottom: 1.5rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
   .section-label::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--burgundy); }
-
   .form-section { margin-bottom: 2.5rem; }
   .field { margin-bottom: 1.25rem; }
-
   label { display: block; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--cream-muted); font-weight: 500; margin-bottom: 0.5rem; font-family: 'Barlow Condensed', sans-serif; }
   label .req { color: var(--burgundy-light); margin-left: 2px; }
   label .hint { display: block; font-size: 11px; letter-spacing: 0.5px; text-transform: none; color: rgba(200,191,160,0.5); margin-top: 3px; font-family: 'Barlow', sans-serif; font-weight: 400; }
-
-  input[type="text"], input[type="tel"], input[type="number"], textarea, select {
-    width: 100%; background: var(--bg2); border: 1px solid var(--border);
-    color: var(--cream); font-family: 'Barlow', sans-serif; font-size: 15px;
-    font-weight: 300; padding: 0.85rem 1rem; outline: none; border-radius: 2px;
-    transition: border-color 0.2s, background 0.2s; appearance: none; -webkit-appearance: none;
-  }
+  input[type="text"], input[type="tel"], input[type="number"], textarea, select { width: 100%; background: var(--bg2); border: 1px solid var(--border); color: var(--cream); font-family: 'Barlow', sans-serif; font-size: 15px; font-weight: 300; padding: 0.85rem 1rem; outline: none; border-radius: 2px; transition: border-color 0.2s, background 0.2s; appearance: none; -webkit-appearance: none; }
   input::placeholder, textarea::placeholder { color: rgba(200,191,160,0.25); }
   input:focus, textarea:focus, select:focus { border-color: var(--burgundy-light); background: var(--bg3); }
   textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
-
   .select-wrap { position: relative; }
-  .select-wrap::after {
-    content: ''; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
-    width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent;
-    border-top: 6px solid var(--cream-muted); pointer-events: none;
-  }
+  .select-wrap::after { content: ''; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--cream-muted); pointer-events: none; }
   select option { background: #1a0008; color: var(--cream); }
-
   .choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
   .choice-grid.two { grid-template-columns: 1fr 1fr; }
   .choice-grid.three { grid-template-columns: 1fr 1fr 1fr; }
   .choice-grid.five { grid-template-columns: repeat(5, 1fr); }
-
   .choice-item input[type="radio"] { display: none; }
-  .choice-item label {
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    padding: 0.7rem 0.5rem; background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 2px; cursor: pointer; font-size: 13px; font-family: 'Barlow Condensed', sans-serif;
-    letter-spacing: 2px; text-transform: uppercase; color: var(--cream-muted);
-    transition: all 0.15s; font-weight: 400;
-  }
+  .choice-item label { display: flex; align-items: center; justify-content: center; text-align: center; padding: 0.7rem 0.5rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 2px; cursor: pointer; font-size: 13px; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 2px; text-transform: uppercase; color: var(--cream-muted); transition: all 0.15s; font-weight: 400; }
   .choice-item input[type="radio"]:checked + label { background: var(--burgundy-dark); border-color: var(--burgundy); color: var(--cream); }
   .choice-item label:hover { border-color: rgba(128,0,32,0.4); color: var(--cream); }
-
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  @media (max-width: 500px) {
-    .two-col { grid-template-columns: 1fr; }
-    .choice-grid.five { grid-template-columns: repeat(3, 1fr); }
-    .choice-grid.three { grid-template-columns: 1fr 1fr; }
-  }
-
-  .submit-btn {
-    width: 100%; background: var(--burgundy); color: var(--cream); border: none;
-    font-family: 'Anton', sans-serif; font-size: 18px; letter-spacing: 4px;
-    text-transform: uppercase; padding: 1.1rem 2rem; cursor: pointer; border-radius: 2px;
-    transition: background 0.2s, transform 0.1s; margin-top: 1rem; position: relative; overflow: hidden;
-  }
+  @media (max-width: 500px) { .two-col { grid-template-columns: 1fr; } .choice-grid.five { grid-template-columns: repeat(3, 1fr); } .choice-grid.three { grid-template-columns: 1fr 1fr; } }
+  .submit-btn { width: 100%; background: var(--burgundy); color: var(--cream); border: none; font-family: 'Anton', sans-serif; font-size: 18px; letter-spacing: 4px; text-transform: uppercase; padding: 1.1rem 2rem; cursor: pointer; border-radius: 2px; transition: background 0.2s, transform 0.1s; margin-top: 1rem; position: relative; overflow: hidden; }
   .submit-btn:hover { background: var(--burgundy-light); }
   .submit-btn:active { transform: scale(0.99); }
-  .submit-btn.loading { pointer-events: none; opacity: 0.7; }
-
   .divider { height: 1px; background: var(--border); margin: 2.5rem 0; }
-
-  .contact-strip {
-    background: var(--bg2); border: 1px solid var(--border); border-radius: 2px;
-    padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;
-    gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem;
-  }
+  .contact-strip { background: var(--bg2); border: 1px solid var(--border); border-radius: 2px; padding: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; }
   .contact-strip .left p:first-child { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cream-muted); margin-bottom: 4px; }
-  .contact-strip .left p:last-child { font-size: 15px; font-weight: 500; color: var(--cream); }
-
-  .wa-btn {
-    display: inline-flex; align-items: center; gap: 8px; background: transparent;
-    border: 1px solid var(--burgundy); color: var(--cream); font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 0.65rem 1.2rem;
-    text-decoration: none; border-radius: 2px; transition: background 0.15s; font-weight: 600;
-  }
+  .wa-btn { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--burgundy); color: var(--cream); font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 0.65rem 1.2rem; text-decoration: none; border-radius: 2px; transition: background 0.15s; font-weight: 600; }
   .wa-btn:hover { background: var(--burgundy-dark); }
   .wa-icon { width: 16px; height: 16px; fill: #25D366; flex-shrink: 0; }
-
   .footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(200,191,160,0.3); font-family: 'Barlow Condensed', sans-serif; }
 
-  /* ── SUCCESS STATE ── */
+  /* ── SUCCESS BOX ── */
   .success-box { display: none; text-align: center; padding: 4rem 2rem; }
-  .success-box .check {
-    width: 60px; height: 60px; border: 2px solid var(--burgundy); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1.5rem; font-size: 24px; color: var(--burgundy-light);
-  }
+  .success-box .check { width: 60px; height: 60px; border: 2px solid var(--burgundy); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 24px; color: var(--burgundy-light); }
   .success-box h2 { font-family: 'Anton', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--cream); text-transform: uppercase; margin-bottom: 0.75rem; }
   .success-box p { color: var(--cream-muted); font-size: 14px; line-height: 1.7; margin-bottom: 1.5rem; }
+  .success-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+
+  /* ── RECEIPT BUTTON ── */
+  .receipt-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--burgundy); border: none; color: var(--cream); font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 0.75rem 1.4rem; border-radius: 2px; cursor: pointer; font-weight: 600; transition: background 0.15s; }
+  .receipt-btn:hover { background: var(--burgundy-light); }
+
+  /* ── RECEIPT MODAL ── */
+  .receipt-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 999; align-items: center; justify-content: center; padding: 1rem; }
+  .receipt-overlay.active { display: flex; }
+  .receipt-modal { background: #0f0f0f; border: 1px solid rgba(232,224,194,0.15); border-radius: 4px; max-width: 420px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
+  .receipt-close { position: absolute; top: 12px; right: 14px; background: none; border: none; color: var(--cream-muted); font-size: 20px; cursor: pointer; line-height: 1; z-index: 10; }
+  .receipt-close:hover { color: var(--cream); }
+
+  /* ── RECEIPT BODY ── */
+  #receiptContent {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    color: #d4cebc;
+    background: #0c0c0c;
+    padding: 28px 24px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .receipt-download-bar { padding: 14px 20px; border-top: 1px solid rgba(232,224,194,0.08); display: flex; gap: 10px; justify-content: center; background: #111; }
+  .dl-btn { flex: 1; padding: 10px; background: var(--burgundy); color: var(--cream); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-radius: 2px; font-weight: 600; transition: background 0.15s; }
+  .dl-btn:hover { background: var(--burgundy-light); }
+  .dl-btn.outline { background: transparent; border: 1px solid var(--burgundy); }
+  .dl-btn.outline:hover { background: var(--burgundy-dark); }
 
   .error-msg { font-size: 12px; color: #e05555; margin-top: 4px; display: none; font-family: 'Barlow', sans-serif; }
   input.invalid, textarea.invalid, select.invalid { border-color: #a03030 !important; }
-
-  .back-btn-arrow { display: flex; align-items: center; justify-content: center; color: var(--cream); transition: color 0.2s, transform 0.2s; }
-  .back-btn-arrow:hover { color: var(--burgundy-light); transform: translateX(-4px); }
 </style>
   <script type="module" src="./speed-insights.js"></script>
 </head>
@@ -177,10 +107,8 @@
 
 <header class="header">
   <div style="display: flex; align-items: center; gap: 15px;">
-    <a href="index.html" onclick="if(document.referrer.includes(window.location.host)) { event.preventDefault(); history.back(); }" class="back-btn-arrow">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
+    <a href="index.html" onclick="if(document.referrer.includes(window.location.host)){event.preventDefault();history.back();}" class="back-btn-arrow">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     </a>
     <a href="index.html" class="logo-mark">
       <img src="nmaverse logo.png" alt="NMAVERSE" class="logo-img">
@@ -195,12 +123,8 @@
   <p>Dare to Differ &nbsp;·&nbsp; World Cup 2026</p>
 </div>
 
-<!-- ═══════════════════════════════════════════ -->
-<!--              FORM WRAP START               -->
-<!-- ═══════════════════════════════════════════ -->
 <div class="form-wrap">
 
-  <!-- ── ORDER FORM ── -->
   <form id="orderForm" novalidate>
 
     <!-- PERSONAL INFO -->
@@ -212,31 +136,23 @@
         <div class="error-msg" id="err-name">নাম দেওয়া বাধ্যতামূলক।</div>
       </div>
       <div class="field">
-        <label>Phone Number <span class="req">*</span>
-          <span class="hint">WhatsApp আছে এমন নম্বর দিলে সবচেয়ে ভালো।</span>
-        </label>
+        <label>Phone Number <span class="req">*</span><span class="hint">WhatsApp আছে এমন নম্বর দিলে সবচেয়ে ভালো।</span></label>
         <input type="tel" id="phone" placeholder="01XXXXXXXXX" required>
         <div class="error-msg" id="err-phone">ফোন নম্বর দেওয়া বাধ্যতামূলক।</div>
       </div>
       <div class="field">
-        <label>Delivery Address <span class="req">*</span>
-          <span class="hint">বাড়ি/ফ্ল্যাট নম্বর, রাস্তা, এলাকা, জেলা সহ লিখুন।</span>
-        </label>
+        <label>Delivery Address <span class="req">*</span><span class="hint">বাড়ি/ফ্ল্যাট নম্বর, রাস্তা, এলাকা, জেলা সহ লিখুন।</span></label>
         <textarea id="address" placeholder="পূর্ণ ঠিকানা লিখুন..." required></textarea>
         <div class="error-msg" id="err-address">ঠিকানা দেওয়া বাধ্যতামূলক।</div>
       </div>
     </div>
-    <!-- /PERSONAL INFO -->
 
     <!-- JERSEY DETAILS -->
     <div class="form-section">
       <div class="section-label">Jersey Details</div>
-
       <div id="jersey-container">
-        <!-- JERSEY ITEM #1 -->
-        <div class="jersey-item" style="border-bottom: 1px solid var(--border); margin-bottom: 25px; padding-bottom: 10px;">
-          <h3 style="color: var(--cream-muted); font-size: 0.7rem; margin-bottom: 15px; letter-spacing: 2px;">ORDER #1</h3>
-
+        <div class="jersey-item" style="border-bottom:1px solid var(--border);margin-bottom:25px;padding-bottom:10px;">
+          <h3 style="color:var(--cream-muted);font-size:0.7rem;margin-bottom:15px;letter-spacing:2px;">ORDER #1</h3>
           <div class="field">
             <label>Team <span class="req">*</span></label>
             <div class="select-wrap">
@@ -250,11 +166,10 @@
                 <option value="France">🇫🇷 France</option>
                 <option value="Other">🌍 Other (Type Manually)</option>
               </select>
-              <input type="text" class="other-team-input" placeholder="Type your team name here..." style="display: none; margin-top: 10px; width: 100%; box-sizing: border-box; padding: 10px 15px; background: rgba(0,0,0,0.2); border: 1px dashed var(--burgundy); color: white; border-radius: 4px;">
+              <input type="text" class="other-team-input" placeholder="Type your team name here..." style="display:none;margin-top:10px;width:100%;box-sizing:border-box;padding:10px 15px;background:rgba(0,0,0,0.2);border:1px dashed var(--burgundy);color:white;border-radius:4px;">
             </div>
             <div class="error-msg" id="err-team">দল সিলেক্ট করুন।</div>
           </div>
-
           <div class="two-col">
             <div class="field">
               <label>Kit <span class="req">*</span></label>
@@ -276,7 +191,6 @@
               <div class="error-msg" id="err-size">সাইজ সিলেক্ট করুন।</div>
             </div>
           </div>
-
           <div class="field">
             <label>Edition / Quality <span class="req">*</span></label>
             <div class="choice-grid two">
@@ -285,29 +199,24 @@
             </div>
             <div class="error-msg" id="err-edition">Edition সিলেক্ট করুন।</div>
           </div>
-
-          <div class="customization-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #333;">
-            <label style="display: flex; align-items: center; cursor: pointer; font-size: 0.8rem; color: #aaa; letter-spacing: 1px;">
-              <input type="checkbox" name="need_customization_1" class="custom-check" onchange="toggleCustomFields(this)" style="margin-right: 10px; width: 16px; height: 16px; accent-color: #ff4444;">
+          <div class="customization-section" style="margin-top:15px;padding-top:15px;border-top:1px dashed #333;">
+            <label style="display:flex;align-items:center;cursor:pointer;font-size:0.8rem;color:#aaa;letter-spacing:1px;">
+              <input type="checkbox" name="need_customization_1" class="custom-check" onchange="toggleCustomFields(this)" style="margin-right:10px;width:16px;height:16px;accent-color:#ff4444;">
               ADD CUSTOM NAME & NUMBER (+250৳)
             </label>
-            <div class="custom-fields" style="display: none; margin-top: 10px; gap: 10px;">
-              <input type="text" name="custom_name_1" class="custom-name-input" placeholder="NAME (e.g. RONALDO)" style="flex: 2; padding: 12px; background: transparent; border: 1px solid #333; color: white; text-transform: uppercase; font-family: inherit;">
-              <input type="number" name="custom_number_1" class="custom-num-input" placeholder="NUMBER (e.g. 7)" style="flex: 1; padding: 12px; background: transparent; border: 1px solid #333; color: white; font-family: inherit;">
+            <div class="custom-fields" style="display:none;margin-top:10px;gap:10px;">
+              <input type="text" name="custom_name_1" class="custom-name-input" placeholder="NAME (e.g. RONALDO)" style="flex:2;padding:12px;background:transparent;border:1px solid #333;color:white;text-transform:uppercase;font-family:inherit;">
+              <input type="number" name="custom_number_1" class="custom-num-input" placeholder="NUMBER (e.g. 7)" style="flex:1;padding:12px;background:transparent;border:1px solid #333;color:white;font-family:inherit;">
             </div>
           </div>
         </div>
-        <!-- /JERSEY ITEM #1 -->
       </div>
-      <!-- /jersey-container -->
-
-      <div id="add-more-section" style="margin-top: 10px; margin-bottom: 30px;">
-        <button type="button" onclick="addProduct()" style="width: 100%; padding: 12px; background: rgba(232,224,194,0.05); border: 1px dashed var(--border); color: var(--cream); border-radius: 8px; cursor: pointer; font-family: 'Barlow Condensed'; font-weight: 600; letter-spacing: 1px;">
+      <div id="add-more-section" style="margin-top:10px;margin-bottom:30px;">
+        <button type="button" onclick="addProduct()" style="width:100%;padding:12px;background:rgba(232,224,194,0.05);border:1px dashed var(--border);color:var(--cream);border-radius:8px;cursor:pointer;font-family:'Barlow Condensed';font-weight:600;letter-spacing:1px;">
           + ADD ANOTHER PRODUCT
         </button>
       </div>
     </div>
-    <!-- /JERSEY DETAILS -->
 
     <!-- DELIVERY INFO -->
     <div class="form-section">
@@ -315,37 +224,24 @@
       <div class="field">
         <label>Delivery Method <span class="req">*</span></label>
         <div class="choice-grid two">
-          <div class="choice-item">
-            <input type="radio" name="delivery_method" id="method-home" value="Home Delivery" checked onclick="toggleDelivery()">
-            <label for="method-home">Home Delivery</label>
-          </div>
-          <div class="choice-item">
-            <input type="radio" name="delivery_method" id="method-pickup" value="Pickup" onclick="toggleDelivery()">
-            <label for="method-pickup">Pickup (Inside CTG)</label>
-          </div>
+          <div class="choice-item"><input type="radio" name="delivery_method" id="method-home" value="Home Delivery" checked onclick="toggleDelivery()"><label for="method-home">Home Delivery</label></div>
+          <div class="choice-item"><input type="radio" name="delivery_method" id="method-pickup" value="Pickup" onclick="toggleDelivery()"><label for="method-pickup">Pickup (Inside CTG)</label></div>
         </div>
       </div>
       <div class="field" id="location-section">
         <label>Delivery Location <span class="req">*</span></label>
         <div class="choice-grid two">
-          <div class="choice-item">
-            <input type="radio" name="location" id="loc-inside" value="Inside CTG (60৳)" checked>
-            <label for="loc-inside">Inside CTG (60৳)</label>
-          </div>
-          <div class="choice-item">
-            <input type="radio" name="location" id="loc-outside" value="Outside CTG (135৳)">
-            <label for="loc-outside">Outside CTG (135৳)</label>
-          </div>
+          <div class="choice-item"><input type="radio" name="location" id="loc-inside" value="Inside CTG (60৳)" checked><label for="loc-inside">Inside CTG (60৳)</label></div>
+          <div class="choice-item"><input type="radio" name="location" id="loc-outside" value="Outside CTG (135৳)"><label for="loc-outside">Outside CTG (135৳)</label></div>
         </div>
       </div>
     </div>
-    <!-- /DELIVERY INFO -->
 
     <!-- PAYMENT -->
     <div class="form-section">
       <div class="section-label">Payment</div>
       <div class="field">
-        <label>Payment Method <span style="color: var(--cream-muted); letter-spacing: 1px; margin-left: 8px;">(BKASH/NAGAD send money: <b style="color: var(--cream); text-decoration: underline; text-underline-offset: 4px;">01850547796</b>)</span> <span class="req">*</span></label>
+        <label>Payment Method <span style="color:var(--cream-muted);letter-spacing:1px;margin-left:8px;">(BKASH/NAGAD send money: <b style="color:var(--cream);text-decoration:underline;text-underline-offset:4px;">01850547796</b>)</span> <span class="req">*</span></label>
         <div class="choice-grid three">
           <div class="choice-item"><input type="radio" name="payment" id="pay-bkash" value="bKash"><label for="pay-bkash">bKash</label></div>
           <div class="choice-item"><input type="radio" name="payment" id="pay-nagad" value="Nagad"><label for="pay-nagad">Nagad</label></div>
@@ -355,109 +251,97 @@
       </div>
       <div class="two-col">
         <div class="field">
-          <label>Advance Amount (BDT) <span class="req">*</span>
-            <span class="hint">COD হলে 0 লিখুন।</span>
-          </label>
+          <label>Advance Amount (BDT) <span class="req">*</span><span class="hint">COD হলে 0 লিখুন।</span></label>
           <input type="number" id="advance" placeholder="0" min="0" required>
           <div class="error-msg" id="err-advance">পরিমাণ লিখুন।</div>
         </div>
         <div class="field">
-          <label>Transaction ID / Payment No. <span class="req">*</span>
-            <span class="hint">COD হলে N/A লিখুন।</span>
-          </label>
+          <label>Transaction ID / Payment No. <span class="req">*</span><span class="hint">COD হলে N/A লিখুন।</span></label>
           <input type="text" id="txnid" placeholder="TXN ID বা N/A" required>
           <div class="error-msg" id="err-txnid">Transaction ID লিখুন।</div>
         </div>
       </div>
     </div>
-    <!-- /PAYMENT -->
 
     <!-- EXTRA NOTE -->
     <div class="form-section">
       <div class="section-label">Extra Note (Optional)</div>
       <div class="field">
-        <label>অতিরিক্ত কিছু জানাতে চাইলে
-          <span class="hint">ডেলিভারি লোকেশন Hints অথবা অর্ডারের সাথে কোন মেসেজ কার্ড প্রয়োজন হলে</span>
-        </label>
+        <label>অতিরিক্ত কিছু জানাতে চাইলে<span class="hint">ডেলিভারি লোকেশন Hints অথবা অর্ডারের সাথে কোন মেসেজ কার্ড প্রয়োজন হলে</span></label>
         <textarea id="note" placeholder="(ঐচ্ছিক)"></textarea>
       </div>
     </div>
-    <!-- /EXTRA NOTE -->
 
     <!-- PROMO CODE -->
-    <div class="form-section" style="margin-bottom: 20px; background: rgba(128,0,32,0.05); border: 1px dashed var(--burgundy); padding: 15px; border-radius: 8px;">
-      <label style="display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--cream); font-weight: 600; font-family: 'Barlow Condensed'; letter-spacing: 1px;">
+    <div class="form-section" style="margin-bottom:20px;background:rgba(128,0,32,0.05);border:1px dashed var(--burgundy);padding:15px;border-radius:8px;">
+      <label style="display:flex;justify-content:space-between;margin-bottom:10px;color:var(--cream);font-weight:600;font-family:'Barlow Condensed';letter-spacing:1px;">
         <span>PROMO CODE (OPTIONAL)</span>
-        <span id="promo-msg" style="font-size: 13px; font-weight: 600; display: none;"></span>
+        <span id="promo-msg" style="font-size:13px;font-weight:600;display:none;"></span>
       </label>
-      <div style="display: flex; gap: 10px;">
-        <input type="text" id="promo-code" placeholder="Enter code here..." style="margin-bottom: 0; text-transform: uppercase; flex: 1;">
-        <button type="button" onclick="applyPromo()" style="background: var(--burgundy); color: white; border: none; padding: 0 20px; border-radius: 4px; font-family: 'Barlow Condensed'; font-weight: 600; letter-spacing: 1px; cursor: pointer;">APPLY</button>
+      <div style="display:flex;gap:10px;">
+        <input type="text" id="promo-code" placeholder="Enter code here..." style="margin-bottom:0;text-transform:uppercase;flex:1;">
+        <button type="button" onclick="applyPromo()" style="background:var(--burgundy);color:white;border:none;padding:0 20px;border-radius:4px;font-family:'Barlow Condensed';font-weight:600;letter-spacing:1px;cursor:pointer;">APPLY</button>
       </div>
     </div>
-    <!-- /PROMO CODE -->
 
     <!-- PRICE SUMMARY -->
-    <div class="form-section" style="background: rgba(232,224,194,0.05); padding: 20px; border-radius: 8px; border: 1px dashed var(--border); margin-bottom: 20px;">
-      <div class="section-label" style="margin-bottom: 15px;">Price Summary</div>
-      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; font-family: 'Barlow Condensed'; letter-spacing: 1px;">
-        <div style="display: flex; justify-content: space-between;">
-          <span style="color: var(--cream-muted);">Sub-total (Products):</span>
-          <span id="summary-subtotal" style="font-weight: 600;">0৳</span>
+    <div class="form-section" style="background:rgba(232,224,194,0.05);padding:20px;border-radius:8px;border:1px dashed var(--border);margin-bottom:20px;">
+      <div class="section-label" style="margin-bottom:15px;">Price Summary</div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:0.9rem;font-family:'Barlow Condensed';letter-spacing:1px;">
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--cream-muted);">Sub-total (Products):</span><span id="summary-subtotal" style="font-weight:600;">0৳</span></div>
+        <div id="product-breakdown" style="font-size:0.75rem;color:rgba(200,191,160,0.5);margin:-5px 0 10px 15px;line-height:1.5;font-family:'Barlow';"></div>
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--cream-muted);">Delivery Charge:</span><span id="summary-delivery" style="font-weight:600;">0৳</span></div>
+        <div id="discount-row" style="display:none;justify-content:space-between;color:#4CAF50;margin-top:5px;"><span>Discount (Promo):</span><span id="summary-discount" style="font-weight:600;">-0৳</span></div>
+        <div style="height:1px;background:var(--border);margin:5px 0;"></div>
+        <div style="display:flex;justify-content:space-between;font-weight:700;color:var(--cream);font-size:1.1rem;"><span>Total:</span><span id="summary-total">0৳</span></div>
+        <div style="display:flex;justify-content:space-between;color:var(--burgundy-light);margin-top:10px;">
+          <span>Required Advance <small style="font-size:10px;color:var(--cream-muted);opacity:0.8;">(bKash/Nagad: <b style="color:var(--cream);">01850547796</b>)</small>:</span>
+          <span id="summary-advance" style="font-weight:700;">0৳</span>
         </div>
-        <div id="product-breakdown" style="font-size: 0.75rem; color: rgba(200,191,160,0.5); margin: -5px 0 10px 15px; line-height: 1.5; font-family: 'Barlow';"></div>
-        <div style="display: flex; justify-content: space-between;">
-          <span style="color: var(--cream-muted);">Delivery Charge:</span>
-          <span id="summary-delivery" style="font-weight: 600;">0৳</span>
-        </div>
-        <div id="discount-row" style="display: none; justify-content: space-between; color: #4CAF50; margin-top: 5px;">
-          <span>Discount (Promo):</span>
-          <span id="summary-discount" style="font-weight: 600;">-0৳</span>
-        </div>
-        <div style="height: 1px; background: var(--border); margin: 5px 0;"></div>
-        <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--cream); font-size: 1.1rem;">
-          <span>Total:</span>
-          <span id="summary-total">0৳</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; color: var(--burgundy-light); margin-top: 10px;">
-          <span>Required Advance <small style="font-size: 10px; color: var(--cream-muted); opacity: 0.8;"> (bKash/Nagad Send Money: <b style="color: var(--cream); text-decoration: underline; text-underline-offset: 4px;">01850547796</b>)</small>:</span>
-          <span id="summary-advance" style="font-weight: 700;">0৳</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; color: #4CAF50;">
-          <span>Cash on Delivery:</span>
-          <span id="summary-cod" style="font-weight: 700;">0৳</span>
-        </div>
+        <div style="display:flex;justify-content:space-between;color:#4CAF50;"><span>Cash on Delivery:</span><span id="summary-cod" style="font-weight:700;">0৳</span></div>
       </div>
     </div>
-    <!-- /PRICE SUMMARY -->
 
     <!-- ANNOUNCEMENT -->
-    <div style="background: rgba(128,0,32,0.1); border: 1px solid var(--burgundy); padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; color: var(--cream-muted); font-family: 'Barlow';">
-      <strong style="color: var(--burgundy-light); display: block; margin-bottom: 5px; font-family: 'Barlow Condensed'; letter-spacing: 1px;">📢 ঘোষণা / ANNOUNCEMENT:</strong>
+    <div style="background:rgba(128,0,32,0.1);border:1px solid var(--burgundy);padding:15px;border-radius:8px;margin-bottom:20px;font-size:13px;line-height:1.6;color:var(--cream-muted);font-family:'Barlow';">
+      <strong style="color:var(--burgundy-light);display:block;margin-bottom:5px;font-family:'Barlow Condensed';letter-spacing:1px;">📢 ঘোষণা / ANNOUNCEMENT:</strong>
       হোম ডেলিভারির ক্ষেত্রে অর্ডার কনফার্ম করার জন্য 01850547796 এই নাম্বারে অগ্রিম ডেলিভারি চার্জ পাঠিয়ে ট্রানজ্যাকশন আইডি অথবা যে নম্বর থেকে টাকা পাঠানো হয়েছে সেই নম্বরটি উপরের <strong>'Transaction ID'</strong> এর ঘরে দিন অথবা আমাদের হোয়াটসঅ্যাপ বা ফেসবুক পেজে মেসেজ করে পাঠিয়ে দিন।
     </div>
 
-    <button type="submit" class="submit-btn" id="submitBtn">
-      Confirm Order
-    </button>
+    <button type="submit" class="submit-btn" id="submitBtn">Confirm Order</button>
 
   </form>
-  <!-- /ORDER FORM -->
 
-  <!-- ── SUCCESS BOX (form-wrap এর ভেতরে) ── -->
+  <!-- SUCCESS BOX -->
   <div class="success-box" id="successBox">
     <div class="check">✓</div>
     <h2>ORDER SENT!</h2>
-    <p style="color: var(--burgundy-light); font-weight: 700; font-size: 1.1rem; margin-bottom: 15px; font-family: 'Barlow Condensed'; letter-spacing: 1px;">ORDER ID: <span id="display-order-id">#000000-0000</span></p>
+    <p style="color:var(--burgundy-light);font-weight:700;font-size:1.1rem;margin-bottom:8px;font-family:'Barlow Condensed';letter-spacing:1px;">ORDER ID: <span id="display-order-id">#000000-0000</span></p>
     <p>আপনার অর্ডারটি গ্রহন করা হয়েছে।<br>আমরা শীঘ্রই confirm করব। ধন্যবাদ! 🖤</p>
-    <a href="#" onclick="resetForm()" class="wa-btn">আরেকটি অর্ডার দিন</a>
+    <div class="success-actions">
+      <button class="receipt-btn" onclick="openReceipt()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        View Receipt
+      </button>
+      <a href="#" onclick="resetForm()" class="wa-btn">আরেকটি অর্ডার দিন</a>
+    </div>
   </div>
-  <!-- /SUCCESS BOX -->
 
 </div>
-<!-- ═══════════════════════════════════════════ -->
-<!--               FORM WRAP END                -->
-<!-- ═══════════════════════════════════════════ -->
+
+<!-- RECEIPT MODAL -->
+<div class="receipt-overlay" id="receiptOverlay" onclick="closeReceiptOnBg(event)">
+  <div class="receipt-modal">
+    <button class="receipt-close" onclick="closeReceipt()">✕</button>
+    <div id="receiptContent"></div>
+    <div class="receipt-download-bar">
+      <button class="dl-btn outline" onclick="closeReceipt()">Close</button>
+      <button class="dl-btn" onclick="downloadReceipt()">
+        ↓ Save as Image
+      </button>
+    </div>
+  </div>
+</div>
 
 <div class="divider"></div>
 
@@ -465,37 +349,35 @@
   <div class="left">
     <p>সরাসরি কথা বলতে চাইলে</p>
     <p>Chat or Call Us on WhatsApp</p>
-    <div style="height: 1px; background: var(--border); margin: 10px 0; opacity: 0.2;"></div>
+    <div style="height:1px;background:var(--border);margin:10px 0;opacity:0.2;"></div>
     <p>To Get Updates</p>
     <p>Follow Us on Facebook</p>
   </div>
-  <div style="display: flex; flex-direction: column; gap: 10px; justify-content: center;">
-    <a href="https://wa.me/8801609461644" target="_blank" class="wa-btn" style="margin: 0; min-width: 180px;">
-      <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.533 5.859L.057 23.886a.5.5 0 0 0 .611.612l6.102-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 0 1-5.002-1.371l-.36-.214-3.718.904.922-3.629-.235-.374A9.794 9.794 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+  <div style="display:flex;flex-direction:column;gap:10px;justify-content:center;">
+    <a href="https://wa.me/8801609461644" target="_blank" class="wa-btn" style="margin:0;min-width:180px;">
+      <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.533 5.859L.057 23.886a.5.5 0 0 0 .611.612l6.102-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 0 1-5.002-1.371l-.36-.214-3.718.904.922-3.629-.235-.374A9.794 9.794 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
       Chat on WhatsApp
     </a>
-    <a href="https://www.facebook.com/nmaverse.apparel" target="_blank" class="wa-btn" style="border-color: #1877F2; margin: 0; min-width: 180px;">
-      <svg class="wa-icon" style="fill: #1877F2;" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <a href="https://www.facebook.com/nmaverse.apparel" target="_blank" class="wa-btn" style="border-color:#1877F2;margin:0;min-width:180px;">
+      <svg class="wa-icon" style="fill:#1877F2;" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
       Follow on Facebook
     </a>
   </div>
 </div>
 
-<footer class="footer">
-  NMAVERSE &nbsp;·&nbsp; Dare to Differ &nbsp;·&nbsp; @nmaverse.apparel
-</footer>
+<footer class="footer">NMAVERSE &nbsp;·&nbsp; Dare to Differ &nbsp;·&nbsp; @nmaverse.apparel</footer>
 
 <script>
-  const token = '8612024982:AAHm706uMTSlHQbA7kvia0XSFto5Qk8kwgM';
+  const token  = '8612024982:AAHm706uMTSlHQbA7kvia0XSFto5Qk8kwgM';
   const chatId = '5378066873';
 
+  // ── stored order data for receipt ──
+  let lastOrderData = null;
+
   function toggleCustomFields(checkbox) {
-    const fieldsContainer = checkbox.closest('.customization-section').querySelector('.custom-fields');
-    fieldsContainer.style.display = checkbox.checked ? 'flex' : 'none';
-    if (!checkbox.checked) {
-      fieldsContainer.querySelector('.custom-name-input').value = '';
-      fieldsContainer.querySelector('.custom-num-input').value = '';
-    }
+    const fc = checkbox.closest('.customization-section').querySelector('.custom-fields');
+    fc.style.display = checkbox.checked ? 'flex' : 'none';
+    if (!checkbox.checked) { fc.querySelector('.custom-name-input').value = ''; fc.querySelector('.custom-num-input').value = ''; }
     calculateTotal();
   }
 
@@ -504,101 +386,82 @@
     return el ? el.value : '';
   }
 
-  function showError(id, show) {
-    document.getElementById(id).style.display = show ? 'block' : 'none';
-  }
-
-  function setInvalid(id, invalid) {
-    const el = document.getElementById(id);
-    if (el) el.classList.toggle('invalid', invalid);
-  }
+  function showError(id, show) { document.getElementById(id).style.display = show ? 'block' : 'none'; }
+  function setInvalid(id, invalid) { const el = document.getElementById(id); if (el) el.classList.toggle('invalid', invalid); }
 
   function validate() {
     let ok = true;
-    const name = document.getElementById('name').value.trim();
-    showError('err-name', !name); setInvalid('name', !name); if (!name) ok = false;
-    const phone = document.getElementById('phone').value.trim();
-    showError('err-phone', !phone); setInvalid('phone', !phone); if (!phone) ok = false;
-    const address = document.getElementById('address').value.trim();
-    showError('err-address', !address); setInvalid('address', !address); if (!address) ok = false;
-    const team = document.getElementById('team').value;
-    showError('err-team', !team); setInvalid('team', !team); if (!team) ok = false;
-    const kit = getRadio('kit'); showError('err-kit', !kit); if (!kit) ok = false;
-    const size = getRadio('size'); showError('err-size', !size); if (!size) ok = false;
-    const edition = getRadio('edition'); showError('err-edition', !edition); if (!edition) ok = false;
-    const payment = getRadio('payment'); showError('err-payment', !payment); if (!payment) ok = false;
-    const advance = document.getElementById('advance').value.trim();
-    showError('err-advance', !advance); setInvalid('advance', !advance); if (!advance) ok = false;
-    const txnid = document.getElementById('txnid').value.trim();
-    showError('err-txnid', !txnid); setInvalid('txnid', !txnid); if (!txnid) ok = false;
+    const name = document.getElementById('name').value.trim(); showError('err-name',!name); setInvalid('name',!name); if(!name) ok=false;
+    const phone = document.getElementById('phone').value.trim(); showError('err-phone',!phone); setInvalid('phone',!phone); if(!phone) ok=false;
+    const address = document.getElementById('address').value.trim(); showError('err-address',!address); setInvalid('address',!address); if(!address) ok=false;
+    const team = document.getElementById('team').value; showError('err-team',!team); setInvalid('team',!team); if(!team) ok=false;
+    const kit = getRadio('kit'); showError('err-kit',!kit); if(!kit) ok=false;
+    const size = getRadio('size'); showError('err-size',!size); if(!size) ok=false;
+    const edition = getRadio('edition'); showError('err-edition',!edition); if(!edition) ok=false;
+    const payment = getRadio('payment'); showError('err-payment',!payment); if(!payment) ok=false;
+    const advance = document.getElementById('advance').value.trim(); showError('err-advance',!advance); setInvalid('advance',!advance); if(!advance) ok=false;
+    const txnid = document.getElementById('txnid').value.trim(); showError('err-txnid',!txnid); setInvalid('txnid',!txnid); if(!txnid) ok=false;
     return ok;
   }
 
   function toggleDelivery() {
     const method = getRadio('delivery_method');
-    const locSection = document.getElementById('location-section');
-    if (locSection) locSection.style.display = (method === 'Pickup') ? 'none' : 'block';
+    const loc = document.getElementById('location-section');
+    if (loc) loc.style.display = method === 'Pickup' ? 'none' : 'block';
     calculateTotal();
   }
 
   document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
     if (!validate()) {
-      const firstError = document.querySelector('.error-msg[style*="display: block"]');
-      if (firstError) firstError.closest('.field').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      else window.scrollTo({ top: 0, behavior: 'smooth' });
+      const firstErr = document.querySelector('.error-msg[style*="display: block"]');
+      if (firstErr) firstErr.closest('.field').scrollIntoView({ behavior:'smooth', block:'center' });
+      else window.scrollTo({ top:0, behavior:'smooth' });
       return;
     }
 
     const btn = document.getElementById('submitBtn');
-    btn.innerText = "Sending Order...";
-    btn.disabled = true;
+    btn.innerText = "Sending Order..."; btn.disabled = true;
 
-    const name    = document.getElementById('name').value.trim();
-    const phone   = document.getElementById('phone').value.trim();
-    const address = document.getElementById('address').value.trim();
-    const payment = getRadio('payment');
-    const advance = document.getElementById('advance').value.trim();
-    const txnid   = document.getElementById('txnid').value.trim();
-    const note    = document.getElementById('note').value.trim();
+    const name           = document.getElementById('name').value.trim();
+    const phone          = document.getElementById('phone').value.trim();
+    const address        = document.getElementById('address').value.trim();
+    const payment        = getRadio('payment');
+    const advance        = document.getElementById('advance').value.trim();
+    const txnid          = document.getElementById('txnid').value.trim();
+    const note           = document.getElementById('note').value.trim();
     const deliveryMethod = getRadio('delivery_method');
-    const deliveryLoc = (deliveryMethod === 'Pickup') ? 'Chattogram Pickup' : getRadio('location');
+    const deliveryLoc    = deliveryMethod === 'Pickup' ? 'Chattogram Pickup' : getRadio('location');
 
-    let allProductsInfo = '';
-    const items = document.querySelectorAll('.jersey-item');
-    items.forEach((item, index) => {
-      const orderNum = index + 1;
+    // collect products
+    const products = [];
+    document.querySelectorAll('.jersey-item').forEach((item, idx) => {
       let team = item.querySelector('select').value;
-      if (team === 'Other') {
-        const manualTeam = item.querySelector('.other-team-input').value;
-        if (manualTeam.trim() !== '') team = manualTeam;
-      }
-      const kitEl = item.querySelector('input[name^="kit"]:checked');
-      const kit = kitEl ? kitEl.value : 'Not Selected';
-      const sizeEl = item.querySelector('input[name^="size"]:checked');
-      const size = sizeEl ? sizeEl.value : 'Not Selected';
+      if (team === 'Other') { const mt = item.querySelector('.other-team-input').value; if (mt.trim()) team = mt; }
+      const kitEl     = item.querySelector('input[name^="kit"]:checked');
+      const sizeEl    = item.querySelector('input[name^="size"]:checked');
       const editionEl = item.querySelector('input[name^="edition"]:checked');
-      const edition = editionEl ? editionEl.value : 'Not Selected';
-      const customCheck = item.querySelector('.custom-check');
-      let customText = '';
-      if (customCheck && customCheck.checked) {
-        const cName = item.querySelector('.custom-name-input').value.trim().toUpperCase() || 'N/A';
-        const cNum = item.querySelector('.custom-num-input').value.trim() || 'N/A';
-        customText = `\n✍️ <b>Custom:</b> ${cName} - ${cNum}`;
-      }
-      allProductsInfo += `\n📦 <b>ORDER #${orderNum}</b>\n🎽 Team: ${team}\n🏠 Kit: ${kit}\n📐 Size: ${size}\n⭐ Edition: ${edition}${customText}\n`;
+      const customChk = item.querySelector('.custom-check');
+      const hasCustom = customChk && customChk.checked;
+      const cName     = hasCustom ? (item.querySelector('.custom-name-input').value.trim().toUpperCase() || 'N/A') : '';
+      const cNum      = hasCustom ? (item.querySelector('.custom-num-input').value.trim() || 'N/A') : '';
+      products.push({
+        num: idx + 1,
+        team, kit: kitEl ? kitEl.value : 'N/A',
+        size: sizeEl ? sizeEl.value : 'N/A',
+        edition: editionEl ? editionEl.value : 'N/A',
+        hasCustom, cName, cNum
+      });
     });
 
     const date = new Date();
-    const dd = String(date.getDate()).padStart(2, '0');
-    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const dd = String(date.getDate()).padStart(2,'0');
+    const mm = String(date.getMonth()+1).padStart(2,'0');
     const yy = String(date.getFullYear()).slice(-2);
-    const phoneInput = document.getElementById('phone').value.trim();
-    const phoneSuffix = phoneInput.length >= 4 ? phoneInput.slice(-4) : Math.floor(Math.random() * 9000 + 1000);
+    const phoneSuffix = phone.length >= 4 ? phone.slice(-4) : Math.floor(Math.random()*9000+1000);
     const orderId = `${dd}${mm}${yy}-${phoneSuffix}`;
 
-    const displayIdEl = document.getElementById('display-order-id');
-    if (displayIdEl) displayIdEl.innerText = '#' + orderId;
+    document.getElementById('display-order-id').innerText = '#' + orderId;
 
     const subtotalText = document.getElementById('summary-subtotal').innerText;
     const deliveryText = document.getElementById('summary-delivery').innerText;
@@ -606,8 +469,23 @@
     const advanceText  = document.getElementById('summary-advance').innerText;
     const codText      = document.getElementById('summary-cod').innerText;
 
+    // save for receipt
+    lastOrderData = {
+      orderId, name, phone, address, deliveryMethod, deliveryLoc,
+      products, payment, advance, txnid, note,
+      subtotalText, deliveryText, totalText, advanceText, codText,
+      promoCode: appliedPromoCode, discount: currentDiscount
+    };
+
+    // telegram msg
+    let allProductsInfo = '';
+    products.forEach(p => {
+      const customText = p.hasCustom ? `\n✍️ <b>Custom:</b> ${p.cName} - ${p.cNum}` : '';
+      allProductsInfo += `\n📦 <b>ORDER #${p.num}</b>\n🎽 Team: ${p.team}\n🏠 Kit: ${p.kit}\n📐 Size: ${p.size}\n⭐ Edition: ${p.edition}${customText}\n`;
+    });
+
     const msg = `🆔 <b>ORDER ID: #${orderId}</b>
-🖤 <b>NMAVERSE MULTIPLE ORDER</b>
+🖤 <b>NMAVERSE ORDER</b>
 ──────────────────
 👤 <b>Name:</b> ${name}
 📞 <b>Phone:</b> ${phone}
@@ -624,26 +502,23 @@ ${appliedPromoCode ? `🎟️ <b>Promo Code:</b> ${appliedPromoCode} (-${current
 🔖 <b>TXN ID:</b> ${txnid}
 ${note ? `\n📝 <b>Note:</b> ${note}` : ''}`;
 
-    const encoded = encodeURIComponent(msg);
-    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encoded}&parse_mode=HTML`;
+    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(msg)}&parse_mode=HTML`;
 
     fetch(url)
-      .then(res => res.json())
+      .then(r => r.json())
       .then(data => {
         if (data.ok) {
           document.getElementById('orderForm').style.display = 'none';
           document.getElementById('successBox').style.display = 'block';
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          window.scrollTo({ top:0, behavior:'smooth' });
         } else {
           alert("Error! Please start the bot first.");
-          btn.innerText = "Confirm Order";
-          btn.disabled = false;
+          btn.innerText = "Confirm Order"; btn.disabled = false;
         }
       })
-      .catch(err => {
+      .catch(() => {
         alert("Network error. Please try again.");
-        btn.innerText = "Confirm Order";
-        btn.disabled = false;
+        btn.innerText = "Confirm Order"; btn.disabled = false;
       });
   });
 
@@ -654,21 +529,187 @@ ${note ? `\n📝 <b>Note:</b> ${note}` : ''}`;
     document.querySelectorAll('.error-msg').forEach(e => e.style.display = 'none');
     document.querySelectorAll('.invalid').forEach(e => e.classList.remove('invalid'));
     const btn = document.getElementById('submitBtn');
-    btn.disabled = false;
-    btn.innerText = "Confirm Order";
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    btn.disabled = false; btn.innerText = "Confirm Order";
+    window.scrollTo({ top:0, behavior:'smooth' });
   }
 
-  function toggleOtherTeam(selectElement) {
-    const otherInput = selectElement.nextElementSibling;
-    if (selectElement.value === 'Other') {
-      otherInput.style.display = 'block';
-      otherInput.required = true;
-    } else {
-      otherInput.style.display = 'none';
-      otherInput.required = false;
-      otherInput.value = '';
+  // ══════════════════════════════════════
+  //           RECEIPT FUNCTIONS
+  // ══════════════════════════════════════
+
+  function pad(str, len, right) {
+    str = String(str);
+    if (right) return str.padEnd(len);
+    return str.padStart(len);
+  }
+
+  function buildReceiptText(d) {
+    const W = 38;
+    const line  = '─'.repeat(W);
+    const dline = '═'.repeat(W);
+
+    let t = '';
+    const center = s => { const sp = Math.max(0, Math.floor((W - s.length) / 2)); return ' '.repeat(sp) + s; };
+
+    t += center('N M A V E R S E') + '\n';
+    t += center('Dare To Differ') + '\n';
+    t += dline + '\n';
+    t += 'ORDER CONFIRMATION\n';
+    t += 'Order ID : #' + d.orderId + '\n';
+    t += line + '\n';
+    t += 'CUSTOMER\n';
+    t += 'Name     : ' + d.name + '\n';
+    t += 'Phone    : ' + d.phone + '\n';
+    t += 'Delivery : ' + d.deliveryMethod + ' / ' + d.deliveryLoc + '\n';
+    t += line + '\n';
+
+    // items
+    t += pad('SL', 3, true) + ' ' + pad('DESCRIPTION', 25, true) + ' ' + pad('QTY', 3) + '\n';
+    t += line + '\n';
+    d.products.forEach(p => {
+      const sl = pad(String(p.num).padStart(2,'0'), 3, true);
+      const desc1 = p.team + ' ' + p.kit + ' Kit';
+      const desc2 = p.edition + ' | ' + p.size;
+      t += sl + ' ' + pad(desc1, 25, true) + ' ' + pad('1', 3) + '\n';
+      t += '    ' + desc2 + '\n';
+      if (p.hasCustom) t += '    Custom Font: ' + p.cNum + ' ' + p.cName + '\n';
+    });
+    t += line + '\n';
+
+    // price breakdown
+    t += pad('DESCRIPTION', 18, true) + ' ' + pad('MRP', 5) + ' ' + pad('Disc', 5) + ' ' + pad('Amt', 5) + '\n';
+    t += line + '\n';
+
+    // group by edition
+    const groups = {};
+    d.products.forEach(p => {
+      const key = p.team + ' ' + p.edition.replace(' Edition','');
+      if (!groups[key]) groups[key] = { price: PRICES[p.edition] || 0, count: 0, edition: p.edition };
+      groups[key].count++;
+    });
+
+    let customCount = d.products.filter(p => p.hasCustom).length;
+    let totalMRP = 0;
+
+    Object.entries(groups).forEach(([key, g]) => {
+      const mrp = g.price * g.count;
+      totalMRP += mrp;
+      const label = key + (g.count > 1 ? ' ×' + g.count : '');
+      const priceLabel = '(' + g.price + '/pc)';
+      t += label + '\n';
+      t += pad(priceLabel, 14, true) + ' ' + pad(mrp.toLocaleString(), 5) + '  ' + pad('—', 4) + ' ' + pad(mrp.toLocaleString(), 5) + '\n';
+    });
+
+    if (customCount > 0) {
+      const customMRP = CUSTOMIZATION_FEE * customCount;
+      totalMRP += customMRP;
+      t += 'Custom Font' + (customCount > 1 ? ' ×' + customCount : '') + '\n';
+      t += pad('(' + CUSTOMIZATION_FEE + '/pc)', 14, true) + ' ' + pad(customMRP.toLocaleString(), 5) + '  ' + pad('—', 4) + ' ' + pad(customMRP.toLocaleString(), 5) + '\n';
     }
+
+    t += line + '\n';
+
+    const subtotalNum = parseInt(d.subtotalText) || 0;
+    const deliveryNum = parseInt(d.deliveryText) || 0;
+    const totalNum    = parseInt(d.totalText) || 0;
+
+    t += pad('Sub Total', 26, true) + ' ' + pad(subtotalNum.toLocaleString(), 7) + '\n';
+
+    if (d.promoCode && d.discount > 0) {
+      t += pad('Discount (' + d.promoCode + ')', 26, true) + ' ' + pad('-' + d.discount, 7) + '\n';
+    }
+
+    const deliveryLabel = deliveryNum === 0 ? 'Free' : deliveryNum.toLocaleString();
+    t += pad('Delivery', 26, true) + ' ' + pad(deliveryLabel, 7) + '\n';
+    t += dline + '\n';
+    t += pad('TOTAL', 26, true) + ' ' + pad(totalNum.toLocaleString() + ' \u09F3', 7) + '\n';
+    t += dline + '\n';
+
+    t += 'PAYMENT\n';
+    t += pad('Method', 10, true) + '   ' + d.payment + '\n';
+
+    const advanceNum = parseInt(d.advanceText) || 0;
+    const codNum     = parseInt(d.codText) || 0;
+
+    if (d.payment === 'Cash on Delivery') {
+      t += pad('Advance', 10, true) + '   ' + advanceNum.toLocaleString() + ' \u09F3 (Delivery)\n';
+      t += pad('COD', 10, true) + '   ' + codNum.toLocaleString() + ' \u09F3\n';
+    } else {
+      t += pad('Paid', 10, true) + '   ' + advanceNum.toLocaleString() + ' \u09F3\n';
+      if (d.txnid && d.txnid !== 'N/A') t += pad('TXN ID', 10, true) + '   ' + d.txnid + '\n';
+    }
+
+    if (d.note) { t += line + '\n'; t += 'Note: ' + d.note + '\n'; }
+
+    t += line + '\n';
+    t += center('Thank you for your order.') + '\n';
+    t += center('NMAVERSE | Dare To Differ') + '\n';
+
+    return t;
+  }
+
+  function openReceipt() {
+    if (!lastOrderData) return;
+    const text = buildReceiptText(lastOrderData);
+    document.getElementById('receiptContent').textContent = text;
+    document.getElementById('receiptOverlay').classList.add('active');
+  }
+
+  function closeReceipt() {
+    document.getElementById('receiptOverlay').classList.remove('active');
+  }
+
+  function closeReceiptOnBg(e) {
+    if (e.target === document.getElementById('receiptOverlay')) closeReceipt();
+  }
+
+  function downloadReceipt() {
+    if (!lastOrderData) return;
+    const el = document.getElementById('receiptContent');
+
+    // Use html2canvas if available, else fallback to basic canvas text
+    const W = 400, padding = 28;
+    const lines = el.textContent.split('\n');
+    const lineH = 20;
+    const H = lines.length * lineH + padding * 2;
+
+    const canvas = document.createElement('canvas');
+    const scale = 2;
+    canvas.width  = W * scale;
+    canvas.height = H * scale;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(scale, scale);
+
+    // background
+    ctx.fillStyle = '#0c0c0c';
+    ctx.fillRect(0, 0, W, H);
+
+    // subtle border glow top
+    ctx.fillStyle = '#800020';
+    ctx.fillRect(0, 0, W, 3);
+
+    ctx.font = '13px "Courier New", monospace';
+    ctx.fillStyle = '#d4cebc';
+
+    lines.forEach((line, i) => {
+      ctx.fillText(line, padding, padding + (i + 1) * lineH);
+    });
+
+    const link = document.createElement('a');
+    link.download = 'NMAVERSE-Receipt-' + lastOrderData.orderId + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  }
+
+  // ══════════════════════════════════════
+  //         OTHER FORM FUNCTIONS
+  // ══════════════════════════════════════
+
+  function toggleOtherTeam(sel) {
+    const inp = sel.nextElementSibling;
+    inp.style.display = sel.value === 'Other' ? 'block' : 'none';
+    inp.required = sel.value === 'Other';
+    if (sel.value !== 'Other') inp.value = '';
   }
 
   let productCount = 1;
@@ -676,124 +717,107 @@ ${note ? `\n📝 <b>Note:</b> ${note}` : ''}`;
   function addProduct() {
     productCount++;
     const container = document.getElementById('jersey-container');
-    const firstItem = container.querySelector('.jersey-item');
-    const newItem = firstItem.cloneNode(true);
-    newItem.id = `order-item-${productCount}`;
-    newItem.querySelector('h3').innerHTML = `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
+    const newItem = container.querySelector('.jersey-item').cloneNode(true);
+    newItem.id = 'order-item-' + productCount;
+    newItem.querySelector('h3').innerHTML = `ORDER #${productCount} <span onclick="removeProduct(this)" style="float:right;color:#ff4444;cursor:pointer;font-size:0.7rem;border:1px solid #ff4444;padding:2px 8px;border-radius:4px;letter-spacing:1px;">REMOVE</span>`;
     newItem.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
     newItem.querySelectorAll('input[type="radio"]').forEach(r => {
       r.checked = false;
-      const originalName = r.name.replace(/_\d+$/, '');
-      r.name = originalName + '_' + productCount;
-      const originalId = r.id.replace(/_\d+$/, '');
-      const newId = originalId + '_' + productCount;
+      const base = r.name.replace(/_\d+$/, '');
+      r.name = base + '_' + productCount;
+      const newId = r.id.replace(/_\d+$/, '') + '_' + productCount;
       r.id = newId;
-      const label = r.nextElementSibling;
-      if (label && label.tagName === 'LABEL') label.setAttribute('for', newId);
+      const lbl = r.nextElementSibling;
+      if (lbl && lbl.tagName === 'LABEL') lbl.setAttribute('for', newId);
     });
-    const customCheck = newItem.querySelector('.custom-check');
-    if (customCheck) { customCheck.checked = false; customCheck.name = 'need_customization_' + productCount; }
-    const customFields = newItem.querySelector('.custom-fields');
-    if (customFields) {
-      customFields.style.display = 'none';
-      const textInput = customFields.querySelector('.custom-name-input');
-      const numInput = customFields.querySelector('.custom-num-input');
-      if (textInput) { textInput.value = ''; textInput.name = 'custom_name_' + productCount; }
-      if (numInput) { numInput.value = ''; numInput.name = 'custom_number_' + productCount; }
+    const cc = newItem.querySelector('.custom-check');
+    if (cc) { cc.checked = false; cc.name = 'need_customization_' + productCount; }
+    const cf = newItem.querySelector('.custom-fields');
+    if (cf) {
+      cf.style.display = 'none';
+      const ti = cf.querySelector('.custom-name-input'); if(ti){ti.value='';ti.name='custom_name_'+productCount;}
+      const ni = cf.querySelector('.custom-num-input');  if(ni){ni.value='';ni.name='custom_number_'+productCount;}
     }
     container.appendChild(newItem);
     calculateTotal();
   }
 
-  function removeProduct(element) {
-    element.closest('.jersey-item').remove();
-    const items = document.querySelectorAll('.jersey-item');
+  function removeProduct(el) {
+    el.closest('.jersey-item').remove();
     productCount = 0;
-    items.forEach(item => {
+    document.querySelectorAll('.jersey-item').forEach(item => {
       productCount++;
       const h3 = item.querySelector('h3');
       h3.innerHTML = productCount === 1
         ? `ORDER #${productCount}`
-        : `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
+        : `ORDER #${productCount} <span onclick="removeProduct(this)" style="float:right;color:#ff4444;cursor:pointer;font-size:0.7rem;border:1px solid #ff4444;padding:2px 8px;border-radius:4px;letter-spacing:1px;">REMOVE</span>`;
     });
     calculateTotal();
   }
 
   const PRICES = { 'Player Edition': 1199, 'Fan Edition': 850 };
   const CUSTOMIZATION_FEE = 250;
-  let currentDiscount = 0;
-  let appliedPromoCode = '';
+  let currentDiscount = 0, appliedPromoCode = '';
 
   function applyPromo() {
-    const inputCode = document.getElementById('promo-code').value.trim().toUpperCase();
+    const code  = document.getElementById('promo-code').value.trim().toUpperCase();
     const msgEl = document.getElementById('promo-msg');
     const rowEl = document.getElementById('discount-row');
     const amtEl = document.getElementById('summary-discount');
-
-    if (inputCode === 'ILYADIL50') {
-      currentDiscount = 50; appliedPromoCode = inputCode;
-      msgEl.innerText = '✓ 50৳ Discount Applied!'; msgEl.style.color = '#4caf50'; msgEl.style.display = 'block';
-      if (rowEl) rowEl.style.display = 'flex'; if (amtEl) amtEl.innerText = '-50৳';
-    } else if (inputCode === 'ILYADIL100') {
-      currentDiscount = 100; appliedPromoCode = inputCode;
-      msgEl.innerText = '✓ 100৳ Discount Applied!'; msgEl.style.color = '#4caf50'; msgEl.style.display = 'block';
-      if (rowEl) rowEl.style.display = 'flex'; if (amtEl) amtEl.innerText = '-100৳';
-    } else if (inputCode === '') {
-      currentDiscount = 0; appliedPromoCode = ''; msgEl.style.display = 'none';
-      if (rowEl) rowEl.style.display = 'none';
+    if (code === 'ILYADIL50') {
+      currentDiscount=50; appliedPromoCode=code;
+      msgEl.innerText='✓ 50৳ Discount Applied!'; msgEl.style.color='#4caf50'; msgEl.style.display='block';
+      if(rowEl) rowEl.style.display='flex'; if(amtEl) amtEl.innerText='-50৳';
+    } else if (code === 'ILYADIL100') {
+      currentDiscount=100; appliedPromoCode=code;
+      msgEl.innerText='✓ 100৳ Discount Applied!'; msgEl.style.color='#4caf50'; msgEl.style.display='block';
+      if(rowEl) rowEl.style.display='flex'; if(amtEl) amtEl.innerText='-100৳';
+    } else if (code === '') {
+      currentDiscount=0; appliedPromoCode=''; msgEl.style.display='none'; if(rowEl) rowEl.style.display='none';
     } else {
-      currentDiscount = 0; appliedPromoCode = '';
-      msgEl.innerText = '❌ Invalid Code'; msgEl.style.color = '#ff5252'; msgEl.style.display = 'block';
-      if (rowEl) rowEl.style.display = 'none';
+      currentDiscount=0; appliedPromoCode='';
+      msgEl.innerText='❌ Invalid Code'; msgEl.style.color='#ff5252'; msgEl.style.display='block';
+      if(rowEl) rowEl.style.display='none';
     }
     calculateTotal();
   }
 
   function calculateTotal() {
-    let subtotal = 0, customizationTotal = 0, breakdownHTML = '';
-    document.querySelectorAll('.jersey-item').forEach((item, index) => {
-      const orderNum = index + 1;
-      const team = item.querySelector('select').value || 'Unknown Team';
-      const editionEl = item.querySelector('input[name^="edition"]:checked');
-      const edition = editionEl ? editionEl.value : '';
-      const customCheck = item.querySelector('.custom-check');
-      const hasCustom = customCheck && customCheck.checked;
+    let subtotal=0, customTotal=0, breakdownHTML='';
+    document.querySelectorAll('.jersey-item').forEach((item, idx) => {
+      const team    = item.querySelector('select').value || 'Unknown';
+      const edEl    = item.querySelector('input[name^="edition"]:checked');
+      const edition = edEl ? edEl.value : '';
+      const cc      = item.querySelector('.custom-check');
+      const hasC    = cc && cc.checked;
       if (edition && PRICES[edition]) {
         const price = PRICES[edition];
         subtotal += price;
-        const customFee = hasCustom ? CUSTOMIZATION_FEE : 0;
-        customizationTotal += customFee;
-        breakdownHTML += `• Order #${orderNum}: ${team} (${edition}) - ${price}৳${hasCustom ? ` + Customization ${CUSTOMIZATION_FEE}৳` : ''}<br>`;
+        if (hasC) customTotal += CUSTOMIZATION_FEE;
+        breakdownHTML += `• Order #${idx+1}: ${team} (${edition}) - ${price}৳${hasC ? ` + Custom ${CUSTOMIZATION_FEE}৳` : ''}<br>`;
       }
     });
+    const box = document.getElementById('product-breakdown');
+    if (box) box.innerHTML = breakdownHTML;
 
-    const breakdownBox = document.getElementById('product-breakdown');
-    if (breakdownBox) breakdownBox.innerHTML = breakdownHTML;
-
-    const deliveryMethod = getRadio('delivery_method');
+    const method   = getRadio('delivery_method');
     const location = getRadio('location');
-    let deliveryCharge = 0;
-    if (deliveryMethod === 'Home Delivery') deliveryCharge = (location === 'Inside CTG (60৳)') ? 60 : 135;
+    let delivery   = 0;
+    if (method === 'Home Delivery') delivery = location === 'Inside CTG (60৳)' ? 60 : 135;
 
-    const grandSubtotal = subtotal + customizationTotal;
-    let total = Math.max(0, grandSubtotal + deliveryCharge - currentDiscount);
+    const grand  = subtotal + customTotal;
+    const total  = Math.max(0, grand + delivery - currentDiscount);
+    const payMet = getRadio('payment');
+    let advance=0, cod=0;
+    if (payMet === 'Cash on Delivery') { advance=delivery; cod=Math.max(0,grand-currentDiscount); }
+    else { advance=total; }
 
-    const paymentMethod = getRadio('payment');
-    let advanceRequired = 0, codAmount = 0;
-    if (paymentMethod === 'Cash on Delivery') {
-      advanceRequired = deliveryCharge;
-      codAmount = Math.max(0, grandSubtotal - currentDiscount);
-    } else {
-      advanceRequired = total;
-    }
-
-    document.getElementById('summary-subtotal').innerText = grandSubtotal + '৳';
-    document.getElementById('summary-delivery').innerText = deliveryCharge + '৳';
-    document.getElementById('summary-total').innerText = total + '৳';
-    document.getElementById('summary-advance').innerText = advanceRequired + '৳';
-    document.getElementById('summary-cod').innerText = codAmount + '৳';
-    const advanceInput = document.getElementById('advance');
-    if (advanceInput) advanceInput.value = advanceRequired;
+    document.getElementById('summary-subtotal').innerText = grand + '৳';
+    document.getElementById('summary-delivery').innerText = delivery + '৳';
+    document.getElementById('summary-total').innerText    = total + '৳';
+    document.getElementById('summary-advance').innerText  = advance + '৳';
+    document.getElementById('summary-cod').innerText      = cod + '৳';
+    const ai = document.getElementById('advance'); if(ai) ai.value = advance;
   }
 
   document.getElementById('orderForm').addEventListener('change', calculateTotal);
