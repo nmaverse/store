@@ -806,7 +806,6 @@
 
   function validate() {
     let ok = true;
-
     const name = document.getElementById('name').value.trim();
     showError('err-name', !name); setInvalid('name', !name);
     if (!name) ok = false;
@@ -858,7 +857,7 @@
       }
       calculateTotal();
   }
- 
+
   document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
     if (!validate()) {
@@ -870,22 +869,20 @@
         }
         return;
     }
-
     const btn = document.getElementById('submitBtn');
     btn.innerText = "Sending Order...";
     btn.disabled = true;
 
-    const name    = document.getElementById('name').value.trim();
-    const phone   = document.getElementById('phone').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
     const address = document.getElementById('address').value.trim();
     const payment = getRadio('payment');
     const advance = document.getElementById('advance').value.trim();
-    const txnid   = document.getElementById('txnid').value.trim();
-    const note    = document.getElementById('note').value.trim();
+    const txnid = document.getElementById('txnid').value.trim();
+    const note = document.getElementById('note').value.trim();
     const deliveryMethod = getRadio('delivery_method');
     const deliveryLoc = (deliveryMethod === 'Pickup') ? 'Chattogram Pickup' : getRadio('location');
    
-// সব জার্সির ডাটা একসাথে করার জন্য Loop
     let allProductsInfo = '';
     const items = document.querySelectorAll('.jersey-item');
     items.forEach((item, index) => {
@@ -902,7 +899,6 @@
         const editionEl = item.querySelector('input[name^="edition"]:checked');
         const edition = editionEl ? editionEl.value : 'Not Selected';
 
-        // Customization check
         const customCheck = item.querySelector('.custom-check');
         let customText = '';
         if (customCheck && customCheck.checked) {
@@ -952,8 +948,6 @@ ${appliedPromoCode ? `🎟️ Promo Code: ${appliedPromoCode} (-${currentDiscoun
 ${note ? `\n📝 Note: ${note}` : ''}`;
 
     const encoded = encodeURIComponent(msg);
-    
-    // একদম ফ্রেশ টেক্সট লিংক, কোনো parse_mode নেই। 
     const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encoded}`;
 
     fetch(url)
@@ -964,7 +958,6 @@ ${note ? `\n📝 Note: ${note}` : ''}`;
           document.getElementById('successBox').style.display = 'block';
           window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
-          // যদি কোনো কারণে এরর হয়, সেটি স্ক্রিনে দেখিয়ে দেবে
           alert("Telegram Error: " + data.description);
           btn.innerText = "Confirm Order";
           btn.disabled = false;
@@ -975,6 +968,8 @@ ${note ? `\n📝 Note: ${note}` : ''}`;
         btn.innerText = "Confirm Order";
         btn.disabled = false;
       });
+  }); // এখানে নিখুঁতভাবে সাবমিট ফাংশনটি ক্লোজ করা হলো
+
   function resetForm() {
     document.getElementById('orderForm').reset();
     document.getElementById('orderForm').style.display = 'block';
