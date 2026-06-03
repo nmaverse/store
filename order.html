@@ -31,286 +31,92 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-.back-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
+
+  .back-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px;
     background: rgba(232, 224, 194, 0.05);
-    color: var(--cream);
-    border-radius: 50%;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 1px solid var(--border);
-    margin-right: 12px;
-}
+    color: var(--cream); border-radius: 50%; text-decoration: none;
+    transition: all 0.3s ease; border: 1px solid var(--border); margin-right: 12px;
+  }
+  .back-btn:hover { background: var(--cream); color: var(--burgundy); transform: translateX(-3px); }
 
-.back-btn:hover {
-    background: var(--cream);
-    color: var(--burgundy);
-    transform: translateX(-3px);
-}
-  /* ── HEADER ── */
   .header {
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    padding: 1.25rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    background: var(--bg); border-bottom: 1px solid var(--border);
+    padding: 1.25rem 2rem; display: flex; align-items: center;
+    justify-content: space-between; position: sticky; top: 0; z-index: 100;
   }
 
-  .logo-mark {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-  }
+  .logo-mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-img { width: 40px; height: 40px; object-fit: contain; border-radius: 50%; }
+  .brand-name { font-family: 'Anton', sans-serif; font-size: 20px; color: var(--cream); letter-spacing: 2px; }
+  .header-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--burgundy-light); font-weight: 600; }
 
- .logo-img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    border-radius: 50%;
-  } 
-
-  .brand-name {
-    font-family: 'Anton', sans-serif;
-    font-size: 20px;
-    color: var(--cream);
-    letter-spacing: 2px;
-  }
-
-  .header-tag {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--burgundy-light);
-    font-weight: 600;
-  }
-
-  /* ── HERO STRIP ── */
   .order-hero {
-    background: var(--burgundy);
-    padding: 3.5rem 2rem 3rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    background: var(--burgundy); padding: 3.5rem 2rem 3rem;
+    text-align: center; position: relative; overflow: hidden;
   }
-
   .order-hero::before {
-    content: 'ORDER';
-    position: absolute;
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(80px, 18vw, 160px);
-    color: rgba(255,255,255,0.04);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    letter-spacing: 8px;
-    pointer-events: none;
-    white-space: nowrap;
+    content: 'ORDER'; position: absolute; font-family: 'Anton', sans-serif;
+    font-size: clamp(80px, 18vw, 160px); color: rgba(255,255,255,0.04);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    letter-spacing: 8px; pointer-events: none; white-space: nowrap;
   }
+  .order-hero h1 { font-family: 'Anton', sans-serif; font-size: clamp(28px, 6vw, 48px); letter-spacing: 3px; color: var(--cream); text-transform: uppercase; position: relative; }
+  .order-hero p { margin-top: 0.75rem; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: rgba(232,224,194,0.6); font-family: 'Barlow Condensed', sans-serif; font-weight: 400; position: relative; }
 
-  .order-hero h1 {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(28px, 6vw, 48px);
-    letter-spacing: 3px;
-    color: var(--cream);
-    text-transform: uppercase;
-    position: relative;
-  }
-
-  .order-hero p {
-    margin-top: 0.75rem;
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(232,224,194,0.6);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 400;
-    position: relative;
-  }
-
-  /* ── FORM CONTAINER ── */
-  .form-wrap {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 3rem 1.5rem 5rem;
-  }
+  .form-wrap { max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
 
   .section-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--burgundy-light);
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--burgundy-light); font-weight: 600;
+    margin-bottom: 1.5rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
   }
+  .section-label::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--burgundy); }
 
-  .section-label::before {
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 2px;
-    background: var(--burgundy);
+  .form-section { margin-bottom: 2.5rem; }
+  .field { margin-bottom: 1.25rem; }
+
+  label { display: block; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--cream-muted); font-weight: 500; margin-bottom: 0.5rem; font-family: 'Barlow Condensed', sans-serif; }
+  label .req { color: var(--burgundy-light); margin-left: 2px; }
+  label .hint { display: block; font-size: 11px; letter-spacing: 0.5px; text-transform: none; color: rgba(200,191,160,0.5); margin-top: 3px; font-family: 'Barlow', sans-serif; font-weight: 400; }
+
+  input[type="text"], input[type="tel"], input[type="number"], textarea, select {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border);
+    color: var(--cream); font-family: 'Barlow', sans-serif; font-size: 15px;
+    font-weight: 300; padding: 0.85rem 1rem; outline: none; border-radius: 2px;
+    transition: border-color 0.2s, background 0.2s; appearance: none; -webkit-appearance: none;
   }
+  input::placeholder, textarea::placeholder { color: rgba(200,191,160,0.25); }
+  input:focus, textarea:focus, select:focus { border-color: var(--burgundy-light); background: var(--bg3); }
+  textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
 
-  .form-section {
-    margin-bottom: 2.5rem;
-  }
-
-  .field {
-    margin-bottom: 1.25rem;
-  }
-
-  label {
-    display: block;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--cream-muted);
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    font-family: 'Barlow Condensed', sans-serif;
-  }
-
-  label .req {
-    color: var(--burgundy-light);
-    margin-left: 2px;
-  }
-
-  label .hint {
-    display: block;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    text-transform: none;
-    color: rgba(200,191,160,0.5);
-    margin-top: 3px;
-    font-family: 'Barlow', sans-serif;
-    font-weight: 400;
-  }
-
-  input[type="text"],
-  input[type="tel"],
-  input[type="number"],
-  textarea,
-  select {
-    width: 100%;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    color: var(--cream);
-    font-family: 'Barlow', sans-serif;
-    font-size: 15px;
-    font-weight: 300;
-    padding: 0.85rem 1rem;
-    outline: none;
-    border-radius: 2px;
-    transition: border-color 0.2s, background 0.2s;
-    appearance: none;
-    -webkit-appearance: none;
-  }
-
-  input::placeholder, textarea::placeholder {
-    color: rgba(200,191,160,0.25);
-  }
-
-  input:focus, textarea:focus, select:focus {
-    border-color: var(--burgundy-light);
-    background: var(--bg3);
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 90px;
-    line-height: 1.6;
-  }
-
-  .select-wrap {
-    position: relative;
-  }
-
+  .select-wrap { position: relative; }
   .select-wrap::after {
-    content: '';
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid var(--cream-muted);
-    pointer-events: none;
+    content: ''; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+    width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent;
+    border-top: 6px solid var(--cream-muted); pointer-events: none;
   }
+  select option { background: #1a0008; color: var(--cream); }
 
-  select option {
-    background: #1a0008;
-    color: var(--cream);
-  }
-
-  /* ── RADIO / CHOICE GRID ── */
-  .choice-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 8px;
-  }
-
+  .choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
   .choice-grid.two { grid-template-columns: 1fr 1fr; }
   .choice-grid.three { grid-template-columns: 1fr 1fr 1fr; }
   .choice-grid.five { grid-template-columns: repeat(5, 1fr); }
 
-  .choice-item input[type="radio"] {
-    display: none;
-  }
-
+  .choice-item input[type="radio"] { display: none; }
   .choice-item label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0.7rem 0.5rem;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    cursor: pointer;
-    font-size: 13px;
-    font-family: 'Barlow Condensed', sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--cream-muted);
-    transition: all 0.15s;
-    font-weight: 400;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 0.7rem 0.5rem; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 2px; cursor: pointer; font-size: 13px; font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--cream-muted);
+    transition: all 0.15s; font-weight: 400;
   }
+  .choice-item input[type="radio"]:checked + label { background: var(--burgundy-dark); border-color: var(--burgundy); color: var(--cream); }
+  .choice-item label:hover { border-color: rgba(128,0,32,0.4); color: var(--cream); }
 
-  .choice-item input[type="radio"]:checked + label {
-    background: var(--burgundy-dark);
-    border-color: var(--burgundy);
-    color: var(--cream);
-  }
-
-  .choice-item label:hover {
-    border-color: rgba(128,0,32,0.4);
-    color: var(--cream);
-  }
-
-  /* ── TWO COL ── */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
   @media (max-width: 500px) {
     .two-col { grid-template-columns: 1fr; }
@@ -318,185 +124,69 @@
     .choice-grid.three { grid-template-columns: 1fr 1fr; }
   }
 
-  /* ── SUBMIT BUTTON ── */
   .submit-btn {
-    width: 100%;
-    background: var(--burgundy);
-    color: var(--cream);
-    border: none;
-    font-family: 'Anton', sans-serif;
-    font-size: 18px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    padding: 1.1rem 2rem;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: background 0.2s, transform 0.1s;
-    margin-top: 1rem;
-    position: relative;
-    overflow: hidden;
+    width: 100%; background: var(--burgundy); color: var(--cream); border: none;
+    font-family: 'Anton', sans-serif; font-size: 18px; letter-spacing: 4px;
+    text-transform: uppercase; padding: 1.1rem 2rem; cursor: pointer; border-radius: 2px;
+    transition: background 0.2s, transform 0.1s; margin-top: 1rem; position: relative; overflow: hidden;
   }
-
   .submit-btn:hover { background: var(--burgundy-light); }
   .submit-btn:active { transform: scale(0.99); }
+  .submit-btn.loading { pointer-events: none; opacity: 0.7; }
 
-  .submit-btn.loading {
-    pointer-events: none;
-    opacity: 0.7;
-  }
+  .divider { height: 1px; background: var(--border); margin: 2.5rem 0; }
 
-  /* ── DIVIDER ── */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 2.5rem 0;
-  }
-
-  /* ── CONTACT STRIP ── */
   .contact-strip {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 2.5rem;
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 2px;
+    padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem;
   }
-
-  .contact-strip .left p:first-child {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--cream-muted);
-    margin-bottom: 4px;
-  }
-
-  .contact-strip .left p:last-child {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--cream);
-  }
+  .contact-strip .left p:first-child { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cream-muted); margin-bottom: 4px; }
+  .contact-strip .left p:last-child { font-size: 15px; font-weight: 500; color: var(--cream); }
 
   .wa-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    border: 1px solid var(--burgundy);
-    color: var(--cream);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 0.65rem 1.2rem;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: background 0.15s;
-    font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px; background: transparent;
+    border: 1px solid var(--burgundy); color: var(--cream); font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 0.65rem 1.2rem;
+    text-decoration: none; border-radius: 2px; transition: background 0.15s; font-weight: 600;
   }
-
   .wa-btn:hover { background: var(--burgundy-dark); }
+  .wa-icon { width: 16px; height: 16px; fill: #25D366; flex-shrink: 0; }
 
-  .wa-icon {
-    width: 16px;
-    height: 16px;
-    fill: #25D366;
-    flex-shrink: 0;
-  }
-
-  /* ── FOOTER ── */
-  .footer {
-    border-top: 1px solid var(--border);
-    padding: 1.5rem 2rem;
-    text-align: center;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(200,191,160,0.3);
-    font-family: 'Barlow Condensed', sans-serif;
-  }
+  .footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(200,191,160,0.3); font-family: 'Barlow Condensed', sans-serif; }
 
   /* ── SUCCESS STATE ── */
-  .success-box {
-    display: none;
-    text-align: center;
-    padding: 4rem 2rem;
-  }
-
+  .success-box { display: none; text-align: center; padding: 4rem 2rem; }
   .success-box .check {
-    width: 60px;
-    height: 60px;
-    border: 2px solid var(--burgundy);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    font-size: 24px;
-    color: var(--burgundy-light);
+    width: 60px; height: 60px; border: 2px solid var(--burgundy); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem; font-size: 24px; color: var(--burgundy-light);
   }
+  .success-box h2 { font-family: 'Anton', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--cream); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .success-box p { color: var(--cream-muted); font-size: 14px; line-height: 1.7; margin-bottom: 1.5rem; }
 
-  .success-box h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: 28px;
-    letter-spacing: 3px;
-    color: var(--cream);
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
+  .error-msg { font-size: 12px; color: #e05555; margin-top: 4px; display: none; font-family: 'Barlow', sans-serif; }
+  input.invalid, textarea.invalid, select.invalid { border-color: #a03030 !important; }
 
-  .success-box p {
-    color: var(--cream-muted);
-    font-size: 14px;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  .error-msg {
-    font-size: 12px;
-    color: #e05555;
-    margin-top: 4px;
-    display: none;
-    font-family: 'Barlow', sans-serif;
-  }
-
-  input.invalid, textarea.invalid, select.invalid {
-    border-color: #a03030 !important;
-  }
- .back-btn-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--cream);
-    transition: color 0.2s, transform 0.2s;
-  }
-
-  .back-btn-arrow:hover {
-    color: var(--burgundy-light);
-    transform: translateX(-4px);
-  }
+  .back-btn-arrow { display: flex; align-items: center; justify-content: center; color: var(--cream); transition: color 0.2s, transform 0.2s; }
+  .back-btn-arrow:hover { color: var(--burgundy-light); transform: translateX(-4px); }
 </style>
-  <!-- Vercel Speed Insights -->
   <script type="module" src="./speed-insights.js"></script>
 </head>
 <body>
 
 <header class="header">
-    <div style="display: flex; align-items: center; gap: 15px;">
-        <a href="index.html" onclick="if(document.referrer.includes(window.location.host)) { event.preventDefault(); history.back(); }" class="back-btn-arrow">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-        </a>
-        <a href="index.html" class="logo-mark">
-            <img src="nmaverse logo.png" alt="NMAVERSE" class="logo-img">
-            <span class="brand-name">NMAVERSE</span>
-        </a>
-    </div>
+  <div style="display: flex; align-items: center; gap: 15px;">
+    <a href="index.html" onclick="if(document.referrer.includes(window.location.host)) { event.preventDefault(); history.back(); }" class="back-btn-arrow">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </a>
+    <a href="index.html" class="logo-mark">
+      <img src="nmaverse logo.png" alt="NMAVERSE" class="logo-img">
+      <span class="brand-name">NMAVERSE</span>
+    </a>
+  </div>
   <span class="header-tag">Order Form</span>
 </header>
 
@@ -505,19 +195,22 @@
   <p>Dare to Differ &nbsp;·&nbsp; World Cup 2026</p>
 </div>
 
+<!-- ═══════════════════════════════════════════ -->
+<!--              FORM WRAP START               -->
+<!-- ═══════════════════════════════════════════ -->
 <div class="form-wrap">
 
+  <!-- ── ORDER FORM ── -->
   <form id="orderForm" novalidate>
 
+    <!-- PERSONAL INFO -->
     <div class="form-section">
       <div class="section-label">Personal Info</div>
-
       <div class="field">
         <label>Full Name <span class="req">*</span></label>
         <input type="text" id="name" placeholder="আপনার নাম লিখুন" required>
         <div class="error-msg" id="err-name">নাম দেওয়া বাধ্যতামূলক।</div>
       </div>
-
       <div class="field">
         <label>Phone Number <span class="req">*</span>
           <span class="hint">WhatsApp আছে এমন নম্বর দিলে সবচেয়ে ভালো।</span>
@@ -525,7 +218,6 @@
         <input type="tel" id="phone" placeholder="01XXXXXXXXX" required>
         <div class="error-msg" id="err-phone">ফোন নম্বর দেওয়া বাধ্যতামূলক।</div>
       </div>
-
       <div class="field">
         <label>Delivery Address <span class="req">*</span>
           <span class="hint">বাড়ি/ফ্ল্যাট নম্বর, রাস্তা, এলাকা, জেলা সহ লিখুন।</span>
@@ -534,118 +226,126 @@
         <div class="error-msg" id="err-address">ঠিকানা দেওয়া বাধ্যতামূলক।</div>
       </div>
     </div>
-   <div class="form-section">
+    <!-- /PERSONAL INFO -->
+
+    <!-- JERSEY DETAILS -->
+    <div class="form-section">
       <div class="section-label">Jersey Details</div>
 
-<div id="jersey-container">
-    <div class="jersey-item" style="border-bottom: 1px solid var(--border); margin-bottom: 25px; padding-bottom: 10px;">
-        <h3 style="color: var(--cream-muted); font-size: 0.7rem; margin-bottom: 15px; letter-spacing: 2px;">ORDER  #1</h3>
-     
+      <div id="jersey-container">
+        <!-- JERSEY ITEM #1 -->
+        <div class="jersey-item" style="border-bottom: 1px solid var(--border); margin-bottom: 25px; padding-bottom: 10px;">
+          <h3 style="color: var(--cream-muted); font-size: 0.7rem; margin-bottom: 15px; letter-spacing: 2px;">ORDER #1</h3>
+
+          <div class="field">
+            <label>Team <span class="req">*</span></label>
+            <div class="select-wrap">
+              <select id="team" class="team-dropdown" required onchange="toggleOtherTeam(this)">
+                <option value="">— Select Team —</option>
+                <option value="Argentina">🇦🇷 Argentina</option>
+                <option value="Brazil">🇧🇷 Brazil</option>
+                <option value="Portugal">🇵🇹 Portugal</option>
+                <option value="Germany">🇩🇪 Germany</option>
+                <option value="Spain">🇪🇸 Spain</option>
+                <option value="France">🇫🇷 France</option>
+                <option value="Other">🌍 Other (Type Manually)</option>
+              </select>
+              <input type="text" class="other-team-input" placeholder="Type your team name here..." style="display: none; margin-top: 10px; width: 100%; box-sizing: border-box; padding: 10px 15px; background: rgba(0,0,0,0.2); border: 1px dashed var(--burgundy); color: white; border-radius: 4px;">
+            </div>
+            <div class="error-msg" id="err-team">দল সিলেক্ট করুন।</div>
+          </div>
+
+          <div class="two-col">
+            <div class="field">
+              <label>Kit <span class="req">*</span></label>
+              <div class="choice-grid two">
+                <div class="choice-item"><input type="radio" name="kit" id="kit-home" value="Home"><label for="kit-home">Home</label></div>
+                <div class="choice-item"><input type="radio" name="kit" id="kit-away" value="Away"><label for="kit-away">Away</label></div>
+              </div>
+              <div class="error-msg" id="err-kit">Kit সিলেক্ট করুন।</div>
+            </div>
+            <div class="field">
+              <label>Size <span class="req">*</span></label>
+              <div class="choice-grid five">
+                <div class="choice-item"><input type="radio" name="size" id="sz-s" value="S"><label for="sz-s">S</label></div>
+                <div class="choice-item"><input type="radio" name="size" id="sz-m" value="M"><label for="sz-m">M</label></div>
+                <div class="choice-item"><input type="radio" name="size" id="sz-l" value="L"><label for="sz-l">L</label></div>
+                <div class="choice-item"><input type="radio" name="size" id="sz-xl" value="XL"><label for="sz-xl">XL</label></div>
+                <div class="choice-item"><input type="radio" name="size" id="sz-xxl" value="XXL"><label for="sz-xxl">XXL</label></div>
+              </div>
+              <div class="error-msg" id="err-size">সাইজ সিলেক্ট করুন।</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Edition / Quality <span class="req">*</span></label>
+            <div class="choice-grid two">
+              <div class="choice-item"><input type="radio" name="edition" id="ed-player" value="Player Edition"><label for="ed-player">Player Edition</label></div>
+              <div class="choice-item"><input type="radio" name="edition" id="ed-fan" value="Fan Edition"><label for="ed-fan">Fan Edition</label></div>
+            </div>
+            <div class="error-msg" id="err-edition">Edition সিলেক্ট করুন।</div>
+          </div>
+
+          <div class="customization-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #333;">
+            <label style="display: flex; align-items: center; cursor: pointer; font-size: 0.8rem; color: #aaa; letter-spacing: 1px;">
+              <input type="checkbox" name="need_customization_1" class="custom-check" onchange="toggleCustomFields(this)" style="margin-right: 10px; width: 16px; height: 16px; accent-color: #ff4444;">
+              ADD CUSTOM NAME & NUMBER (+200৳)
+            </label>
+            <div class="custom-fields" style="display: none; margin-top: 10px; gap: 10px;">
+              <input type="text" name="custom_name_1" class="custom-name-input" placeholder="NAME (e.g. RONALDO)" style="flex: 2; padding: 12px; background: transparent; border: 1px solid #333; color: white; text-transform: uppercase; font-family: inherit;">
+              <input type="number" name="custom_number_1" class="custom-num-input" placeholder="NUMBER (e.g. 7)" style="flex: 1; padding: 12px; background: transparent; border: 1px solid #333; color: white; font-family: inherit;">
+            </div>
+          </div>
+        </div>
+        <!-- /JERSEY ITEM #1 -->
+      </div>
+      <!-- /jersey-container -->
+
+      <div id="add-more-section" style="margin-top: 10px; margin-bottom: 30px;">
+        <button type="button" onclick="addProduct()" style="width: 100%; padding: 12px; background: rgba(232,224,194,0.05); border: 1px dashed var(--border); color: var(--cream); border-radius: 8px; cursor: pointer; font-family: 'Barlow Condensed'; font-weight: 600; letter-spacing: 1px;">
+          + ADD ANOTHER PRODUCT
+        </button>
+      </div>
+    </div>
+    <!-- /JERSEY DETAILS -->
+
+    <!-- DELIVERY INFO -->
+    <div class="form-section">
+      <div class="section-label">Delivery Info</div>
       <div class="field">
-        <label>Team <span class="req">*</span></label>
-        <div class="select-wrap">
-        <select id="team" class="team-dropdown" required onchange="toggleOtherTeam(this)">
-    <option value="">— Select Team —</option>
-    <option value="Argentina">🇦🇷 Argentina</option>
-    <option value="Brazil">🇧🇷 Brazil</option>
-    <option value="Portugal">🇵🇹 Portugal</option>
-    <option value="Germany">🇩🇪 Germany</option>
-    <option value="Spain">🇪🇸 Spain</option>
-    <option value="France">🇫🇷 France</option>
-    <option value="Other">🌍 Other (Type Manually)</option>
-</select>
-<input type="text" class="other-team-input" placeholder="Type your team name here..." style="display: none; margin-top: 10px; width: 100%; box-sizing: border-box; padding: 10px 15px; background: rgba(0, 0, 0, 0.2); border: 1px dashed var(--burgundy); color: white; border-radius: 4px;">
-        </div>
-        <div class="error-msg" id="err-team">দল সিলেক্ট করুন।</div>
-      </div>
-
-      <div class="two-col">
-        <div class="field">
-          <label>Kit <span class="req">*</span></label>
-          <div class="choice-grid two">
-            <div class="choice-item"><input type="radio" name="kit" id="kit-home" value="Home"><label for="kit-home">Home</label></div>
-            <div class="choice-item"><input type="radio" name="kit" id="kit-away" value="Away"><label for="kit-away">Away</label></div>
-          </div>
-          <div class="error-msg" id="err-kit">Kit সিলেক্ট করুন।</div>
-        </div>
-
-        <div class="field">
-          <label>Size <span class="req">*</span></label>
-          <div class="choice-grid five">
-            <div class="choice-item"><input type="radio" name="size" id="sz-s" value="S"><label for="sz-s">S</label></div>
-            <div class="choice-item"><input type="radio" name="size" id="sz-m" value="M"><label for="sz-m">M</label></div>
-            <div class="choice-item"><input type="radio" name="size" id="sz-l" value="L"><label for="sz-l">L</label></div>
-            <div class="choice-item"><input type="radio" name="size" id="sz-xl" value="XL"><label for="sz-xl">XL</label></div>
-            <div class="choice-item"><input type="radio" name="size" id="sz-xxl" value="XXL"><label for="sz-xxl">XXL</label></div>
-          </div>
-          <div class="error-msg" id="err-size">সাইজ সিলেক্ট করুন।</div>
-        </div>
-      </div>
-
-<div class="field">
-                <label>Edition / Quality <span class="req">*</span></label>
-                <div class="choice-grid two">
-                  <div class="choice-item"><input type="radio" name="edition" id="ed-player" value="Player Edition"><label for="ed-player">Player Edition</label></div>
-                  <div class="choice-item"><input type="radio" name="edition" id="ed-fan" value="Fan Edition"><label for="ed-fan">Fan Edition</label></div>
-                </div>
-                <div class="error-msg" id="err-edition">Edition সিলেক্ট করুন।</div>
-              </div>
-
-              <div class="customization-section" style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #333;">
-                  <label style="display: flex; align-items: center; cursor: pointer; font-size: 0.8rem; color: #aaa; letter-spacing: 1px;">
-                      <input type="checkbox" name="need_customization_1" class="custom-check" onchange="toggleCustomFields(this)" style="margin-right: 10px; width: 16px; height: 16px; accent-color: #ff4444;">
-                      ADD CUSTOM NAME & NUMBER (+200৳)
-                  </label>
-                  <div class="custom-fields" style="display: none; margin-top: 10px; gap: 10px;">
-                      <input type="text" name="custom_name_1" class="custom-name-input" placeholder="NAME (e.g. RONALDO)" style="flex: 2; padding: 12px; background: transparent; border: 1px solid #333; color: white; text-transform: uppercase; font-family: inherit;">
-                      <input type="number" name="custom_number_1" class="custom-num-input" placeholder="NUMBER (e.g. 7)" style="flex: 1; padding: 12px; background: transparent; border: 1px solid #333; color: white; font-family: inherit;">
-                  </div>
-              </div>
-
-            </div> 
-        </div>
-<div id="add-more-section" style="margin-top: 10px; margin-bottom: 30px;">
-    <button type="button" onclick="addProduct()" style="width: 100%; padding: 12px; background: rgba(232, 224, 194, 0.05); border: 1px dashed var(--border); color: var(--cream); border-radius: 8px; cursor: pointer; font-family: 'Barlow Condensed'; font-weight: 600; letter-spacing: 1px;">
-        + ADD ANOTHER PRODUCT
-    </button>
-</div>
-
-<div class="form-section">
-    <div class="section-label">Delivery Info</div>
-    <div class="field">
         <label>Delivery Method <span class="req">*</span></label>
         <div class="choice-grid two">
-            <div class="choice-item">
-                <input type="radio" name="delivery_method" id="method-home" value="Home Delivery" checked onclick="toggleDelivery()">
-                <label for="method-home">Home Delivery</label>
-            </div>
-            <div class="choice-item">
-                <input type="radio" name="delivery_method" id="method-pickup" value="Pickup" onclick="toggleDelivery()">
-                <label for="method-pickup">Pickup (Inside CTG)</label>
-            </div>
+          <div class="choice-item">
+            <input type="radio" name="delivery_method" id="method-home" value="Home Delivery" checked onclick="toggleDelivery()">
+            <label for="method-home">Home Delivery</label>
+          </div>
+          <div class="choice-item">
+            <input type="radio" name="delivery_method" id="method-pickup" value="Pickup" onclick="toggleDelivery()">
+            <label for="method-pickup">Pickup (Inside CTG)</label>
+          </div>
         </div>
-    </div>
-
-    <div class="field" id="location-section">
+      </div>
+      <div class="field" id="location-section">
         <label>Delivery Location <span class="req">*</span></label>
         <div class="choice-grid two">
-            <div class="choice-item">
-                <input type="radio" name="location" id="loc-inside" value="Inside CTG (60৳)" checked>
-                <label for="loc-inside">Inside CTG (60৳)</label>
-            </div>
-            <div class="choice-item">
-                <input type="radio" name="location" id="loc-outside" value="Outside CTG (135৳)">
-                <label for="loc-outside">Outside CTG (135৳)</label>
-            </div>
+          <div class="choice-item">
+            <input type="radio" name="location" id="loc-inside" value="Inside CTG (60৳)" checked>
+            <label for="loc-inside">Inside CTG (60৳)</label>
+          </div>
+          <div class="choice-item">
+            <input type="radio" name="location" id="loc-outside" value="Outside CTG (135৳)">
+            <label for="loc-outside">Outside CTG (135৳)</label>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-   
+    <!-- /DELIVERY INFO -->
+
+    <!-- PAYMENT -->
     <div class="form-section">
       <div class="section-label">Payment</div>
-
       <div class="field">
-      <label>Payment Method <span style="color: var(--cream-muted); letter-spacing: 1px; margin-left: 8px;">(BKASH/NAGAD send money: <b style="color: var(--cream); text-decoration: underline; text-underline-offset: 4px;">01850547796</b>)</span> <span class="req">*</span></label>
+        <label>Payment Method <span style="color: var(--cream-muted); letter-spacing: 1px; margin-left: 8px;">(BKASH/NAGAD send money: <b style="color: var(--cream); text-decoration: underline; text-underline-offset: 4px;">01850547796</b>)</span> <span class="req">*</span></label>
         <div class="choice-grid three">
           <div class="choice-item"><input type="radio" name="payment" id="pay-bkash" value="bKash"><label for="pay-bkash">bKash</label></div>
           <div class="choice-item"><input type="radio" name="payment" id="pay-nagad" value="Nagad"><label for="pay-nagad">Nagad</label></div>
@@ -653,7 +353,6 @@
         </div>
         <div class="error-msg" id="err-payment">Payment method সিলেক্ট করুন।</div>
       </div>
-
       <div class="two-col">
         <div class="field">
           <label>Advance Amount (BDT) <span class="req">*</span>
@@ -662,7 +361,6 @@
           <input type="number" id="advance" placeholder="0" min="0" required>
           <div class="error-msg" id="err-advance">পরিমাণ লিখুন।</div>
         </div>
-
         <div class="field">
           <label>Transaction ID / Payment No. <span class="req">*</span>
             <span class="hint">COD হলে N/A লিখুন।</span>
@@ -672,100 +370,115 @@
         </div>
       </div>
     </div>
+    <!-- /PAYMENT -->
 
+    <!-- EXTRA NOTE -->
     <div class="form-section">
       <div class="section-label">Extra Note (Optional)</div>
       <div class="field">
-        <label>অতিরিক্ত কিছু জানাতে চাইলে 
+        <label>অতিরিক্ত কিছু জানাতে চাইলে
           <span class="hint">ডেলিভারি লোকেশন Hints অথবা অর্ডারের সাথে কোন মেসেজ কার্ড প্রয়োজন হলে</span>
         </label>
         <textarea id="note" placeholder="(ঐচ্ছিক)"></textarea>
       </div>
     </div>
+    <!-- /EXTRA NOTE -->
 
-<div class="form-section" style="margin-bottom: 20px; background: rgba(128, 0, 32, 0.05); border: 1px dashed var(--burgundy); padding: 15px; border-radius: 8px;">
-    <label style="display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--cream); font-weight: 600; font-family: 'Barlow Condensed'; letter-spacing: 1px;">
+    <!-- PROMO CODE -->
+    <div class="form-section" style="margin-bottom: 20px; background: rgba(128,0,32,0.05); border: 1px dashed var(--burgundy); padding: 15px; border-radius: 8px;">
+      <label style="display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--cream); font-weight: 600; font-family: 'Barlow Condensed'; letter-spacing: 1px;">
         <span>PROMO CODE (OPTIONAL)</span>
         <span id="promo-msg" style="font-size: 13px; font-weight: 600; display: none;"></span>
-    </label>
-    <div style="display: flex; gap: 10px;">
+      </label>
+      <div style="display: flex; gap: 10px;">
         <input type="text" id="promo-code" placeholder="Enter code here..." style="margin-bottom: 0; text-transform: uppercase; flex: 1;">
         <button type="button" onclick="applyPromo()" style="background: var(--burgundy); color: white; border: none; padding: 0 20px; border-radius: 4px; font-family: 'Barlow Condensed'; font-weight: 600; letter-spacing: 1px; cursor: pointer;">APPLY</button>
+      </div>
     </div>
-</div>
-   
-<div class="form-section" style="background: rgba(232, 224, 194, 0.05); padding: 20px; border-radius: 8px; border: 1px dashed var(--border); margin-bottom: 20px;">
-    <div class="section-label" style="margin-bottom: 15px;">Price Summary</div>
-    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; font-family: 'Barlow Condensed'; letter-spacing: 1px;">
+    <!-- /PROMO CODE -->
+
+    <!-- PRICE SUMMARY -->
+    <div class="form-section" style="background: rgba(232,224,194,0.05); padding: 20px; border-radius: 8px; border: 1px dashed var(--border); margin-bottom: 20px;">
+      <div class="section-label" style="margin-bottom: 15px;">Price Summary</div>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; font-family: 'Barlow Condensed'; letter-spacing: 1px;">
         <div style="display: flex; justify-content: space-between;">
-            <span style="color: var(--cream-muted);">Sub-total (Products):</span>
-            <span id="summary-subtotal" style="font-weight: 600;">0৳</span>
+          <span style="color: var(--cream-muted);">Sub-total (Products):</span>
+          <span id="summary-subtotal" style="font-weight: 600;">0৳</span>
         </div>
-      <div id="product-breakdown" style="font-size: 0.75rem; color: rgba(200,191,160,0.5); margin: -5px 0 10px 15px; line-height: 1.5; font-family: 'Barlow';"></div>
+        <div id="product-breakdown" style="font-size: 0.75rem; color: rgba(200,191,160,0.5); margin: -5px 0 10px 15px; line-height: 1.5; font-family: 'Barlow';"></div>
         <div style="display: flex; justify-content: space-between;">
-            <span style="color: var(--cream-muted);">Delivery Charge:</span>
-            <span id="summary-delivery" style="font-weight: 600;">0৳</span>
+          <span style="color: var(--cream-muted);">Delivery Charge:</span>
+          <span id="summary-delivery" style="font-weight: 600;">0৳</span>
         </div>
-<div id="discount-row" style="display: none; justify-content: space-between; color: #4CAF50; margin-top: 5px;">
-    <span>Discount (Promo):</span>
-    <span id="summary-discount" style="font-weight: 600;">-0৳</span>
-</div>
-     
+        <div id="discount-row" style="display: none; justify-content: space-between; color: #4CAF50; margin-top: 5px;">
+          <span>Discount (Promo):</span>
+          <span id="summary-discount" style="font-weight: 600;">-0৳</span>
+        </div>
         <div style="height: 1px; background: var(--border); margin: 5px 0;"></div>
         <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--cream); font-size: 1.1rem;">
-            <span>Total:</span>
-            <span id="summary-total">0৳</span>
+          <span>Total:</span>
+          <span id="summary-total">0৳</span>
         </div>
         <div style="display: flex; justify-content: space-between; color: var(--burgundy-light); margin-top: 10px;">
-            <span>Required Advance <small style="font-size: 10px; color: var(--cream-muted); opacity: 0.8;"> (bKash/Nagad Send Money:<b style="color: var(--cream); text-decoration: underline; text-underline-offset: 4px;">01850547796</b></small>:</span>
-            <span id="summary-advance" style="font-weight: 700;">0৳</span>
+          <span>Required Advance <small style="font-size: 10px; color: var(--cream-muted); opacity: 0.8;"> (bKash/Nagad Send Money: <b style="color: var(--cream); text-decoration: underline; text-underline-offset: 4px;">01850547796</b>)</small>:</span>
+          <span id="summary-advance" style="font-weight: 700;">0৳</span>
         </div>
         <div style="display: flex; justify-content: space-between; color: #4CAF50;">
-            <span>Cash on Delivery:</span>
-            <span id="summary-cod" style="font-weight: 700;">0৳</span>
+          <span>Cash on Delivery:</span>
+          <span id="summary-cod" style="font-weight: 700;">0৳</span>
         </div>
+      </div>
     </div>
-</div>
- 
-   <div style="background: rgba(128, 0, 32, 0.1); border: 1px solid var(--burgundy); padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; color: var(--cream-muted); font-family: 'Barlow';">
-    <strong style="color: var(--burgundy-light); display: block; margin-bottom: 5px; font-family: 'Barlow Condensed'; letter-spacing: 1px;">📢 ঘোষণা / ANNOUNCEMENT:</strong>
-    হোম ডেলিভারির ক্ষেত্রে অর্ডার কনফার্ম করার জন্য 01850547796 এই নাম্বারে অগ্রিম ডেলিভারি চার্জ পাঠিয়ে  ট্রানজ্যাকশন আইডি অথবা যে নম্বর থেকে টাকা পাঠানো হয়েছে সেই নম্বরটি উপরের **'Transaction ID'** এর ঘরে দিন অথবা আমাদের হোয়াটসঅ্যাপ বা ফেসবুক পেজে মেসেজ করে পাঠিয়ে দিন।
-</div>
-   
+    <!-- /PRICE SUMMARY -->
+
+    <!-- ANNOUNCEMENT -->
+    <div style="background: rgba(128,0,32,0.1); border: 1px solid var(--burgundy); padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; color: var(--cream-muted); font-family: 'Barlow';">
+      <strong style="color: var(--burgundy-light); display: block; margin-bottom: 5px; font-family: 'Barlow Condensed'; letter-spacing: 1px;">📢 ঘোষণা / ANNOUNCEMENT:</strong>
+      হোম ডেলিভারির ক্ষেত্রে অর্ডার কনফার্ম করার জন্য 01850547796 এই নাম্বারে অগ্রিম ডেলিভারি চার্জ পাঠিয়ে ট্রানজ্যাকশন আইডি অথবা যে নম্বর থেকে টাকা পাঠানো হয়েছে সেই নম্বরটি উপরের <strong>'Transaction ID'</strong> এর ঘরে দিন অথবা আমাদের হোয়াটসঅ্যাপ বা ফেসবুক পেজে মেসেজ করে পাঠিয়ে দিন।
+    </div>
+
     <button type="submit" class="submit-btn" id="submitBtn">
       Confirm Order
     </button>
 
   </form>
+  <!-- /ORDER FORM -->
 
-<div class="success-box" id="successBox">
+  <!-- ── SUCCESS BOX (form-wrap এর ভেতরে) ── -->
+  <div class="success-box" id="successBox">
     <div class="check">✓</div>
     <h2>ORDER SENT!</h2>
     <p style="color: var(--burgundy-light); font-weight: 700; font-size: 1.1rem; margin-bottom: 15px; font-family: 'Barlow Condensed'; letter-spacing: 1px;">ORDER ID: <span id="display-order-id">#000000-0000</span></p>
     <p>আপনার অর্ডারটি গ্রহন করা হয়েছে।<br>আমরা শীঘ্রই confirm করব। ধন্যবাদ! 🖤</p>
     <a href="#" onclick="resetForm()" class="wa-btn">আরেকটি অর্ডার দিন</a>
+  </div>
+  <!-- /SUCCESS BOX -->
+
 </div>
-</div> 
+<!-- ═══════════════════════════════════════════ -->
+<!--               FORM WRAP END                -->
+<!-- ═══════════════════════════════════════════ -->
+
 <div class="divider"></div>
 
 <div class="contact-strip">
-    <div class="left">
-        <p>সরাসরি কথা বলতে চাইলে</p>
-        <p>Chat or Call Us on WhatsApp</p>
-        <div style="height: 1px; background: var(--border); margin: 10px 0; opacity: 0.2;"></div>
-        <p>To Get Updates</p>
-        <p>Follow Us on Facebook</p>
-    </div>
-    <div style="display: flex; flex-direction: column; gap: 10px; justify-content: center;">
-        <a href="https://wa.me/8801609461644" target="_blank" class="wa-btn" style="margin: 0; min-width: 180px;">
-            <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.533 5.859L.057 23.886a.5.5 0 0 0 .611.612l6.102-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 0 1-5.002-1.371l-.36-.214-3.718.904.922-3.629-.235-.374A9.794 9.794 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-            Chat on WhatsApp
-        </a>
-        <a href="https://www.facebook.com/nmaverse.apparel" target="_blank" class="wa-btn" style="border-color: #1877F2; margin: 0; min-width: 180px;">
-            <svg class="wa-icon" style="fill: #1877F2;" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            Follow on Facebook
-        </a>
-    </div>
+  <div class="left">
+    <p>সরাসরি কথা বলতে চাইলে</p>
+    <p>Chat or Call Us on WhatsApp</p>
+    <div style="height: 1px; background: var(--border); margin: 10px 0; opacity: 0.2;"></div>
+    <p>To Get Updates</p>
+    <p>Follow Us on Facebook</p>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 10px; justify-content: center;">
+    <a href="https://wa.me/8801609461644" target="_blank" class="wa-btn" style="margin: 0; min-width: 180px;">
+      <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.533 5.859L.057 23.886a.5.5 0 0 0 .611.612l6.102-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 0 1-5.002-1.371l-.36-.214-3.718.904.922-3.629-.235-.374A9.794 9.794 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      Chat on WhatsApp
+    </a>
+    <a href="https://www.facebook.com/nmaverse.apparel" target="_blank" class="wa-btn" style="border-color: #1877F2; margin: 0; min-width: 180px;">
+      <svg class="wa-icon" style="fill: #1877F2;" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Follow on Facebook
+    </a>
+  </div>
 </div>
 
 <footer class="footer">
@@ -773,21 +486,17 @@
 </footer>
 
 <script>
-  // ── Telegram Configuration ──
   const token = '8612024982:AAHm706uMTSlHQbA7kvia0XSFto5Qk8kwgM';
   const chatId = '5378066873';
 
-  // কাস্টমাইজেশন বক্স শো/হাইড করার ফাংশন
   function toggleCustomFields(checkbox) {
-      const fieldsContainer = checkbox.closest('.customization-section').querySelector('.custom-fields');
-      if (checkbox.checked) {
-          fieldsContainer.style.display = 'flex';
-      } else {
-          fieldsContainer.style.display = 'none';
-          fieldsContainer.querySelector('.custom-name-input').value = '';
-          fieldsContainer.querySelector('.custom-num-input').value = '';
-      }
-      calculateTotal();
+    const fieldsContainer = checkbox.closest('.customization-section').querySelector('.custom-fields');
+    fieldsContainer.style.display = checkbox.checked ? 'flex' : 'none';
+    if (!checkbox.checked) {
+      fieldsContainer.querySelector('.custom-name-input').value = '';
+      fieldsContainer.querySelector('.custom-num-input').value = '';
+    }
+    calculateTotal();
   }
 
   function getRadio(name) {
@@ -806,69 +515,39 @@
 
   function validate() {
     let ok = true;
-
     const name = document.getElementById('name').value.trim();
-    showError('err-name', !name); setInvalid('name', !name);
-    if (!name) ok = false;
-
+    showError('err-name', !name); setInvalid('name', !name); if (!name) ok = false;
     const phone = document.getElementById('phone').value.trim();
-    showError('err-phone', !phone); setInvalid('phone', !phone);
-    if (!phone) ok = false;
-
+    showError('err-phone', !phone); setInvalid('phone', !phone); if (!phone) ok = false;
     const address = document.getElementById('address').value.trim();
-    showError('err-address', !address); setInvalid('address', !address);
-    if (!address) ok = false;
-
+    showError('err-address', !address); setInvalid('address', !address); if (!address) ok = false;
     const team = document.getElementById('team').value;
-    showError('err-team', !team); setInvalid('team', !team);
-    if (!team) ok = false;
-
-    const kit = getRadio('kit');
-    showError('err-kit', !kit);
-    if (!kit) ok = false;
-
-    const size = getRadio('size');
-    showError('err-size', !size);
-    if (!size) ok = false;
-
-    const edition = getRadio('edition');
-    showError('err-edition', !edition);
-    if (!edition) ok = false;
-
-    const payment = getRadio('payment');
-    showError('err-payment', !payment);
-    if (!payment) ok = false;
-
+    showError('err-team', !team); setInvalid('team', !team); if (!team) ok = false;
+    const kit = getRadio('kit'); showError('err-kit', !kit); if (!kit) ok = false;
+    const size = getRadio('size'); showError('err-size', !size); if (!size) ok = false;
+    const edition = getRadio('edition'); showError('err-edition', !edition); if (!edition) ok = false;
+    const payment = getRadio('payment'); showError('err-payment', !payment); if (!payment) ok = false;
     const advance = document.getElementById('advance').value.trim();
-    showError('err-advance', !advance); setInvalid('advance', !advance);
-    if (!advance) ok = false;
-
+    showError('err-advance', !advance); setInvalid('advance', !advance); if (!advance) ok = false;
     const txnid = document.getElementById('txnid').value.trim();
-    showError('err-txnid', !txnid); setInvalid('txnid', !txnid);
-    if (!txnid) ok = false;
-
+    showError('err-txnid', !txnid); setInvalid('txnid', !txnid); if (!txnid) ok = false;
     return ok;
   }
 
   function toggleDelivery() {
-      const method = getRadio('delivery_method');
-      const locSection = document.getElementById('location-section');
-      if (locSection) {
-          locSection.style.display = (method === 'Pickup') ? 'none' : 'block';
-      }
-      calculateTotal();
+    const method = getRadio('delivery_method');
+    const locSection = document.getElementById('location-section');
+    if (locSection) locSection.style.display = (method === 'Pickup') ? 'none' : 'block';
+    calculateTotal();
   }
- 
+
   document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
     if (!validate()) {
-        const firstError = document.querySelector('.error-msg[style*="display: block"]');
-        if (firstError) {
-            firstError.closest('.field').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        return;
+      const firstError = document.querySelector('.error-msg[style*="display: block"]');
+      if (firstError) firstError.closest('.field').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
     }
 
     const btn = document.getElementById('submitBtn');
@@ -884,60 +563,48 @@
     const note    = document.getElementById('note').value.trim();
     const deliveryMethod = getRadio('delivery_method');
     const deliveryLoc = (deliveryMethod === 'Pickup') ? 'Chattogram Pickup' : getRadio('location');
-   
-    // সব জার্সির ডাটা একসাথে করার জন্য Loop
-let allProductsInfo = '';
+
+    let allProductsInfo = '';
     const items = document.querySelectorAll('.jersey-item');
-    
     items.forEach((item, index) => {
-        const orderNum = index + 1;
-        let team = item.querySelector('select').value; 
-        if (team === 'Other') {     
-            const manualTeam = item.querySelector('.other-team-input').value;     
-            if (manualTeam.trim() !== '') { team = manualTeam; } 
-        }
-        
-        const kitEl = item.querySelector('input[name^="kit"]:checked');
-        const kit = kitEl ? kitEl.value : 'Not Selected';
-        
-        const sizeEl = item.querySelector('input[name^="size"]:checked');
-        const size = sizeEl ? sizeEl.value : 'Not Selected';
-        
-        const editionEl = item.querySelector('input[name^="edition"]:checked');
-        const edition = editionEl ? editionEl.value : 'Not Selected';
-
-        // Customization check for bot message
-        const customCheck = item.querySelector('.custom-check');
-        let customText = '';
-        if (customCheck && customCheck.checked) {
-            const cName = item.querySelector('.custom-name-input').value.trim().toUpperCase() || 'N/A';
-            const cNum = item.querySelector('.custom-num-input').value.trim() || 'N/A';
-            customText = `\n✍️ <b>Custom:</b> ${cName} - ${cNum}`;
-        }
-
-        allProductsInfo += `\n📦 <b>ORDER #${orderNum}</b>\n🎽 Team: ${team}\n🏠 Kit: ${kit}\n📐 Size: ${size}\n⭐ Edition: ${edition}${customText}\n`;
+      const orderNum = index + 1;
+      let team = item.querySelector('select').value;
+      if (team === 'Other') {
+        const manualTeam = item.querySelector('.other-team-input').value;
+        if (manualTeam.trim() !== '') team = manualTeam;
+      }
+      const kitEl = item.querySelector('input[name^="kit"]:checked');
+      const kit = kitEl ? kitEl.value : 'Not Selected';
+      const sizeEl = item.querySelector('input[name^="size"]:checked');
+      const size = sizeEl ? sizeEl.value : 'Not Selected';
+      const editionEl = item.querySelector('input[name^="edition"]:checked');
+      const edition = editionEl ? editionEl.value : 'Not Selected';
+      const customCheck = item.querySelector('.custom-check');
+      let customText = '';
+      if (customCheck && customCheck.checked) {
+        const cName = item.querySelector('.custom-name-input').value.trim().toUpperCase() || 'N/A';
+        const cNum = item.querySelector('.custom-num-input').value.trim() || 'N/A';
+        customText = `\n✍️ <b>Custom:</b> ${cName} - ${cNum}`;
+      }
+      allProductsInfo += `\n📦 <b>ORDER #${orderNum}</b>\n🎽 Team: ${team}\n🏠 Kit: ${kit}\n📐 Size: ${size}\n⭐ Edition: ${edition}${customText}\n`;
     });
 
     const date = new Date();
     const dd = String(date.getDate()).padStart(2, '0');
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const yy = String(date.getFullYear()).slice(-2);
-    
     const phoneInput = document.getElementById('phone').value.trim();
     const phoneSuffix = phoneInput.length >= 4 ? phoneInput.slice(-4) : Math.floor(Math.random() * 9000 + 1000);
-    
     const orderId = `${dd}${mm}${yy}-${phoneSuffix}`;
-    
+
     const displayIdEl = document.getElementById('display-order-id');
-    if (displayIdEl) {
-        displayIdEl.innerText = '#' + orderId;
-    }
+    if (displayIdEl) displayIdEl.innerText = '#' + orderId;
 
     const subtotalText = document.getElementById('summary-subtotal').innerText;
     const deliveryText = document.getElementById('summary-delivery').innerText;
-    const totalText = document.getElementById('summary-total').innerText;
-    const advanceText = document.getElementById('summary-advance').innerText;
-    const codText = document.getElementById('summary-cod').innerText;
+    const totalText    = document.getElementById('summary-total').innerText;
+    const advanceText  = document.getElementById('summary-advance').innerText;
+    const codText      = document.getElementById('summary-cod').innerText;
 
     const msg = `🆔 <b>ORDER ID: #${orderId}</b>
 🖤 <b>NMAVERSE MULTIPLE ORDER</b>
@@ -958,27 +625,26 @@ ${appliedPromoCode ? `🎟️ <b>Promo Code:</b> ${appliedPromoCode} (-${current
 ${note ? `\n📝 <b>Note:</b> ${note}` : ''}`;
 
     const encoded = encodeURIComponent(msg);
-    // এখানে parse_mode=HTML করে দেওয়া হয়েছে
     const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encoded}&parse_mode=HTML`;
 
     fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    if (data.ok) {
-      document.getElementById('orderForm').style.display = 'none';
-      document.getElementById('successBox').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      alert("Error! Please start the bot first.");
-      btn.innerText = "Confirm Order";
-      btn.disabled = false;
-    }
-  })
-  .catch(err => {
-    alert("Network error. Please try again.");
-    btn.innerText = "Confirm Order";
-    btn.disabled = false;
-  });
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          document.getElementById('orderForm').style.display = 'none';
+          document.getElementById('successBox').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          alert("Error! Please start the bot first.");
+          btn.innerText = "Confirm Order";
+          btn.disabled = false;
+        }
+      })
+      .catch(err => {
+        alert("Network error. Please try again.");
+        btn.innerText = "Confirm Order";
+        btn.disabled = false;
+      });
   });
 
   function resetForm() {
@@ -992,200 +658,145 @@ ${note ? `\n📝 <b>Note:</b> ${note}` : ''}`;
     btn.innerText = "Confirm Order";
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-</script>
-
-<script>
 
   function toggleOtherTeam(selectElement) {
-      const otherInput = selectElement.nextElementSibling;
-      if (selectElement.value === 'Other') {
-          otherInput.style.display = 'block';
-          otherInput.required = true;
-      } else {
-          otherInput.style.display = 'none';
-          otherInput.required = false;
-          otherInput.value = '';
-      }
+    const otherInput = selectElement.nextElementSibling;
+    if (selectElement.value === 'Other') {
+      otherInput.style.display = 'block';
+      otherInput.required = true;
+    } else {
+      otherInput.style.display = 'none';
+      otherInput.required = false;
+      otherInput.value = '';
+    }
   }
 
   let productCount = 1;
 
   function addProduct() {
-      productCount++;
-      const container = document.getElementById('jersey-container');
-      const firstItem = container.querySelector('.jersey-item');
-      const newItem = firstItem.cloneNode(true);
-      newItem.id = `order-item-${productCount}`;
-      
-      newItem.querySelector('h3').innerHTML = `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
-      
-      const selects = newItem.querySelectorAll('select');
-      selects.forEach(s => s.selectedIndex = 0);
-      
-      const radios = newItem.querySelectorAll('input[type="radio"]');
-      radios.forEach(r => {
-          r.checked = false;
-          const originalName = r.name.replace(/_\d+$/, '');
-          r.name = originalName + '_' + productCount;
-          const originalId = r.id.replace(/_\d+$/, '');
-          const newId = originalId + '_' + productCount;
-          r.id = newId;
-          const label = r.nextElementSibling;
-          if (label && label.tagName === 'LABEL') {
-              label.setAttribute('for', newId);
-          }
-      });
-
-      const customCheck = newItem.querySelector('.custom-check');
-      if (customCheck) {
-          customCheck.checked = false;
-          customCheck.name = 'need_customization_' + productCount;
-      }
-      const customFields = newItem.querySelector('.custom-fields');
-      if (customFields) {
-          customFields.style.display = 'none';
-          const textInput = customFields.querySelector('.custom-name-input');
-          const numInput = customFields.querySelector('.custom-num-input');
-          if (textInput) { textInput.value = ''; textInput.name = 'custom_name_' + productCount; }
-          if (numInput) { numInput.value = ''; numInput.name = 'custom_number_' + productCount; }
-      }
-
-      container.appendChild(newItem);
-      calculateTotal();
+    productCount++;
+    const container = document.getElementById('jersey-container');
+    const firstItem = container.querySelector('.jersey-item');
+    const newItem = firstItem.cloneNode(true);
+    newItem.id = `order-item-${productCount}`;
+    newItem.querySelector('h3').innerHTML = `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
+    newItem.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
+    newItem.querySelectorAll('input[type="radio"]').forEach(r => {
+      r.checked = false;
+      const originalName = r.name.replace(/_\d+$/, '');
+      r.name = originalName + '_' + productCount;
+      const originalId = r.id.replace(/_\d+$/, '');
+      const newId = originalId + '_' + productCount;
+      r.id = newId;
+      const label = r.nextElementSibling;
+      if (label && label.tagName === 'LABEL') label.setAttribute('for', newId);
+    });
+    const customCheck = newItem.querySelector('.custom-check');
+    if (customCheck) { customCheck.checked = false; customCheck.name = 'need_customization_' + productCount; }
+    const customFields = newItem.querySelector('.custom-fields');
+    if (customFields) {
+      customFields.style.display = 'none';
+      const textInput = customFields.querySelector('.custom-name-input');
+      const numInput = customFields.querySelector('.custom-num-input');
+      if (textInput) { textInput.value = ''; textInput.name = 'custom_name_' + productCount; }
+      if (numInput) { numInput.value = ''; numInput.name = 'custom_number_' + productCount; }
+    }
+    container.appendChild(newItem);
+    calculateTotal();
   }
 
   function removeProduct(element) {
-      const itemToRemove = element.closest('.jersey-item');
-      itemToRemove.remove();
-      
-      const items = document.querySelectorAll('.jersey-item');
-      productCount = 0;
-      items.forEach((item) => {
-          productCount++;
-          const h3 = item.querySelector('h3');
-          if (productCount === 1) {
-              h3.innerHTML = `ORDER #${productCount}`;
-          } else {
-              h3.innerHTML = `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
-          }
-      });
-      calculateTotal();
+    element.closest('.jersey-item').remove();
+    const items = document.querySelectorAll('.jersey-item');
+    productCount = 0;
+    items.forEach(item => {
+      productCount++;
+      const h3 = item.querySelector('h3');
+      h3.innerHTML = productCount === 1
+        ? `ORDER #${productCount}`
+        : `ORDER #${productCount} <span onclick="removeProduct(this)" style="float: right; color: #ff4444; cursor: pointer; font-size: 0.7rem; border: 1px solid #ff4444; padding: 2px 8px; border-radius: 4px; letter-spacing: 1px;">REMOVE</span>`;
+    });
+    calculateTotal();
   }
 
-  const PRICES = {
-      'Player Edition': 1199,
-      'Fan Edition': 850
-  };
-
+  const PRICES = { 'Player Edition': 1199, 'Fan Edition': 850 };
   const CUSTOMIZATION_FEE = 200;
-
   let currentDiscount = 0;
   let appliedPromoCode = '';
 
-  // ── UPDATED: applyPromo with ILYADIL50 and ILYADIL100 ──
   function applyPromo() {
-      const inputCode = document.getElementById('promo-code').value.trim().toUpperCase();
-      const msgEl = document.getElementById('promo-msg');
-      const rowEl = document.getElementById('discount-row');
-      const amtEl = document.getElementById('summary-discount');
+    const inputCode = document.getElementById('promo-code').value.trim().toUpperCase();
+    const msgEl = document.getElementById('promo-msg');
+    const rowEl = document.getElementById('discount-row');
+    const amtEl = document.getElementById('summary-discount');
 
-      if (inputCode === 'ILYADIL50') {
-          currentDiscount = 50;
-          appliedPromoCode = inputCode;
-          msgEl.innerText = '✓ 50৳ Discount Applied!';
-          msgEl.style.color = '#4caf50';
-          msgEl.style.display = 'block';
-          if (rowEl) rowEl.style.display = 'flex';
-          if (amtEl) amtEl.innerText = '-50৳';
-      } else if (inputCode === 'ILYADIL100') {
-          currentDiscount = 100;
-          appliedPromoCode = inputCode;
-          msgEl.innerText = '✓ 100৳ Discount Applied!';
-          msgEl.style.color = '#4caf50';
-          msgEl.style.display = 'block';
-          if (rowEl) rowEl.style.display = 'flex';
-          if (amtEl) amtEl.innerText = '-100৳';
-      } else if (inputCode === '') {
-          currentDiscount = 0;
-          appliedPromoCode = '';
-          msgEl.style.display = 'none';
-          if (rowEl) rowEl.style.display = 'none';
-      } else {
-          currentDiscount = 0;
-          appliedPromoCode = '';
-          msgEl.innerText = '❌ Invalid Code';
-          msgEl.style.color = '#ff5252';
-          msgEl.style.display = 'block';
-          if (rowEl) rowEl.style.display = 'none';
-      }
-      calculateTotal();
+    if (inputCode === 'ILYADIL50') {
+      currentDiscount = 50; appliedPromoCode = inputCode;
+      msgEl.innerText = '✓ 50৳ Discount Applied!'; msgEl.style.color = '#4caf50'; msgEl.style.display = 'block';
+      if (rowEl) rowEl.style.display = 'flex'; if (amtEl) amtEl.innerText = '-50৳';
+    } else if (inputCode === 'ILYADIL100') {
+      currentDiscount = 100; appliedPromoCode = inputCode;
+      msgEl.innerText = '✓ 100৳ Discount Applied!'; msgEl.style.color = '#4caf50'; msgEl.style.display = 'block';
+      if (rowEl) rowEl.style.display = 'flex'; if (amtEl) amtEl.innerText = '-100৳';
+    } else if (inputCode === '') {
+      currentDiscount = 0; appliedPromoCode = ''; msgEl.style.display = 'none';
+      if (rowEl) rowEl.style.display = 'none';
+    } else {
+      currentDiscount = 0; appliedPromoCode = '';
+      msgEl.innerText = '❌ Invalid Code'; msgEl.style.color = '#ff5252'; msgEl.style.display = 'block';
+      if (rowEl) rowEl.style.display = 'none';
+    }
+    calculateTotal();
   }
 
-  // ── UPDATED: calculateTotal with customization fee per jersey ──
   function calculateTotal() {
-      let subtotal = 0;
-      let customizationTotal = 0;
-      let breakdownHTML = '';
-
-      const items = document.querySelectorAll('.jersey-item');
-      items.forEach((item, index) => {
-          const orderNum = index + 1;
-          const team = item.querySelector('select').value || 'Unknown Team';
-          const editionEl = item.querySelector('input[name^="edition"]:checked');
-          const edition = editionEl ? editionEl.value : '';
-          const customCheck = item.querySelector('.custom-check');
-          const hasCustom = customCheck && customCheck.checked;
-
-          if (edition && PRICES[edition]) {
-              const price = PRICES[edition];
-              subtotal += price;
-              const customFee = hasCustom ? CUSTOMIZATION_FEE : 0;
-              customizationTotal += customFee;
-              breakdownHTML += `• Order #${orderNum}: ${team} (${edition}) - ${price}৳${hasCustom ? ` + Customization ${CUSTOMIZATION_FEE}৳` : ''}<br>`;
-          }
-      });
-
-      const breakdownBox = document.getElementById('product-breakdown');
-      if (breakdownBox) breakdownBox.innerHTML = breakdownHTML;
-
-      const deliveryMethod = getRadio('delivery_method');
-      const location = getRadio('location');
-      let deliveryCharge = 0;
-
-      if (deliveryMethod === 'Home Delivery') {
-          deliveryCharge = (location === 'Inside CTG (60৳)') ? 60 : 135;
+    let subtotal = 0, customizationTotal = 0, breakdownHTML = '';
+    document.querySelectorAll('.jersey-item').forEach((item, index) => {
+      const orderNum = index + 1;
+      const team = item.querySelector('select').value || 'Unknown Team';
+      const editionEl = item.querySelector('input[name^="edition"]:checked');
+      const edition = editionEl ? editionEl.value : '';
+      const customCheck = item.querySelector('.custom-check');
+      const hasCustom = customCheck && customCheck.checked;
+      if (edition && PRICES[edition]) {
+        const price = PRICES[edition];
+        subtotal += price;
+        const customFee = hasCustom ? CUSTOMIZATION_FEE : 0;
+        customizationTotal += customFee;
+        breakdownHTML += `• Order #${orderNum}: ${team} (${edition}) - ${price}৳${hasCustom ? ` + Customization ${CUSTOMIZATION_FEE}৳` : ''}<br>`;
       }
+    });
 
-      const grandSubtotal = subtotal + customizationTotal;
-      let total = (grandSubtotal + deliveryCharge) - currentDiscount;
-      if (total < 0) total = 0;
+    const breakdownBox = document.getElementById('product-breakdown');
+    if (breakdownBox) breakdownBox.innerHTML = breakdownHTML;
 
-      const paymentMethod = getRadio('payment');
-      let advanceRequired = 0;
-      let codAmount = 0;
+    const deliveryMethod = getRadio('delivery_method');
+    const location = getRadio('location');
+    let deliveryCharge = 0;
+    if (deliveryMethod === 'Home Delivery') deliveryCharge = (location === 'Inside CTG (60৳)') ? 60 : 135;
 
-      if (paymentMethod === 'Cash on Delivery') {
-          advanceRequired = deliveryCharge;
-          codAmount = grandSubtotal - currentDiscount;
-          if (codAmount < 0) codAmount = 0;
-      } else {
-          advanceRequired = total;
-          codAmount = 0;
-      }
+    const grandSubtotal = subtotal + customizationTotal;
+    let total = Math.max(0, grandSubtotal + deliveryCharge - currentDiscount);
 
-      document.getElementById('summary-subtotal').innerText = grandSubtotal + '৳';
-      document.getElementById('summary-delivery').innerText = deliveryCharge + '৳';
-      document.getElementById('summary-total').innerText = total + '৳';
-      document.getElementById('summary-advance').innerText = advanceRequired + '৳';
-      document.getElementById('summary-cod').innerText = codAmount + '৳';
+    const paymentMethod = getRadio('payment');
+    let advanceRequired = 0, codAmount = 0;
+    if (paymentMethod === 'Cash on Delivery') {
+      advanceRequired = deliveryCharge;
+      codAmount = Math.max(0, grandSubtotal - currentDiscount);
+    } else {
+      advanceRequired = total;
+    }
 
-      const advanceInput = document.getElementById('advance');
-      if (advanceInput) advanceInput.value = advanceRequired;
+    document.getElementById('summary-subtotal').innerText = grandSubtotal + '৳';
+    document.getElementById('summary-delivery').innerText = deliveryCharge + '৳';
+    document.getElementById('summary-total').innerText = total + '৳';
+    document.getElementById('summary-advance').innerText = advanceRequired + '৳';
+    document.getElementById('summary-cod').innerText = codAmount + '৳';
+    const advanceInput = document.getElementById('advance');
+    if (advanceInput) advanceInput.value = advanceRequired;
   }
 
-  // যখনই ফর্মে কোনো পরিবর্তন হবে তখনই হিসাব আপডেট হবে
   document.getElementById('orderForm').addEventListener('change', calculateTotal);
-
 </script>
 </body>
 </html>
